@@ -7,6 +7,7 @@
 | Frontend — Aniruddh | ₹13,50,000–₹15,00,000 |
 | Backend/API/platform — Lalith | ₹15,00,000–₹18,00,000 |
 | **Core project total** | **₹28,50,000–₹33,00,000 + GST** |
+| **Total project duration** | **38–60 calendar weeks / 9–14 months** |
 
 ### Recommended quote
 
