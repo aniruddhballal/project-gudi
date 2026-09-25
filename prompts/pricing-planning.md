@@ -50,3 +50,6 @@ i know you already made the pricing and all, but let me know if you have any dou
 
 
 AND NO i am not designing anything related to the backend. i build everything for the frontend, and so i will make the static version first and then later, the backend guy will start his work and then maybe based on his reponse structures, i will have to change the ui or something idk.
+
+
+btw, this is what the backend engineer lalith had shared with me over whatsapp - he wanted an estimate based on this "demo" message that he shared with me - the content of this file is based on some other project of course, but yeah for your reference
