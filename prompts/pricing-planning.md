@@ -1,0 +1,2 @@
+i need to finalise a pricing for a project that i will be undertaking. can you learn as much as you can about this project and once youre sure of all the variables, you can let me know how much money to ask for, and based on the duration of the project, and industry standards, and the requirements - finalise an "asking" amount and if its going to be in parts, then how much should each part be costing and give a timeline for this project
+
