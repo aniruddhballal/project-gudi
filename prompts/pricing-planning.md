@@ -29,3 +29,24 @@ i mean, yk, i wont be taking the backend/server/hosting stuff up at all. im the 
 
 
 i know you already made the pricing and all, but let me know if you have any doubts, so that we can arrive at the perfect amountafter i make everytthing clear to you
+
+
+1. version1 will need to be deployed into another domain which is already with us. because all the temple people will visit and check our website as we develop it.
+2. no i have the freehand for the design, although i do need to get it "checked" by one of the temple people before it gets finalised and pushed to prod.
+3. idk, i have to decide after i have a look at what is the kinda features/ui look and feel they want and the data - but mostly nextjs, right?
+4. yes there will be a admin backend (for temple people to login and check data i htink) - but im never associated with backend. i am a frontend engineer for this project, the abckend is handled by another guy who handles the server and database. i will ofc have to work with him, to coordinate.
+5. yeah yeah backend guy will give me whatever i need from him
+6. i mean, we'll check that case of mismatch of api and then decide who's api is better and the other would need to fix theirs.
+7. im not sure, but two types i think - one for all the temple people, and another for an admin of all these temple people.
+8. payments - um i think we would need to handle all the things you listed. because we will be getting actual payments from devotees, actual money would be involved. (razorpay mostly - they have a razorpay and an sbi bank details or something they told - which they were using previously)
+9. yeah we can have drafts, publishing (pushing to prod?), revisions/edits, deletion recoveries yes, search yes and image cropping and uploads yes all of it.
+10. me. i will migrate everything from the existing website - whatever we scraped now, into the new codebase (which will be deployed into a new domain) and then ill tell the backend guy to take the data from me. so first cut, evertything would be static, frontend only - by me. and then we would have backend driven data.
+11. yes, it has to be multilingual.
+12. at first we have to replicate all of whatever is functional in the current website. and fix whatever is broken in the current website. for example payments isnt happening or some articles arent redirecting or being shown etc etc - so first, rebuild whatever is working/breaking and then maybe newer ones like "bed/hotel" booking system for the people who come to stay (they told there is a 3rd party software they were using till now) - and we might need to build it if they want it to be within our website, and not depend on the 3rd party. so yeah payment, booking, donations etc.
+13. yes i will work on responsiveness, accessibility audits, SEO, redirects, and browser testing, ui, ux.
+14. idk man how can i know that - they havent given a deadline and i think they expect like 1-2h of work everyday on weekdays and a little more on weekends. we will mostly be connecting only virtually via calls. i will be with them for the next 2 weeks though, so after that its only online after i move out.
+15. there is no target launch date, i will be working part time on it, but i could get a little workaholic and spend 7-8h on it everyday too, depending. consider it part time though. the backeng guy will be quite busy, i would be the "free-er" one. so they expect like 2h of work a day i think. although i could spend more lol.
+16. just handover code, with minimal maintenance or support if at all any issues.
+
+
+AND NO i am not designing anything related to the backend. i build everything for the frontend, and so i will make the static version first and then later, the backend guy will start his work and then maybe based on his reponse structures, i will have to change the ui or something idk.
