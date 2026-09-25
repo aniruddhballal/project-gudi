@@ -16,3 +16,16 @@ doing this is crucial because this will help me:
 
 1. form a timeline and understand what pricing i can give for the client who has asked me to undertake this project
 2. actually start building this project in a structured way after deciding the tech stack and all, to build it.
+
+
+i mean, yk, i wont be taking the backend/server/hosting stuff up at all. im the frontend for this. so my job is to look at everything thats displayed and then build it, redesign it, review it and have everything hardcoded from the frontend during dev and then give the data to the backend guy - so then i would have to integrate his apis for the data, images, videos, all sort of content. and at first, we need to rebuild the website with this "revamped/overhauled" ui/logic/ux. after that we need to build the second version of this, which would be backend driven. and then we would need to add a crm type admin website - which would have the following features:
+
+1. user login (all temple side people)
+2. logs of all payments/donations - states, details of the user/devotee who made payment
+3. temple user can perform CRUD operations on news articles, or images or photos or data and contact details etc - whatever we are storing in the backend for display in the temple devotee facing side, we need all that to be configurable within this 2nd website (which would have its own backend (maybe) and frontend) - so that thetemple users can maintain their website without having to touch any line of code.
+
+
+
+
+
+i know you already made the pricing and all, but let me know if you have any doubts, so that we can arrive at the perfect amountafter i make everytthing clear to you
