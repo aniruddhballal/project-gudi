@@ -53,3 +53,5 @@ AND NO i am not designing anything related to the backend. i build everything fo
 
 
 btw, this is what the backend engineer lalith had shared with me over whatsapp - he wanted an estimate based on this "demo" message that he shared with me - the content of this file is based on some other project of course, but yeah for your reference
+
+can you build v3 of the pricing based on his message? i would need milestones, roadmap and pricing - and if the payment should be monthly or whatever. also, this should be whatever is being quoted in the market for this type of a job. it shouldnt be over or under it at all.
