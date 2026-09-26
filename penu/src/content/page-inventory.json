@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T07:46:56.497650+00:00",
+  "generatedAt": "2026-09-26T07:47:54.409974+00:00",
   "sourceInventory": "discovery-fixed/site_inventory.json",
   "sourceGeneratedAt": "2026-09-25T08:15:23.246640+00:00",
   "sourceBaseUrl": "https://vasavipenugonda.com/",
@@ -14,10 +14,10 @@
     "totalEndpoints": 18,
     "reachableEndpoints": 17,
     "notFoundEndpoints": 1,
-    "contentComplete": 11,
-    "imagesComplete": 8,
-    "videoAudioComplete": 10,
-    "frontendComplete": 11,
+    "contentComplete": 12,
+    "imagesComplete": 9,
+    "videoAudioComplete": 11,
+    "frontendComplete": 12,
     "apiComplete": 0,
     "qaComplete": 0
   },
@@ -303,7 +303,7 @@
       "name": "Photos",
       "area": "gallery",
       "suggestedRoute": "/gallery/photos",
-      "notes": "Photo albums and gallery media.",
+      "notes": "Seven photo album shells were exposed by the original page, all reporting 0 Photos; no album image payloads were available in the public capture.",
       "originalUrl": "https://vasavipenugonda.com/photos.php",
       "originalPath": "/photos.php",
       "sourceStatus": "captured",
@@ -314,12 +314,12 @@
       "sameOriginAssetReferenceCount": 39,
       "embedCount": 0,
       "formCount": 1,
-      "contentStatus": "not-started",
-      "imageStatus": "not-started",
-      "videoAudioStatus": "not-started",
-      "frontendStatus": "not-started",
+      "contentStatus": "complete",
+      "imageStatus": "not-applicable",
+      "videoAudioStatus": "not-applicable",
+      "frontendStatus": "complete",
       "apiStatus": "not-started",
-      "qaStatus": "not-started"
+      "qaStatus": "ready-for-review"
     },
     {
       "key": "privacy",

@@ -106,7 +106,7 @@ PAGE_METADATA = {
         "name": "Photos",
         "area": "gallery",
         "suggestedRoute": "/gallery/photos",
-        "notes": "Photo albums and gallery media.",
+        "notes": "Seven photo album shells were exposed by the original page, all reporting 0 Photos; no album image payloads were available in the public capture.",
     },
     "/videos.php": {
         "key": "videos",
