@@ -99,7 +99,7 @@ PAGE_METADATA = {
         "name": "Trustees",
         "area": "public",
         "suggestedRoute": "/trustees",
-        "notes": "Trustee and executive member listings.",
+        "notes": "Trustee and executive member listings; source roster preserved, with captured portraits used where available and unavailable/broken source portraits represented as placeholders.",
     },
     "/photos.php": {
         "key": "photos",
