@@ -11,10 +11,11 @@ The frontend does not own the backend, database, hosting, payment secrets, webho
 
 Read [AGENTS.md](./AGENTS.md) before making changes. It contains the stack, architecture boundaries, and implementation rules for human and AI contributors.
 
+The current home page displays the original-site migration checklist from `src/content/page-inventory.json`. The source list and progress table are documented in [docs/page-inventory.md](./docs/page-inventory.md).
+
 ## Start
 
 ```bash
 pnpm install
 pnpm dev
 ```
-
