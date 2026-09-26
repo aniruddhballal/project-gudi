@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **16/18**
-- Images complete: **13/18**
-- Video/audio complete: **15/18**
-- Frontend implementation complete: **16/18**
+- Content complete: **17/18**
+- Images complete: **14/18**
+- Video/audio complete: **16/18**
+- Frontend implementation complete: **17/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -32,7 +32,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 14 | `https://vasavipenugonda.com/privacy.php` | `/privacy` | legal | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 36 | Legal/privacy content requiring review before publication. |
 | 15 | `https://vasavipenugonda.com/story.php` | `/story` | public | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 58 | Story, historic events, 13 captured narrative illustrations, and a locally stored Kannada publication download. |
 | 16 | `https://vasavipenugonda.com/team.php` | `/trustees` | public | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 80 | Trustee and executive member listings; source roster preserved, with captured portraits used where available and unavailable/broken source portraits represented as placeholders. |
-| 17 | `https://vasavipenugonda.com/vasavidham.php` | `/vasavi-dham` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 66 | Trust and Dham information, projects, and facilities. |
+| 17 | `https://vasavipenugonda.com/vasavidham.php` | `/vasavi-dham` | public | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 66 | Trust and Dham information, three featured facilities, and 18 completed project records with locally captured images. |
 | 18 | `https://vasavipenugonda.com/videos.php` | `/gallery/videos` | gallery | ✅ (200) | ✅ | — | ✅ | ✅ | ⬜ | 🔍 | 48 | Video embeds and video gallery media. |
 
 ## How to update progress

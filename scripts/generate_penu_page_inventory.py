@@ -64,7 +64,7 @@ PAGE_METADATA = {
         "name": "Vasavi Dham",
         "area": "public",
         "suggestedRoute": "/vasavi-dham",
-        "notes": "Trust and Dham information, projects, and facilities.",
+        "notes": "Trust and Dham information, three featured facilities, and 18 completed project records with locally captured images.",
     },
     "/story.php": {
         "key": "story",

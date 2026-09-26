@@ -1,0 +1,41 @@
+export const vasaviDhamContent = {
+  title: "THE TRUST AND DHAM",
+  description: "The Trust was formed exclusively to develop the only Punya Kshetra for Arya Vysyas and to spread global awareness of Goddess Vasavi Mata’s significance, Story and Birth Place.",
+  featured: [
+    {
+      title: "90 Ft High Pancha Loha Idol",
+      image: "/legacy/vasavi-dham/about.jpg",
+      description: "90 Ft high Pancha Loha idol, the tallest of its kind in the world. It has been installed within this 185 ft high Rishi Gotra Mandir. The idol is made with Gold, Silver, Copper, Tin & Zinc and weighs a total of 44 Tons. It is a free standing idol built to withstand an earthquake of 8 on the Richter scale. Bramhanda Kiranas emitting from this sacred idol will fulfill the ambitions of the devotees.",
+    },
+    {
+      title: "Vasavi Suvarna Rishi Gotra Mandir",
+      image: "/legacy/vasavi-dham/gotramandir-external.jpg",
+      description: "Central to Vasavi Shanthi Dham is the 185 Ft high Vasavi Suvarna Rishi Gotra Mandir featuring 102 Rishi Gothra Stambhas. These symbolise 102 Gothras, along with the respective Gothraja Couple who entered Agni pravesham along with Matha Vasavi. Corresponding verse with respect to each Gothra will be inscribed in multiple languages on the respective Rishi Gothra Stambha.",
+    },
+    {
+      title: "VIP Block and Board Room",
+      image: "/legacy/vasavi-dham/vip-block.jpg",
+      description: "The VIP Room Block is a set of thirteen 3-Star Level State of the Art suite rooms that are air conditioned and feature modern amenities. The VIP Room Block has elevator access and also features a modern board room for the trust's meetings and activities.",
+    },
+  ],
+  projects: [
+    ["8 acres purchased at Penugonda to build Punya Kshetra", "Year 2004", "2004.gif"],
+    ["AsthaBhuja Pushkarini with Musical Fountain", "9 Feb 2005", "9-february-2005.png"],
+    ["Subharam Nityannadana Hall", "31 Jan 2006", "31-january-2006.png"],
+    ["102 Crore Vasavi Nama Likhita Yagna Stupam", "March 2006", "march-2006.png"],
+    ["Vasavi Mandir", "7 May 2006", "7-may-2006-2.png"],
+    ["Navagraha Dampathis at Navagraha Vanam", "7 May 2006", "7-may-2006.png"],
+    ["Tulasi Brundavanam", "7 May 2006", "7-may-2006-4.png"],
+    ["Free Hospital", "16 September 2006", "16-september-2006.png"],
+    ["Free Kalyana Mantap", "21 Jan 2007", "21-jan-2007.png"],
+    ["Fully furnished AC Suites, AC Rooms, Double Rooms & Dormitories", "Jan 2007", "jan-2007.png"],
+    ["Vasavi Agni Kundam", "21 July 2007", "21-july-2007.png"],
+    ["Suvarna Addala Mandapam", "10 September 2008", "10-september-2008-2.png"],
+    ["90 Ft high Pancha Loha idol", "10 September 2008", "10-september-2008.png"],
+    ["Bank Building", "10 September 2008", "10-september-2008-3.png"],
+    ["Pavitra Vasavi Snana Ghattam", "Feb 2009", "feb2009.jpg"],
+    ["Free Hostel", "Completed project", "hostel.jpg"],
+    ["25,000 Litre Capacity Water Tank", "Completed project", "tank.jpg"],
+    ["50 KW Solar Power Plant", "Completed project", "solar.jpg"],
+  ].map(([title, date, image]) => ({ title, date, image: `/legacy/vasavi-dham/projects/${image}` })),
+} as const;
