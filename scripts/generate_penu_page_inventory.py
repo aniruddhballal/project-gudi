@@ -154,6 +154,10 @@ TRACKED_STATUSES = {
 }
 
 
+def is_done(status: str) -> bool:
+    return status in {"complete", "not-applicable"}
+
+
 def build_manifest(source: Path, existing: dict | None = None) -> dict:
     source = source.resolve()
     inventory = json.loads(source.read_text(encoding="utf-8"))
@@ -217,14 +221,12 @@ def build_manifest(source: Path, existing: dict | None = None) -> dict:
         "totalEndpoints": len(pages),
         "reachableEndpoints": sum(page["sourceStatus"] == "captured" for page in pages),
         "notFoundEndpoints": sum(page["sourceStatus"] == "not-found" for page in pages),
-        "contentComplete": sum(page["contentStatus"] == "complete" for page in pages),
-        "imagesComplete": sum(page["imageStatus"] == "complete" for page in pages),
-        "videoAudioComplete": sum(
-            page["videoAudioStatus"] == "complete" for page in pages
-        ),
-        "frontendComplete": sum(page["frontendStatus"] == "complete" for page in pages),
-        "apiComplete": sum(page["apiStatus"] == "complete" for page in pages),
-        "qaComplete": sum(page["qaStatus"] == "complete" for page in pages),
+        "contentComplete": sum(is_done(page["contentStatus"]) for page in pages),
+        "imagesComplete": sum(is_done(page["imageStatus"]) for page in pages),
+        "videoAudioComplete": sum(is_done(page["videoAudioStatus"]) for page in pages),
+        "frontendComplete": sum(is_done(page["frontendStatus"]) for page in pages),
+        "apiComplete": sum(is_done(page["apiStatus"]) for page in pages),
+        "qaComplete": sum(is_done(page["qaStatus"]) for page in pages),
     }
 
     try:
