@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **14/18**
-- Images complete: **11/18**
-- Video/audio complete: **13/18**
-- Frontend implementation complete: **14/18**
+- Content complete: **15/18**
+- Images complete: **12/18**
+- Video/audio complete: **14/18**
+- Frontend implementation complete: **15/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -30,7 +30,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 12 | `https://vasavipenugonda.com/overview.php` | `/overview` | public | ✅ (200) | ✅ | 🔍 | 🔍 | ✅ | ⬜ | 🔍 | 60 | Overview page with activities, events, map, videos, news, and donation content; several original external event/video thumbnails were unavailable in the public capture. |
 | 13 | `https://vasavipenugonda.com/photos.php` | `/gallery/photos` | gallery | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 45 | Seven photo album shells were exposed by the original page, all reporting 0 Photos; no album image payloads were available in the public capture. |
 | 14 | `https://vasavipenugonda.com/privacy.php` | `/privacy` | legal | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 36 | Legal/privacy content requiring review before publication. |
-| 15 | `https://vasavipenugonda.com/story.php` | `/story` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 58 | Story, historic events, and downloadable publication content. |
+| 15 | `https://vasavipenugonda.com/story.php` | `/story` | public | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 58 | Story, historic events, 13 captured narrative illustrations, and a locally stored Kannada publication download. |
 | 16 | `https://vasavipenugonda.com/team.php` | `/trustees` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 80 | Trustee and executive member listings. |
 | 17 | `https://vasavipenugonda.com/vasavidham.php` | `/vasavi-dham` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 66 | Trust and Dham information, projects, and facilities. |
 | 18 | `https://vasavipenugonda.com/videos.php` | `/gallery/videos` | gallery | ✅ (200) | ✅ | — | ✅ | ✅ | ⬜ | 🔍 | 48 | Video embeds and video gallery media. |

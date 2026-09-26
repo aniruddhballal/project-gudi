@@ -71,7 +71,7 @@ PAGE_METADATA = {
         "name": "Story of Goddess Vasavi",
         "area": "public",
         "suggestedRoute": "/story",
-        "notes": "Story, historic events, and downloadable publication content.",
+        "notes": "Story, historic events, 13 captured narrative illustrations, and a locally stored Kannada publication download.",
     },
     "/donation_annadanam.php": {
         "key": "donation-annadanam",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T07:49:47.971862+00:00",
+  "generatedAt": "2026-09-26T07:51:10.709588+00:00",
   "sourceInventory": "discovery-fixed/site_inventory.json",
   "sourceGeneratedAt": "2026-09-25T08:15:23.246640+00:00",
   "sourceBaseUrl": "https://vasavipenugonda.com/",
@@ -14,10 +14,10 @@
     "totalEndpoints": 18,
     "reachableEndpoints": 17,
     "notFoundEndpoints": 1,
-    "contentComplete": 14,
-    "imagesComplete": 11,
-    "videoAudioComplete": 13,
-    "frontendComplete": 14,
+    "contentComplete": 15,
+    "imagesComplete": 12,
+    "videoAudioComplete": 14,
+    "frontendComplete": 15,
     "apiComplete": 0,
     "qaComplete": 0
   },
@@ -349,7 +349,7 @@
       "name": "Story of Goddess Vasavi",
       "area": "public",
       "suggestedRoute": "/story",
-      "notes": "Story, historic events, and downloadable publication content.",
+      "notes": "Story, historic events, 13 captured narrative illustrations, and a locally stored Kannada publication download.",
       "originalUrl": "https://vasavipenugonda.com/story.php",
       "originalPath": "/story.php",
       "sourceStatus": "captured",
@@ -360,12 +360,12 @@
       "sameOriginAssetReferenceCount": 53,
       "embedCount": 0,
       "formCount": 1,
-      "contentStatus": "not-started",
-      "imageStatus": "not-started",
-      "videoAudioStatus": "not-started",
-      "frontendStatus": "not-started",
+      "contentStatus": "complete",
+      "imageStatus": "complete",
+      "videoAudioStatus": "not-applicable",
+      "frontendStatus": "complete",
       "apiStatus": "not-started",
-      "qaStatus": "not-started"
+      "qaStatus": "ready-for-review"
     },
     {
       "key": "trustees",
