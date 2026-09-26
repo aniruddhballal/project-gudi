@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **6/18**
-- Images complete: **3/18**
-- Video/audio complete: **5/18**
-- Frontend implementation complete: **6/18**
+- Content complete: **7/18**
+- Images complete: **4/18**
+- Video/audio complete: **6/18**
+- Frontend implementation complete: **7/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -22,7 +22,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 4 | `https://vasavipenugonda.com/donation_annadanam.php` | `/donations/annadanam` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Donation information and payment journey candidate. |
 | 5 | `https://vasavipenugonda.com/donation_ehundi.php` | `/donations/e-hundi` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Donation information and payment journey candidate. |
 | 6 | `https://vasavipenugonda.com/donation_goshala.php` | `/donations/goshala` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 47 | Donation information and payment journey candidate. |
-| 7 | `https://vasavipenugonda.com/donations.php` | `/donations` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 48 | General donations landing page. |
+| 7 | `https://vasavipenugonda.com/donations.php` | `/donations` | donations | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 48 | General donations landing page. |
 | 8 | `https://vasavipenugonda.com/index.html` | `/` | legacy endpoint | ❌ (404) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 0 | Original crawl returned 404; decide redirect or retirement. |
 | 9 | `https://vasavipenugonda.com/index.php` | `/` | legacy endpoint | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 70 | Appears to duplicate the root homepage; preserve as a redirect candidate. |
 | 10 | `https://vasavipenugonda.com/news-letter.php` | `/newsletter` | public | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 46 | Newsletter/document listing; 9 public documents were captured locally and the remaining external-storage links are retained for review. |
