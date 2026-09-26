@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T07:39:37.733567+00:00",
+  "generatedAt": "2026-09-26T07:41:17.118409+00:00",
   "sourceInventory": "discovery-fixed/site_inventory.json",
   "sourceGeneratedAt": "2026-09-25T08:15:23.246640+00:00",
   "sourceBaseUrl": "https://vasavipenugonda.com/",
@@ -14,10 +14,10 @@
     "totalEndpoints": 18,
     "reachableEndpoints": 17,
     "notFoundEndpoints": 1,
-    "contentComplete": 4,
+    "contentComplete": 5,
     "imagesComplete": 2,
-    "videoAudioComplete": 3,
-    "frontendComplete": 4,
+    "videoAudioComplete": 4,
+    "frontendComplete": 5,
     "apiComplete": 0,
     "qaComplete": 0
   },
@@ -257,7 +257,7 @@
       "name": "News",
       "area": "public",
       "suggestedRoute": "/news",
-      "notes": "News listing and legacy article links/content.",
+      "notes": "News listing and legacy article links/content; several article detail routes and external thumbnails were not independently captured.",
       "originalUrl": "https://vasavipenugonda.com/news.php",
       "originalPath": "/news.php",
       "sourceStatus": "captured",
@@ -268,12 +268,12 @@
       "sameOriginAssetReferenceCount": 42,
       "embedCount": 0,
       "formCount": 1,
-      "contentStatus": "not-started",
-      "imageStatus": "not-started",
-      "videoAudioStatus": "not-started",
-      "frontendStatus": "not-started",
+      "contentStatus": "complete",
+      "imageStatus": "ready-for-review",
+      "videoAudioStatus": "not-applicable",
+      "frontendStatus": "complete",
       "apiStatus": "not-started",
-      "qaStatus": "not-started"
+      "qaStatus": "ready-for-review"
     },
     {
       "key": "overview",

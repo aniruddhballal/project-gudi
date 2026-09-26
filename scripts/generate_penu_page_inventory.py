@@ -50,7 +50,7 @@ PAGE_METADATA = {
         "name": "News",
         "area": "public",
         "suggestedRoute": "/news",
-        "notes": "News listing and legacy article links/content.",
+        "notes": "News listing and legacy article links/content; several article detail routes and external thumbnails were not independently captured.",
     },
     "/news-letter.php": {
         "key": "newsletter",
