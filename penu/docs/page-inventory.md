@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **0/18**
-- Images complete: **0/18**
+- Content complete: **1/18**
+- Images complete: **1/18**
 - Video/audio complete: **0/18**
-- Frontend implementation complete: **0/18**
+- Frontend implementation complete: **1/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -16,7 +16,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 
 | # | Original URL | Suggested Penu route | Area | Source | Content | Images | Video/audio | UI | API | QA | Source refs | Notes |
 |---:|---|---|---|---|---|---|---|---|---|---|---:|---|
-| 1 | `https://vasavipenugonda.com/` | `/` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 70 | Primary public homepage. |
+| 1 | `https://vasavipenugonda.com/` | `/` | public | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 70 | Primary public homepage. |
 | 2 | `https://vasavipenugonda.com/about.php` | `/about` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 58 | Trust, Dham, objectives, construction, and completed projects. |
 | 3 | `https://vasavipenugonda.com/contact.php` | `/contact` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Contact details, map/location content, and contact form candidate. |
 | 4 | `https://vasavipenugonda.com/donation_annadanam.php` | `/donations/annadanam` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Donation information and payment journey candidate. |

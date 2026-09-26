@@ -63,7 +63,7 @@ The starter currently contains the wrapper and a source-page migration tracker. 
 
 ## Source page migration tracker
 
-- `src/content/page-inventory.json` is the machine-readable tracker used by the starter page.
+- `src/content/page-inventory.json` is the machine-readable tracker used by the `/migration` page.
 - `docs/page-inventory.md` is the human-readable checklist.
 - The tracker currently contains 18 original endpoints: 17 reachable pages and 1 endpoint that returned 404.
 - `discovery-fixed/site_inventory.json` remains the source crawl; captured source material is not the same as migrated Penu content.
