@@ -134,7 +134,7 @@ PAGE_METADATA = {
         "name": "About",
         "area": "public",
         "suggestedRoute": "/about",
-        "notes": "Trust, Dham, objectives, construction, and completed projects.",
+        "notes": "Trust, Dham, objectives, construction, and completed projects; original /images/* refs returned 404 and recovered matching assets are used where available.",
     },
     "/privacy.php": {
         "key": "privacy",

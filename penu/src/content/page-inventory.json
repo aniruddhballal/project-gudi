@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T07:32:21.502675+00:00",
+  "generatedAt": "2026-09-26T07:35:29.442076+00:00",
   "sourceInventory": "discovery-fixed/site_inventory.json",
   "sourceGeneratedAt": "2026-09-25T08:15:23.246640+00:00",
   "sourceBaseUrl": "https://vasavipenugonda.com/",
@@ -14,10 +14,10 @@
     "totalEndpoints": 18,
     "reachableEndpoints": 17,
     "notFoundEndpoints": 1,
-    "contentComplete": 1,
+    "contentComplete": 2,
     "imagesComplete": 1,
     "videoAudioComplete": 0,
-    "frontendComplete": 1,
+    "frontendComplete": 2,
     "apiComplete": 0,
     "qaComplete": 0
   },
@@ -50,7 +50,7 @@
       "name": "About",
       "area": "public",
       "suggestedRoute": "/about",
-      "notes": "Trust, Dham, objectives, construction, and completed projects.",
+      "notes": "Trust, Dham, objectives, construction, and completed projects; original /images/* refs returned 404 and recovered matching assets are used where available.",
       "originalUrl": "https://vasavipenugonda.com/about.php",
       "originalPath": "/about.php",
       "sourceStatus": "captured",
@@ -61,12 +61,12 @@
       "sameOriginAssetReferenceCount": 53,
       "embedCount": 0,
       "formCount": 1,
-      "contentStatus": "not-started",
-      "imageStatus": "not-started",
+      "contentStatus": "complete",
+      "imageStatus": "ready-for-review",
       "videoAudioStatus": "not-started",
-      "frontendStatus": "not-started",
+      "frontendStatus": "complete",
       "apiStatus": "not-started",
-      "qaStatus": "not-started"
+      "qaStatus": "ready-for-review"
     },
     {
       "key": "contact",
