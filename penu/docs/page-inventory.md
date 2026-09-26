@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **10/18**
-- Images complete: **7/18**
-- Video/audio complete: **9/18**
-- Frontend implementation complete: **10/18**
+- Content complete: **11/18**
+- Images complete: **8/18**
+- Video/audio complete: **10/18**
+- Frontend implementation complete: **11/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -20,7 +20,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 2 | `https://vasavipenugonda.com/about.php` | `/about` | public | ✅ (200) | ✅ | 🔍 | — | ✅ | ⬜ | 🔍 | 58 | Trust, Dham, objectives, construction, and completed projects; original /images/* refs returned 404 and recovered matching assets are used where available. |
 | 3 | `https://vasavipenugonda.com/contact.php` | `/contact` | public | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 46 | Contact details, map/location content, and contact form candidate. |
 | 4 | `https://vasavipenugonda.com/donation_annadanam.php` | `/donations/annadanam` | donations | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 46 | Donation information and payment journey candidate. |
-| 5 | `https://vasavipenugonda.com/donation_ehundi.php` | `/donations/e-hundi` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Donation information and payment journey candidate. |
+| 5 | `https://vasavipenugonda.com/donation_ehundi.php` | `/donations/e-hundi` | donations | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 46 | Donation information and payment journey candidate. |
 | 6 | `https://vasavipenugonda.com/donation_goshala.php` | `/donations/goshala` | donations | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 47 | Donation information and payment journey candidate. |
 | 7 | `https://vasavipenugonda.com/donations.php` | `/donations` | donations | ✅ (200) | ✅ | ✅ | — | ✅ | ⬜ | 🔍 | 48 | General donations landing page. |
 | 8 | `https://vasavipenugonda.com/index.html` | `/` | legacy endpoint | ❌ (404) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 0 | Original crawl returned 404; decide redirect or retirement. |
