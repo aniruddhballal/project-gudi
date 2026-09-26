@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T07:46:01.712979+00:00",
+  "generatedAt": "2026-09-26T07:46:15.539272+00:00",
   "sourceInventory": "discovery-fixed/site_inventory.json",
   "sourceGeneratedAt": "2026-09-25T08:15:23.246640+00:00",
   "sourceBaseUrl": "https://vasavipenugonda.com/",
@@ -14,10 +14,10 @@
     "totalEndpoints": 18,
     "reachableEndpoints": 17,
     "notFoundEndpoints": 1,
-    "contentComplete": 9,
-    "imagesComplete": 6,
-    "videoAudioComplete": 8,
-    "frontendComplete": 9,
+    "contentComplete": 10,
+    "imagesComplete": 7,
+    "videoAudioComplete": 9,
+    "frontendComplete": 10,
     "apiComplete": 0,
     "qaComplete": 0
   },
@@ -153,12 +153,12 @@
       "sameOriginAssetReferenceCount": 42,
       "embedCount": 0,
       "formCount": 2,
-      "contentStatus": "not-started",
-      "imageStatus": "not-started",
-      "videoAudioStatus": "not-started",
-      "frontendStatus": "not-started",
+      "contentStatus": "complete",
+      "imageStatus": "complete",
+      "videoAudioStatus": "not-applicable",
+      "frontendStatus": "complete",
       "apiStatus": "not-started",
-      "qaStatus": "not-started"
+      "qaStatus": "ready-for-review"
     },
     {
       "key": "donations",
