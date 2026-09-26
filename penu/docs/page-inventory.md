@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **5/18**
-- Images complete: **2/18**
-- Video/audio complete: **4/18**
-- Frontend implementation complete: **5/18**
+- Content complete: **6/18**
+- Images complete: **3/18**
+- Video/audio complete: **5/18**
+- Frontend implementation complete: **6/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -25,7 +25,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 7 | `https://vasavipenugonda.com/donations.php` | `/donations` | donations | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 48 | General donations landing page. |
 | 8 | `https://vasavipenugonda.com/index.html` | `/` | legacy endpoint | ❌ (404) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 0 | Original crawl returned 404; decide redirect or retirement. |
 | 9 | `https://vasavipenugonda.com/index.php` | `/` | legacy endpoint | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 70 | Appears to duplicate the root homepage; preserve as a redirect candidate. |
-| 10 | `https://vasavipenugonda.com/news-letter.php` | `/newsletter` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 46 | Newsletter/document listing. |
+| 10 | `https://vasavipenugonda.com/news-letter.php` | `/newsletter` | public | ✅ (200) | ✅ | — | — | ✅ | ⬜ | 🔍 | 46 | Newsletter/document listing; 9 public documents were captured locally and the remaining external-storage links are retained for review. |
 | 11 | `https://vasavipenugonda.com/news.php` | `/news` | public | ✅ (200) | ✅ | 🔍 | — | ✅ | ⬜ | 🔍 | 55 | News listing and legacy article links/content; several article detail routes and external thumbnails were not independently captured. |
 | 12 | `https://vasavipenugonda.com/overview.php` | `/overview` | public | ✅ (200) | ✅ | 🔍 | 🔍 | ✅ | ⬜ | 🔍 | 60 | Overview page with activities, events, map, videos, news, and donation content; several original external event/video thumbnails were unavailable in the public capture. |
 | 13 | `https://vasavipenugonda.com/photos.php` | `/gallery/photos` | gallery | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 45 | Photo albums and gallery media. |

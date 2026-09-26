@@ -57,7 +57,7 @@ PAGE_METADATA = {
         "name": "Newsletter",
         "area": "public",
         "suggestedRoute": "/newsletter",
-        "notes": "Newsletter/document listing.",
+        "notes": "Newsletter/document listing; 9 public documents were captured locally and the remaining external-storage links are retained for review.",
     },
     "/vasavidham.php": {
         "key": "vasavi-dham",
