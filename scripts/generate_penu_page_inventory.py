@@ -43,7 +43,7 @@ PAGE_METADATA = {
         "name": "Overview",
         "area": "public",
         "suggestedRoute": "/overview",
-        "notes": "Overview page with embedded map/location content.",
+        "notes": "Overview page with activities, events, map, videos, news, and donation content; several original external event/video thumbnails were unavailable in the public capture.",
     },
     "/news.php": {
         "key": "news",
