@@ -5,10 +5,10 @@ Generated from `discovery-fixed/site_inventory.json`. This is the migration and 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
 - Source endpoints returning 404: **1**
-- Content complete: **12/18**
-- Images complete: **9/18**
-- Video/audio complete: **11/18**
-- Frontend implementation complete: **12/18**
+- Content complete: **13/18**
+- Images complete: **10/18**
+- Video/audio complete: **12/18**
+- Frontend implementation complete: **13/18**
 - API integration complete: **0/18**
 - QA complete: **0/18**
 
@@ -33,7 +33,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 | 15 | `https://vasavipenugonda.com/story.php` | `/story` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 58 | Story, historic events, and downloadable publication content. |
 | 16 | `https://vasavipenugonda.com/team.php` | `/trustees` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 80 | Trustee and executive member listings. |
 | 17 | `https://vasavipenugonda.com/vasavidham.php` | `/vasavi-dham` | public | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 66 | Trust and Dham information, projects, and facilities. |
-| 18 | `https://vasavipenugonda.com/videos.php` | `/gallery/videos` | gallery | ✅ (200) | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | 48 | Video embeds and video gallery media. |
+| 18 | `https://vasavipenugonda.com/videos.php` | `/gallery/videos` | gallery | ✅ (200) | ✅ | — | ✅ | ✅ | ⬜ | 🔍 | 48 | Video embeds and video gallery media. |
 
 ## How to update progress
 
