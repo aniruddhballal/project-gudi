@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { homeContent } from "@/content/home";
 
@@ -55,6 +57,29 @@ function linkClass(active: boolean) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const menuRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function closeOnOutsideClick(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpenMenu(null);
+      }
+    }
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenMenu(null);
+      }
+    }
+
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
 
   return (
     <header className="border-b border-stone-200 bg-white">
@@ -64,25 +89,32 @@ export function SiteHeader() {
           <span className="max-w-56 text-sm font-semibold leading-tight">{homeContent.siteTitle}</span>
         </Link>
 
-        <nav className="order-3 flex w-full min-w-0 flex-wrap items-center gap-1 border-t border-stone-100 pt-3 lg:order-2 lg:w-auto lg:flex-1 lg:border-0 lg:pt-0" aria-label="Primary navigation">
+        <nav ref={menuRef} className="order-3 flex w-full min-w-0 flex-wrap items-center gap-1 border-t border-stone-100 pt-3 lg:order-2 lg:w-auto lg:flex-1 lg:border-0 lg:pt-0" aria-label="Primary navigation">
           <Link href="/" className={linkClass(isActive(pathname, "/"))}>Home</Link>
 
           {menuGroups.map((group) => {
             const active = group.items.some((item) => isActive(pathname, item.href));
+            const isOpen = openMenu === group.label;
             return (
-              <details key={group.label} className="group relative">
-                <summary className={`${linkClass(active)} flex cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden`}>
+              <div key={group.label} className="relative">
+                <button
+                  type="button"
+                  className={`${linkClass(active)} flex items-center gap-1`}
+                  aria-expanded={isOpen}
+                  aria-haspopup="menu"
+                  onClick={() => setOpenMenu(isOpen ? null : group.label)}
+                >
                   {group.label}
-                  <span aria-hidden="true" className="text-xs transition-transform group-open:rotate-180">⌄</span>
-                </summary>
-                <div className="z-20 mt-1 min-w-48 rounded-xl border border-stone-200 bg-white p-2 shadow-lg lg:absolute lg:left-0">
+                  <ChevronDown aria-hidden="true" size={15} strokeWidth={2.25} className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                </button>
+                <div className={`${isOpen ? "block" : "hidden"} absolute left-0 top-full z-20 mt-2 min-w-52 rounded-xl border border-stone-200 bg-white p-2 shadow-xl`} role="menu">
                   {group.items.map((item) => (
-                    <Link key={item.href} href={item.href} className={`block ${linkClass(isActive(pathname, item.href))}`}>
+                    <Link key={item.href} href={item.href} role="menuitem" onClick={() => setOpenMenu(null)} className={`block ${linkClass(isActive(pathname, item.href))}`}>
                       {item.label}
                     </Link>
                   ))}
                 </div>
-              </details>
+              </div>
             );
           })}
 
