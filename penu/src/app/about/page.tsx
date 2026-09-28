@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { SiteHeader } from "@/components/site-header";
 import { aboutContent } from "@/content/about";
 import { homeContent } from "@/content/home";
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
-      <SimpleHeader current="About" />
+      <SiteHeader />
 
       <section className="border-b border-stone-200 bg-amber-950 px-4 py-16 text-white sm:px-8 lg:px-12">
         <div className="mx-auto max-w-5xl">
@@ -67,24 +68,6 @@ export default function AboutPage() {
         </div>
       </footer>
     </main>
-  );
-}
-
-function SimpleHeader({ current }: { current: string }) {
-  return (
-    <header className="border-b border-stone-200 bg-white">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-4 py-4 sm:px-8 lg:px-12">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/legacy/home/logo.png" alt="Vasavi Penugonda Trust" width={100} height={60} />
-          <span className="max-w-56 text-sm font-semibold leading-tight">{homeContent.siteTitle}</span>
-        </Link>
-        <nav className="ml-auto flex flex-wrap gap-4 text-sm text-stone-600" aria-label="Page navigation">
-          <Link href="/" className="hover:text-amber-800">Home</Link>
-          <span className="font-semibold text-amber-800">{current}</span>
-          <Link href="/migration" className="text-stone-400 hover:text-stone-700">Migration tracker</Link>
-        </nav>
-      </div>
-    </header>
   );
 }
 

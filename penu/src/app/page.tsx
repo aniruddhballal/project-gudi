@@ -1,45 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { SiteHeader } from "@/components/site-header";
 import { homeContent } from "@/content/home";
-
-const navigation = [
-  { label: "Home", href: "/" },
-  { label: "Overview", href: "/overview" },
-  { label: "News", href: "/news" },
-  { label: "Newsletter", href: "/newsletter" },
-  { label: "Vasavidham", href: "/vasavi-dham" },
-  { label: "Story", href: "/story" },
-  { label: "Donations", href: "/donations" },
-  { label: "Trustees", href: "/trustees" },
-  { label: "Photos", href: "/gallery/photos" },
-  { label: "Videos", href: "/gallery/videos" },
-  { label: "Contact", href: "/contact" },
-];
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
-      <header className="border-b border-stone-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-4 py-4 sm:px-8 lg:px-12">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/legacy/home/logo.png" alt="Vasavi Penugonda Trust" width={124} height={75} />
-            <span className="max-w-56 text-sm font-semibold leading-tight">
-              {homeContent.siteTitle}
-            </span>
-          </Link>
-          <nav className="flex min-w-0 flex-1 flex-wrap gap-x-4 gap-y-2 text-sm text-stone-600" aria-label="Primary navigation">
-            {navigation.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-amber-800">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <Link href="/migration" className="text-xs text-stone-400 hover:text-stone-700">
-            Migration tracker
-          </Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:px-8 lg:grid-cols-2 lg:px-12">
         {homeContent.heroSlides.map((slide, index) => (
