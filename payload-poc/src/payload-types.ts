@@ -93,10 +93,40 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    'home-page': HomePage;
+    'about-page': AboutPage;
+    'contact-page': ContactPage;
+    'donations-page': DonationsPage;
+    'donation-annadanam-page': DonationAnnadanamPage;
+    'donation-ehundi-page': DonationEhundiPage;
+    'donation-goshala-page': DonationGoshalaPage;
+    'newsletter-page': NewsletterPage;
+    'news-page': NewsPage;
+    'overview-page': OverviewPage;
+    'photos-page': PhotosPage;
+    'privacy-page': PrivacyPage;
+    'story-page': StoryPage;
+    'trustees-page': TrusteesPage;
+    'vasavi-dham-page': VasaviDhamPage;
     'site-content': SiteContent;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'donations-page': DonationsPageSelect<false> | DonationsPageSelect<true>;
+    'donation-annadanam-page': DonationAnnadanamPageSelect<false> | DonationAnnadanamPageSelect<true>;
+    'donation-ehundi-page': DonationEhundiPageSelect<false> | DonationEhundiPageSelect<true>;
+    'donation-goshala-page': DonationGoshalaPageSelect<false> | DonationGoshalaPageSelect<true>;
+    'newsletter-page': NewsletterPageSelect<false> | NewsletterPageSelect<true>;
+    'news-page': NewsPageSelect<false> | NewsPageSelect<true>;
+    'overview-page': OverviewPageSelect<false> | OverviewPageSelect<true>;
+    'photos-page': PhotosPageSelect<false> | PhotosPageSelect<true>;
+    'privacy-page': PrivacyPageSelect<false> | PrivacyPageSelect<true>;
+    'story-page': StoryPageSelect<false> | StoryPageSelect<true>;
+    'trustees-page': TrusteesPageSelect<false> | TrusteesPageSelect<true>;
+    'vasavi-dham-page': VasaviDhamPageSelect<false> | VasaviDhamPageSelect<true>;
     'site-content': SiteContentSelect<false> | SiteContentSelect<true>;
   };
   locale: null;
@@ -438,10 +468,458 @@ export interface SiteSetting {
   id: number;
   logo?: (number | null) | Media;
   siteTitle: string;
-  location: string;
-  email: string;
-  phone: string;
-  mapEmbed: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: number;
+  siteTitle: string;
+  description?: string | null;
+  aims?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  heroSlides?:
+    | {
+        image?: (number | null) | Media;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  president?: {
+    image?: (number | null) | Media;
+    kannada?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    english?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  majorLinks?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  event?: {
+    title?: string | null;
+    name?: string | null;
+    bulletinHref?: string | null;
+  };
+  greatSouls?:
+    | {
+        image?: (number | null) | Media;
+        name: string;
+        role?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  gallery?:
+    | {
+        image?: (number | null) | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  contact?:
+    | {
+        name?: string | null;
+        lines?:
+          | {
+              text?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  email?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page".
+ */
+export interface AboutPage {
+  id: number;
+  title: string;
+  introduction?: string | null;
+  underConstruction?:
+    | {
+        image?: (number | null) | Media;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  projects?:
+    | {
+        image?: (number | null) | Media;
+        date?: string | null;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  title: string;
+  location?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  mapEmbed?: string | null;
+  headOffice?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  vasaviDham?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations-page".
+ */
+export interface DonationsPage {
+  id: number;
+  title: string;
+  intro?: string | null;
+  options?:
+    | {
+        image?: (number | null) | Media;
+        title: string;
+        description?: string | null;
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-annadanam-page".
+ */
+export interface DonationAnnadanamPage {
+  id: number;
+  title: string;
+  eyebrow?: string | null;
+  image?: (number | null) | Media;
+  formType?: string | null;
+  paragraphs?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  highlight?: string | null;
+  sectionTitle?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-ehundi-page".
+ */
+export interface DonationEhundiPage {
+  id: number;
+  title: string;
+  eyebrow?: string | null;
+  image?: (number | null) | Media;
+  formType?: string | null;
+  paragraphs?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  highlight?: string | null;
+  sectionTitle?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-goshala-page".
+ */
+export interface DonationGoshalaPage {
+  id: number;
+  title: string;
+  eyebrow?: string | null;
+  image?: (number | null) | Media;
+  formType?: string | null;
+  paragraphs?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  highlight?: string | null;
+  sectionTitle?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletter-page".
+ */
+export interface NewsletterPage {
+  id: number;
+  title: string;
+  documents?:
+    | {
+        title: string;
+        category?: string | null;
+        description?: string | null;
+        href: string;
+        local?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  announcement?: {
+    title?: string | null;
+    date?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-page".
+ */
+export interface NewsPage {
+  id: number;
+  title?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "overview-page".
+ */
+export interface OverviewPage {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  activity?: {
+    title?: string | null;
+    donationHref?: string | null;
+  };
+  events?:
+    | {
+        image?: (number | null) | Media;
+        date?: string | null;
+        title?: string | null;
+        location?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  story?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    paragraphs?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  donation?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    href?: string | null;
+  };
+  map?: {
+    title?: string | null;
+    embed?: string | null;
+    directions?: string | null;
+  };
+  videos?:
+    | {
+        thumbnail?: (number | null) | Media;
+        title?: string | null;
+        description?: string | null;
+        youtubeEmbed?: string | null;
+        videoSrc?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  news?:
+    | {
+        image?: (number | null) | Media;
+        title?: string | null;
+        description?: string | null;
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  about?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    text?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "photos-page".
+ */
+export interface PhotosPage {
+  id: number;
+  title: string;
+  albums?:
+    | {
+        title: string;
+        photoCount?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "privacy-page".
+ */
+export interface PrivacyPage {
+  id: number;
+  title: string;
+  intro?: string | null;
+  sections?:
+    | {
+        title: string;
+        paragraphs?:
+          | {
+              text?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "story-page".
+ */
+export interface StoryPage {
+  id: number;
+  title: string;
+  coverImage?: (number | null) | Media;
+  publication?: {
+    title?: string | null;
+    note?: string | null;
+    href?: string | null;
+  };
+  introduction?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  historicEvents?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  narrative?:
+    | {
+        image?: (number | null) | Media;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  closing?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trustees-page".
+ */
+export interface TrusteesPage {
+  id: number;
+  title: string;
+  patrons?:
+    | {
+        image?: (number | null) | Media;
+        name: string;
+        role?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  executive?:
+    | {
+        image?: (number | null) | Media;
+        name: string;
+        role?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vasavi-dham-page".
+ */
+export interface VasaviDhamPage {
+  id: number;
+  title: string;
+  description?: string | null;
+  featured?:
+    | {
+        image?: (number | null) | Media;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  projects?:
+    | {
+        image?: (number | null) | Media;
+        title?: string | null;
+        date?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -524,6 +1002,8 @@ export interface SiteContent {
         }[]
       | null;
     email?: string | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   about: {
     title: string;
@@ -545,6 +1025,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   contact: {
     title: string;
@@ -564,6 +1046,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   donations: {
     title: string;
@@ -577,6 +1061,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   donationPages: {
     annadanam: {
@@ -592,6 +1078,8 @@ export interface SiteContent {
         | null;
       highlight?: string | null;
       sectionTitle?: string | null;
+      updatedAt?: string | null;
+      createdAt?: string | null;
     };
     ehundi: {
       title: string;
@@ -606,6 +1094,8 @@ export interface SiteContent {
         | null;
       highlight?: string | null;
       sectionTitle?: string | null;
+      updatedAt?: string | null;
+      createdAt?: string | null;
     };
     goshala: {
       title: string;
@@ -620,6 +1110,8 @@ export interface SiteContent {
         | null;
       highlight?: string | null;
       sectionTitle?: string | null;
+      updatedAt?: string | null;
+      createdAt?: string | null;
     };
   };
   newsletter: {
@@ -638,9 +1130,13 @@ export interface SiteContent {
       title?: string | null;
       date?: string | null;
     };
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   news?: {
     title?: string | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   overview: {
     title: string;
@@ -703,6 +1199,8 @@ export interface SiteContent {
       image?: (number | null) | Media;
       text?: string | null;
     };
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   photos: {
     title: string;
@@ -713,6 +1211,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   privacy: {
     title: string;
@@ -729,6 +1229,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   story: {
     title: string;
@@ -758,6 +1260,8 @@ export interface SiteContent {
         }[]
       | null;
     closing?: string | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   trustees: {
     title: string;
@@ -779,6 +1283,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   vasaviDham: {
     title: string;
@@ -799,6 +1305,8 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -810,10 +1318,476 @@ export interface SiteContent {
 export interface SiteSettingsSelect<T extends boolean = true> {
   logo?: T;
   siteTitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  siteTitle?: T;
+  description?: T;
+  aims?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  heroSlides?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  president?:
+    | T
+    | {
+        image?: T;
+        kannada?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        english?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  majorLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  event?:
+    | T
+    | {
+        title?: T;
+        name?: T;
+        bulletinHref?: T;
+      };
+  greatSouls?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        role?: T;
+        description?: T;
+        id?: T;
+      };
+  gallery?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  contact?:
+    | T
+    | {
+        name?: T;
+        lines?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  email?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page_select".
+ */
+export interface AboutPageSelect<T extends boolean = true> {
+  title?: T;
+  introduction?: T;
+  underConstruction?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  projects?:
+    | T
+    | {
+        image?: T;
+        date?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  title?: T;
   location?: T;
   email?: T;
   phone?: T;
   mapEmbed?: T;
+  headOffice?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  vasaviDham?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations-page_select".
+ */
+export interface DonationsPageSelect<T extends boolean = true> {
+  title?: T;
+  intro?: T;
+  options?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        href?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-annadanam-page_select".
+ */
+export interface DonationAnnadanamPageSelect<T extends boolean = true> {
+  title?: T;
+  eyebrow?: T;
+  image?: T;
+  formType?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  highlight?: T;
+  sectionTitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-ehundi-page_select".
+ */
+export interface DonationEhundiPageSelect<T extends boolean = true> {
+  title?: T;
+  eyebrow?: T;
+  image?: T;
+  formType?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  highlight?: T;
+  sectionTitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donation-goshala-page_select".
+ */
+export interface DonationGoshalaPageSelect<T extends boolean = true> {
+  title?: T;
+  eyebrow?: T;
+  image?: T;
+  formType?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  highlight?: T;
+  sectionTitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletter-page_select".
+ */
+export interface NewsletterPageSelect<T extends boolean = true> {
+  title?: T;
+  documents?:
+    | T
+    | {
+        title?: T;
+        category?: T;
+        description?: T;
+        href?: T;
+        local?: T;
+        id?: T;
+      };
+  announcement?:
+    | T
+    | {
+        title?: T;
+        date?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-page_select".
+ */
+export interface NewsPageSelect<T extends boolean = true> {
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "overview-page_select".
+ */
+export interface OverviewPageSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  activity?:
+    | T
+    | {
+        title?: T;
+        donationHref?: T;
+      };
+  events?:
+    | T
+    | {
+        image?: T;
+        date?: T;
+        title?: T;
+        location?: T;
+        description?: T;
+        id?: T;
+      };
+  story?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        paragraphs?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  donation?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        href?: T;
+      };
+  map?:
+    | T
+    | {
+        title?: T;
+        embed?: T;
+        directions?: T;
+      };
+  videos?:
+    | T
+    | {
+        thumbnail?: T;
+        title?: T;
+        description?: T;
+        youtubeEmbed?: T;
+        videoSrc?: T;
+        id?: T;
+      };
+  news?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        href?: T;
+        id?: T;
+      };
+  about?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        text?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "photos-page_select".
+ */
+export interface PhotosPageSelect<T extends boolean = true> {
+  title?: T;
+  albums?:
+    | T
+    | {
+        title?: T;
+        photoCount?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "privacy-page_select".
+ */
+export interface PrivacyPageSelect<T extends boolean = true> {
+  title?: T;
+  intro?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        paragraphs?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "story-page_select".
+ */
+export interface StoryPageSelect<T extends boolean = true> {
+  title?: T;
+  coverImage?: T;
+  publication?:
+    | T
+    | {
+        title?: T;
+        note?: T;
+        href?: T;
+      };
+  introduction?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  historicEvents?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  narrative?:
+    | T
+    | {
+        image?: T;
+        text?: T;
+        id?: T;
+      };
+  closing?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trustees-page_select".
+ */
+export interface TrusteesPageSelect<T extends boolean = true> {
+  title?: T;
+  patrons?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        role?: T;
+        description?: T;
+        id?: T;
+      };
+  executive?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        role?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vasavi-dham-page_select".
+ */
+export interface VasaviDhamPageSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  featured?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  projects?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        date?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -902,6 +1876,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               id?: T;
             };
         email?: T;
+        updatedAt?: T;
+        createdAt?: T;
       };
   about?:
     | T
@@ -925,6 +1901,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   contact?:
     | T
@@ -946,6 +1924,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               text?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   donations?:
     | T
@@ -961,6 +1941,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               href?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   donationPages?:
     | T
@@ -980,6 +1962,8 @@ export interface SiteContentSelect<T extends boolean = true> {
                   };
               highlight?: T;
               sectionTitle?: T;
+              updatedAt?: T;
+              createdAt?: T;
             };
         ehundi?:
           | T
@@ -996,6 +1980,8 @@ export interface SiteContentSelect<T extends boolean = true> {
                   };
               highlight?: T;
               sectionTitle?: T;
+              updatedAt?: T;
+              createdAt?: T;
             };
         goshala?:
           | T
@@ -1012,6 +1998,8 @@ export interface SiteContentSelect<T extends boolean = true> {
                   };
               highlight?: T;
               sectionTitle?: T;
+              updatedAt?: T;
+              createdAt?: T;
             };
       };
   newsletter?:
@@ -1034,11 +2022,15 @@ export interface SiteContentSelect<T extends boolean = true> {
               title?: T;
               date?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   news?:
     | T
     | {
         title?: T;
+        updatedAt?: T;
+        createdAt?: T;
       };
   overview?:
     | T
@@ -1113,6 +2105,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               image?: T;
               text?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   photos?:
     | T
@@ -1125,6 +2119,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               photoCount?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   privacy?:
     | T
@@ -1143,6 +2139,8 @@ export interface SiteContentSelect<T extends boolean = true> {
                   };
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   story?:
     | T
@@ -1176,6 +2174,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               id?: T;
             };
         closing?: T;
+        updatedAt?: T;
+        createdAt?: T;
       };
   trustees?:
     | T
@@ -1199,6 +2199,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   vasaviDham?:
     | T
@@ -1221,6 +2223,8 @@ export interface SiteContentSelect<T extends boolean = true> {
               date?: T;
               id?: T;
             };
+        updatedAt?: T;
+        createdAt?: T;
       };
   updatedAt?: T;
   createdAt?: T;

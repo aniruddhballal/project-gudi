@@ -44,6 +44,9 @@ const projectFields = [
 export const SiteContent: GlobalConfig = {
   slug: 'site-content',
   label: 'Site content',
+  admin: {
+    hidden: true,
+  },
   access: {
     read: () => true,
     update: authenticated,

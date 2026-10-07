@@ -38,17 +38,13 @@ export type SiteContent = {
   siteSettings: {
     siteTitle: string;
     logo: string;
-    location: string;
-    email: string;
-    phone: string;
-    mapEmbed: string;
   };
 };
 
 type PayloadMedia = { url?: string | null };
 
 const mediaKeys = new Set(["image", "thumbnail", "logo", "heroImage", "coverImage"]);
-const textListKeys = new Set(["aims", "kannada", "english", "lines", "paragraphs", "introduction", "historicEvents"]);
+const textListKeys = new Set(["aims", "kannada", "english", "lines", "paragraphs", "introduction", "historicEvents", "headOffice", "vasaviDham"]);
 
 function mediaUrl(value: unknown): string | null {
   if (typeof value === "string") return value;
@@ -91,11 +87,40 @@ async function fetchJson(path: string) {
 
 export async function getSiteContent(): Promise<SiteContent> {
   try {
-    const [content, settings] = await Promise.all([
-      fetchJson("/api/globals/site-content?depth=1"),
+    const [home, about, contact, donations, annadanam, ehundi, goshala, newsletter, news, overview, photos, privacy, story, trustees, vasaviDham, settings] = await Promise.all([
+      fetchJson("/api/globals/home-page?depth=1"),
+      fetchJson("/api/globals/about-page?depth=1"),
+      fetchJson("/api/globals/contact-page?depth=1"),
+      fetchJson("/api/globals/donations-page?depth=1"),
+      fetchJson("/api/globals/donation-annadanam-page?depth=1"),
+      fetchJson("/api/globals/donation-ehundi-page?depth=1"),
+      fetchJson("/api/globals/donation-goshala-page?depth=1"),
+      fetchJson("/api/globals/newsletter-page?depth=1"),
+      fetchJson("/api/globals/news-page?depth=1"),
+      fetchJson("/api/globals/overview-page?depth=1"),
+      fetchJson("/api/globals/photos-page?depth=1"),
+      fetchJson("/api/globals/privacy-page?depth=1"),
+      fetchJson("/api/globals/story-page?depth=1"),
+      fetchJson("/api/globals/trustees-page?depth=1"),
+      fetchJson("/api/globals/vasavi-dham-page?depth=1"),
       fetchJson("/api/globals/site-settings?depth=1"),
     ]);
-    return contentFromPayload(content, settings);
+
+    return contentFromPayload({
+      home,
+      about,
+      contact,
+      donations,
+      donationPages: { annadanam, ehundi, goshala },
+      newsletter,
+      news,
+      overview,
+      photos,
+      privacy,
+      story,
+      trustees,
+      vasaviDham,
+    }, settings);
   } catch (error) {
     throw new Error(`Payload is unavailable at ${payloadUrl}.`, { cause: error });
   }

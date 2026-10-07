@@ -7,6 +7,7 @@ export const Articles: CollectionConfig = {
   slug: 'articles',
   admin: {
     useAsTitle: 'title',
+    group: 'Content',
     defaultColumns: ['title', 'publishedAt', 'updatedAt'],
   },
   access: {

@@ -5,6 +5,9 @@ import { authenticated } from '../access'
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
   label: 'Site settings',
+  admin: {
+    group: 'Settings',
+  },
   access: {
     read: () => true,
     update: authenticated,
@@ -21,26 +24,6 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'siteTitle',
       type: 'text',
-      required: true,
-    },
-    {
-      name: 'location',
-      type: 'textarea',
-      required: true,
-    },
-    {
-      name: 'email',
-      type: 'email',
-      required: true,
-    },
-    {
-      name: 'phone',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'mapEmbed',
-      type: 'textarea',
       required: true,
     },
   ],

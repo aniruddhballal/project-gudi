@@ -120,16 +120,10 @@ async function main() {
     data: {
       logo: image('/legacy/home/logo.png'),
       siteTitle: homeContent.siteTitle,
-      location: contactContent.location,
-      email: contactContent.email,
-      phone: contactContent.phone,
-      mapEmbed: contactContent.mapEmbed,
     } as any,
   })
 
-  await payload.updateGlobal({
-    slug: 'site-content',
-    data: {
+  const pageData = {
       home: {
         siteTitle: homeContent.siteTitle,
         description: homeContent.description,
@@ -209,8 +203,29 @@ async function main() {
         featured: vasaviDhamContent.featured.map((project) => ({ ...project, image: image(project.image) })),
         projects: vasaviDhamContent.projects.map((project) => ({ ...project, image: image(project.image) })),
       },
-    } as any,
-  })
+  } as any
+
+  const pageGlobals: Record<string, unknown> = {
+    'home-page': pageData.home,
+    'about-page': pageData.about,
+    'contact-page': pageData.contact,
+    'donations-page': pageData.donations,
+    'donation-annadanam-page': pageData.donationPages.annadanam,
+    'donation-ehundi-page': pageData.donationPages.ehundi,
+    'donation-goshala-page': pageData.donationPages.goshala,
+    'newsletter-page': pageData.newsletter,
+    'news-page': pageData.news,
+    'overview-page': pageData.overview,
+    'photos-page': pageData.photos,
+    'privacy-page': pageData.privacy,
+    'story-page': pageData.story,
+    'trustees-page': pageData.trustees,
+    'vasavi-dham-page': pageData.vasaviDham,
+  }
+
+  for (const [slug, data] of Object.entries(pageGlobals)) {
+    await payload.updateGlobal({ slug: slug as any, data: data as any })
+  }
 
   for (const item of newsContent.items) {
     const slug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')

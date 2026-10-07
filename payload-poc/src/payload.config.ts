@@ -11,6 +11,7 @@ import { Articles } from './collections/Articles'
 import { Videos } from './collections/Videos'
 import { SiteSettings } from './globals/SiteSettings'
 import { SiteContent } from './globals/SiteContent'
+import { PageGlobals } from './globals/PageGlobals'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,7 +24,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Articles, Videos],
-  globals: [SiteSettings, SiteContent],
+  globals: [SiteSettings, ...PageGlobals, SiteContent],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
