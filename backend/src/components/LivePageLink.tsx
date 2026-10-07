@@ -13,9 +13,10 @@ export default function LivePageLink({ livePath }: LivePageLinkProps) {
       rel="noreferrer"
       style={{
         alignItems: 'center',
-        border: '1px solid var(--theme-elevation-150)',
+        backgroundColor: '#1f1b18',
+        border: '1px solid #1f1b18',
         borderRadius: '4px',
-        color: 'var(--theme-text)',
+        color: '#ffffff',
         display: 'inline-flex',
         fontSize: '13px',
         fontWeight: 600,
