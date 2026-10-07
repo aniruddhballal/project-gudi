@@ -6,25 +6,25 @@ import path from 'node:path'
 import { getPayload } from 'payload'
 
 import config from '../src/payload.config'
-import { homeContent } from '../../penu/src/content/home'
-import { aboutContent } from '../../penu/src/content/about'
-import { contactContent } from '../../penu/src/content/contact'
-import { donationsContent } from '../../penu/src/content/donations'
-import { annadanamContent } from '../../penu/src/content/donation-annadanam'
-import { ehundiContent } from '../../penu/src/content/donation-ehundi'
-import { goshalaContent } from '../../penu/src/content/donation-goshala'
-import { newsletterContent } from '../../penu/src/content/newsletter'
-import { overviewContent } from '../../penu/src/content/overview'
-import { photosContent } from '../../penu/src/content/photos'
-import { privacyContent } from '../../penu/src/content/privacy'
-import { storyContent } from '../../penu/src/content/story'
-import { trusteesContent } from '../../penu/src/content/trustees'
-import { vasaviDhamContent } from '../../penu/src/content/vasavi-dham'
-import { videosContent } from '../../penu/src/content/videos'
-import { newsContent } from '../../penu/src/content/news'
+import { homeContent } from '../../frontend/src/content/home'
+import { aboutContent } from '../../frontend/src/content/about'
+import { contactContent } from '../../frontend/src/content/contact'
+import { donationsContent } from '../../frontend/src/content/donations'
+import { annadanamContent } from '../../frontend/src/content/donation-annadanam'
+import { ehundiContent } from '../../frontend/src/content/donation-ehundi'
+import { goshalaContent } from '../../frontend/src/content/donation-goshala'
+import { newsletterContent } from '../../frontend/src/content/newsletter'
+import { overviewContent } from '../../frontend/src/content/overview'
+import { photosContent } from '../../frontend/src/content/photos'
+import { privacyContent } from '../../frontend/src/content/privacy'
+import { storyContent } from '../../frontend/src/content/story'
+import { trusteesContent } from '../../frontend/src/content/trustees'
+import { vasaviDhamContent } from '../../frontend/src/content/vasavi-dham'
+import { videosContent } from '../../frontend/src/content/videos'
+import { newsContent } from '../../frontend/src/content/news'
 
-const penuPublic = path.resolve(process.cwd(), '../penu/public')
-const legacyRoot = path.join(penuPublic, 'legacy')
+const frontendPublic = path.resolve(process.cwd(), '../frontend/public')
+const legacyRoot = path.join(frontendPublic, 'legacy')
 
 function textList(values: readonly string[]) {
   return values.map((text) => ({ text }))
@@ -63,7 +63,7 @@ async function seedMedia(payload: Awaited<ReturnType<typeof getPayload>>) {
   const files = await imageFiles(legacyRoot)
 
   for (const filePath of files) {
-    const relativePath = `/${path.relative(penuPublic, filePath).split(path.sep).join('/')}`
+    const relativePath = `/${path.relative(frontendPublic, filePath).split(path.sep).join('/')}`
     const filename = `penu-${path.relative(legacyRoot, filePath).split(path.sep).join('-')}`
     const existing = await payload.find({ collection: 'media', where: { filename: { equals: filename } }, limit: 1 })
     const mediaDocument = existing.docs[0] ?? await payload.create({

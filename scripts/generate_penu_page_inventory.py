@@ -12,8 +12,8 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "discovery-fixed" / "site_inventory.json"
-DEFAULT_JSON_OUTPUT = ROOT / "penu" / "src" / "content" / "page-inventory.json"
-DEFAULT_MARKDOWN_OUTPUT = ROOT / "penu" / "docs" / "page-inventory.md"
+DEFAULT_JSON_OUTPUT = ROOT / "frontend" / "src" / "content" / "page-inventory.json"
+DEFAULT_MARKDOWN_OUTPUT = ROOT / "frontend" / "docs" / "page-inventory.md"
 
 
 PAGE_METADATA = {
