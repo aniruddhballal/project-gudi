@@ -1,6 +1,16 @@
-# Penu Revamp Discovery
+# Penu R&D
 
-This folder is for building an evidence-based scope, content inventory, and migration plan for the Vasavi Penugonda Temple Trust revamp.
+This folder contains research and planning material for the Vasavi Penugonda Temple Trust revamp.
+
+## Contents
+
+- `discovery-fixed/` — captured source pages and assets
+- `pricing/` — project pricing estimates
+- `prompts/` — research and planning prompts
+- `scripts/` — discovery and inventory utilities
+- `lalith-pricing-test.md` — reference pricing material
+
+The working applications are kept separately in `frontend/` and `backend/`.
 
 ## Run the public-site inventory
 
