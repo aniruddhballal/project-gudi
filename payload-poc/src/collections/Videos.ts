@@ -36,7 +36,6 @@ export const Videos: CollectionConfig = {
     {
       name: 'videoId',
       type: 'text',
-      required: true,
       admin: {
         description: 'For YouTube, enter the video ID rather than the full watch URL.',
       },
@@ -49,6 +48,14 @@ export const Videos: CollectionConfig = {
       name: 'thumbnail',
       type: 'upload',
       relationTo: 'media',
+    },
+    {
+      name: 'videoSrc',
+      type: 'text',
+    },
+    {
+      name: 'sortOrder',
+      type: 'number',
     },
   ],
 }

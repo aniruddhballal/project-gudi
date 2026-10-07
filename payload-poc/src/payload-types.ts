@@ -93,9 +93,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    'site-content': SiteContent;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'site-content': SiteContentSelect<false> | SiteContentSelect<true>;
   };
   locale: null;
   widgets: {
@@ -197,6 +199,14 @@ export interface Article {
   } | null;
   image?: (number | null) | Media;
   externalLink?: string | null;
+  details?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  sourceImage?: string | null;
+  legacyId?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -211,9 +221,11 @@ export interface Video {
   /**
    * For YouTube, enter the video ID rather than the full watch URL.
    */
-  videoId: string;
+  videoId?: string | null;
   description?: string | null;
   thumbnail?: (number | null) | Media;
+  videoSrc?: string | null;
+  sortOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -352,6 +364,14 @@ export interface ArticlesSelect<T extends boolean = true> {
   body?: T;
   image?: T;
   externalLink?: T;
+  details?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  sourceImage?: T;
+  legacyId?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -365,6 +385,8 @@ export interface VideosSelect<T extends boolean = true> {
   videoId?: T;
   description?: T;
   thumbnail?: T;
+  videoSrc?: T;
+  sortOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -414,6 +436,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSetting {
   id: number;
+  logo?: (number | null) | Media;
   siteTitle: string;
   location: string;
   email: string;
@@ -424,14 +447,781 @@ export interface SiteSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-content".
+ */
+export interface SiteContent {
+  id: number;
+  home: {
+    siteTitle: string;
+    description?: string | null;
+    aims?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    heroSlides?:
+      | {
+          image?: (number | null) | Media;
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    president?: {
+      image?: (number | null) | Media;
+      kannada?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      english?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    majorLinks?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+    event?: {
+      title?: string | null;
+      name?: string | null;
+      bulletinHref?: string | null;
+    };
+    greatSouls?:
+      | {
+          image?: (number | null) | Media;
+          name: string;
+          role?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    gallery?:
+      | {
+          image?: (number | null) | Media;
+          alt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    contact?:
+      | {
+          name?: string | null;
+          lines?:
+            | {
+                text?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    email?: string | null;
+  };
+  about: {
+    title: string;
+    introduction?: string | null;
+    underConstruction?:
+      | {
+          image?: (number | null) | Media;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    projects?:
+      | {
+          image?: (number | null) | Media;
+          date?: string | null;
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contact: {
+    title: string;
+    location?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    mapEmbed?: string | null;
+    headOffice?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    vasaviDham?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  donations: {
+    title: string;
+    intro?: string | null;
+    options?:
+      | {
+          image?: (number | null) | Media;
+          title: string;
+          description?: string | null;
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  donationPages: {
+    annadanam: {
+      title: string;
+      eyebrow?: string | null;
+      image?: (number | null) | Media;
+      formType?: string | null;
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      highlight?: string | null;
+      sectionTitle?: string | null;
+    };
+    ehundi: {
+      title: string;
+      eyebrow?: string | null;
+      image?: (number | null) | Media;
+      formType?: string | null;
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      highlight?: string | null;
+      sectionTitle?: string | null;
+    };
+    goshala: {
+      title: string;
+      eyebrow?: string | null;
+      image?: (number | null) | Media;
+      formType?: string | null;
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      highlight?: string | null;
+      sectionTitle?: string | null;
+    };
+  };
+  newsletter: {
+    title: string;
+    documents?:
+      | {
+          title: string;
+          category?: string | null;
+          description?: string | null;
+          href: string;
+          local?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    announcement?: {
+      title?: string | null;
+      date?: string | null;
+    };
+  };
+  news?: {
+    title?: string | null;
+  };
+  overview: {
+    title: string;
+    heroImage?: (number | null) | Media;
+    activity?: {
+      title?: string | null;
+      donationHref?: string | null;
+    };
+    events?:
+      | {
+          image?: (number | null) | Media;
+          date?: string | null;
+          title?: string | null;
+          location?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    story?: {
+      eyebrow?: string | null;
+      title?: string | null;
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    donation?: {
+      title?: string | null;
+      image?: (number | null) | Media;
+      href?: string | null;
+    };
+    map?: {
+      title?: string | null;
+      embed?: string | null;
+      directions?: string | null;
+    };
+    videos?:
+      | {
+          thumbnail?: (number | null) | Media;
+          title?: string | null;
+          description?: string | null;
+          youtubeEmbed?: string | null;
+          videoSrc?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    news?:
+      | {
+          image?: (number | null) | Media;
+          title?: string | null;
+          description?: string | null;
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    about?: {
+      title?: string | null;
+      image?: (number | null) | Media;
+      text?: string | null;
+    };
+  };
+  photos: {
+    title: string;
+    albums?:
+      | {
+          title: string;
+          photoCount?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  privacy: {
+    title: string;
+    intro?: string | null;
+    sections?:
+      | {
+          title: string;
+          paragraphs?:
+            | {
+                text?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  story: {
+    title: string;
+    coverImage?: (number | null) | Media;
+    publication?: {
+      title?: string | null;
+      note?: string | null;
+      href?: string | null;
+    };
+    introduction?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    historicEvents?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    narrative?:
+      | {
+          image?: (number | null) | Media;
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    closing?: string | null;
+  };
+  trustees: {
+    title: string;
+    patrons?:
+      | {
+          image?: (number | null) | Media;
+          name: string;
+          role?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    executive?:
+      | {
+          image?: (number | null) | Media;
+          name: string;
+          role?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  vasaviDham: {
+    title: string;
+    description?: string | null;
+    featured?:
+      | {
+          image?: (number | null) | Media;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    projects?:
+      | {
+          image?: (number | null) | Media;
+          title?: string | null;
+          date?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  logo?: T;
   siteTitle?: T;
   location?: T;
   email?: T;
   phone?: T;
   mapEmbed?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-content_select".
+ */
+export interface SiteContentSelect<T extends boolean = true> {
+  home?:
+    | T
+    | {
+        siteTitle?: T;
+        description?: T;
+        aims?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        heroSlides?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        president?:
+          | T
+          | {
+              image?: T;
+              kannada?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              english?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+            };
+        majorLinks?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        event?:
+          | T
+          | {
+              title?: T;
+              name?: T;
+              bulletinHref?: T;
+            };
+        greatSouls?:
+          | T
+          | {
+              image?: T;
+              name?: T;
+              role?: T;
+              description?: T;
+              id?: T;
+            };
+        gallery?:
+          | T
+          | {
+              image?: T;
+              alt?: T;
+              id?: T;
+            };
+        contact?:
+          | T
+          | {
+              name?: T;
+              lines?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        email?: T;
+      };
+  about?:
+    | T
+    | {
+        title?: T;
+        introduction?: T;
+        underConstruction?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        projects?:
+          | T
+          | {
+              image?: T;
+              date?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        location?: T;
+        email?: T;
+        phone?: T;
+        mapEmbed?: T;
+        headOffice?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        vasaviDham?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  donations?:
+    | T
+    | {
+        title?: T;
+        intro?: T;
+        options?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              description?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  donationPages?:
+    | T
+    | {
+        annadanam?:
+          | T
+          | {
+              title?: T;
+              eyebrow?: T;
+              image?: T;
+              formType?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              highlight?: T;
+              sectionTitle?: T;
+            };
+        ehundi?:
+          | T
+          | {
+              title?: T;
+              eyebrow?: T;
+              image?: T;
+              formType?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              highlight?: T;
+              sectionTitle?: T;
+            };
+        goshala?:
+          | T
+          | {
+              title?: T;
+              eyebrow?: T;
+              image?: T;
+              formType?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              highlight?: T;
+              sectionTitle?: T;
+            };
+      };
+  newsletter?:
+    | T
+    | {
+        title?: T;
+        documents?:
+          | T
+          | {
+              title?: T;
+              category?: T;
+              description?: T;
+              href?: T;
+              local?: T;
+              id?: T;
+            };
+        announcement?:
+          | T
+          | {
+              title?: T;
+              date?: T;
+            };
+      };
+  news?:
+    | T
+    | {
+        title?: T;
+      };
+  overview?:
+    | T
+    | {
+        title?: T;
+        heroImage?: T;
+        activity?:
+          | T
+          | {
+              title?: T;
+              donationHref?: T;
+            };
+        events?:
+          | T
+          | {
+              image?: T;
+              date?: T;
+              title?: T;
+              location?: T;
+              description?: T;
+              id?: T;
+            };
+        story?:
+          | T
+          | {
+              eyebrow?: T;
+              title?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+            };
+        donation?:
+          | T
+          | {
+              title?: T;
+              image?: T;
+              href?: T;
+            };
+        map?:
+          | T
+          | {
+              title?: T;
+              embed?: T;
+              directions?: T;
+            };
+        videos?:
+          | T
+          | {
+              thumbnail?: T;
+              title?: T;
+              description?: T;
+              youtubeEmbed?: T;
+              videoSrc?: T;
+              id?: T;
+            };
+        news?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              description?: T;
+              href?: T;
+              id?: T;
+            };
+        about?:
+          | T
+          | {
+              title?: T;
+              image?: T;
+              text?: T;
+            };
+      };
+  photos?:
+    | T
+    | {
+        title?: T;
+        albums?:
+          | T
+          | {
+              title?: T;
+              photoCount?: T;
+              id?: T;
+            };
+      };
+  privacy?:
+    | T
+    | {
+        title?: T;
+        intro?: T;
+        sections?:
+          | T
+          | {
+              title?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  story?:
+    | T
+    | {
+        title?: T;
+        coverImage?: T;
+        publication?:
+          | T
+          | {
+              title?: T;
+              note?: T;
+              href?: T;
+            };
+        introduction?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        historicEvents?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        narrative?:
+          | T
+          | {
+              image?: T;
+              text?: T;
+              id?: T;
+            };
+        closing?: T;
+      };
+  trustees?:
+    | T
+    | {
+        title?: T;
+        patrons?:
+          | T
+          | {
+              image?: T;
+              name?: T;
+              role?: T;
+              description?: T;
+              id?: T;
+            };
+        executive?:
+          | T
+          | {
+              image?: T;
+              name?: T;
+              role?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  vasaviDham?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        featured?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        projects?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              date?: T;
+              id?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

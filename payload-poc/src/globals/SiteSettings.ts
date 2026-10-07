@@ -14,6 +14,11 @@ export const SiteSettings: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'siteTitle',
       type: 'text',
       required: true,

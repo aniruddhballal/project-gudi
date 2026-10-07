@@ -53,5 +53,18 @@ export const Articles: CollectionConfig = {
       name: 'externalLink',
       type: 'text',
     },
+    {
+      name: 'details',
+      type: 'array',
+      fields: [{ name: 'text', type: 'textarea' }],
+    },
+    {
+      name: 'sourceImage',
+      type: 'text',
+    },
+    {
+      name: 'legacyId',
+      type: 'number',
+    },
   ],
 }

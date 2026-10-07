@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Articles } from './collections/Articles'
 import { Videos } from './collections/Videos'
 import { SiteSettings } from './globals/SiteSettings'
+import { SiteContent } from './globals/SiteContent'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +23,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Articles, Videos],
-  globals: [SiteSettings],
+  globals: [SiteSettings, SiteContent],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
