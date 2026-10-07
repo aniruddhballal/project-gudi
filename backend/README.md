@@ -61,4 +61,4 @@ pnpm lint            # lint the project
 
 ## Environment
 
-`.env.example` contains the local SQLite and Payload secret settings. Never commit `.env` or production secrets.
+`.env.example` contains the local SQLite, Payload secret, and public frontend URL settings. Never commit `.env` or production secrets.
