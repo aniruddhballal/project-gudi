@@ -89,6 +89,8 @@ pnpm exec next dev --port 3001
 
 Open the public site at [http://localhost:3001](http://localhost:3001).
 
+Start the backend before the frontend. The frontend reads live content from Payload at `http://localhost:3000`, while the frontend runs on `http://localhost:3001`. If the frontend starts first and takes port 3000, the backend will move to another port and the frontend will not connect automatically.
+
 See [`frontend/README.md`](./frontend/README.md) and [`backend/README.md`](./backend/README.md) for detailed commands and environment configuration.
 
 ## Current project status
