@@ -18,12 +18,22 @@ function nestedFields(parentName: string, childName: string): Field[] {
   return child?.fields ?? []
 }
 
-function pageGlobal(slug: string, label: string, fields: Field[]): GlobalConfig {
+function pageGlobal(slug: string, label: string, livePath: string, fields: Field[]): GlobalConfig {
   return {
     slug,
     label,
     admin: {
       group: 'Pages',
+      components: {
+        elements: {
+          beforeDocumentControls: [
+            {
+              path: '@/components/LivePageLink',
+              serverProps: { livePath },
+            },
+          ],
+        },
+      },
     },
     access: {
       read: () => true,
@@ -37,19 +47,19 @@ function pageGlobal(slug: string, label: string, fields: Field[]): GlobalConfig 
 }
 
 export const PageGlobals: GlobalConfig[] = [
-  pageGlobal('home-page', 'Home page', fieldsFor('home')),
-  pageGlobal('about-page', 'About page', fieldsFor('about')),
-  pageGlobal('contact-page', 'Contact page', fieldsFor('contact')),
-  pageGlobal('donations-page', 'Donations page', fieldsFor('donations')),
-  pageGlobal('donation-annadanam-page', 'Donations – Annadanam', nestedFields('donationPages', 'annadanam')),
-  pageGlobal('donation-ehundi-page', 'Donations – E-Hundi', nestedFields('donationPages', 'ehundi')),
-  pageGlobal('donation-goshala-page', 'Donations – Go Shala', nestedFields('donationPages', 'goshala')),
-  pageGlobal('newsletter-page', 'Newsletter page', fieldsFor('newsletter')),
-  pageGlobal('news-page', 'News page', fieldsFor('news')),
-  pageGlobal('overview-page', 'Overview page', fieldsFor('overview')),
-  pageGlobal('photos-page', 'Photo gallery page', fieldsFor('photos')),
-  pageGlobal('privacy-page', 'Privacy policy', fieldsFor('privacy')),
-  pageGlobal('story-page', 'Story page', fieldsFor('story')),
-  pageGlobal('trustees-page', 'Trustees page', fieldsFor('trustees')),
-  pageGlobal('vasavi-dham-page', 'Vasavi Dham page', fieldsFor('vasaviDham')),
+  pageGlobal('home-page', 'Home page', '/', fieldsFor('home')),
+  pageGlobal('about-page', 'About page', '/about', fieldsFor('about')),
+  pageGlobal('contact-page', 'Contact page', '/contact', fieldsFor('contact')),
+  pageGlobal('donations-page', 'Donations page', '/donations', fieldsFor('donations')),
+  pageGlobal('donation-annadanam-page', 'Donations – Annadanam', '/donations/annadanam', nestedFields('donationPages', 'annadanam')),
+  pageGlobal('donation-ehundi-page', 'Donations – E-Hundi', '/donations/e-hundi', nestedFields('donationPages', 'ehundi')),
+  pageGlobal('donation-goshala-page', 'Donations – Go Shala', '/donations/goshala', nestedFields('donationPages', 'goshala')),
+  pageGlobal('newsletter-page', 'Newsletter page', '/newsletter', fieldsFor('newsletter')),
+  pageGlobal('news-page', 'News page', '/news', fieldsFor('news')),
+  pageGlobal('overview-page', 'Overview page', '/overview', fieldsFor('overview')),
+  pageGlobal('photos-page', 'Photo gallery page', '/gallery/photos', fieldsFor('photos')),
+  pageGlobal('privacy-page', 'Privacy policy', '/privacy', fieldsFor('privacy')),
+  pageGlobal('story-page', 'Story page', '/story', fieldsFor('story')),
+  pageGlobal('trustees-page', 'Trustees page', '/trustees', fieldsFor('trustees')),
+  pageGlobal('vasavi-dham-page', 'Vasavi Dham page', '/vasavi-dham', fieldsFor('vasaviDham')),
 ]
