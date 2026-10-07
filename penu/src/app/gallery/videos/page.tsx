@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { videosContent } from "@/content/videos";
+import { getGalleryVideos, getSiteContent } from "@/lib/site-content";
 
-export default function VideosPage() {
+export default async function VideosPage() {
+  const { home: homeContent } = await getSiteContent();
+  const videos = await getGalleryVideos();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />
@@ -12,13 +13,13 @@ export default function VideosPage() {
       <section className="border-b border-stone-200 bg-amber-950 px-4 py-16 text-white sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">Gallery</p>
-          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{videosContent.title}</h1>
+          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">Videos</h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">Videos preserved from the original public gallery, embedded from the source YouTube URLs.</p>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-8 md:grid-cols-2 lg:px-12">
-        {videosContent.videos.map((video) => (
+        {videos.map((video) => (
           <article key={video.id} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
             <div className="aspect-video bg-stone-900">
               <iframe className="h-full w-full" src={`https://www.youtube.com/embed/${video.id}`} title={video.title} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />

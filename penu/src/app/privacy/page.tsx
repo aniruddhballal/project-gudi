@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { privacyContent } from "@/content/privacy";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const { home: homeContent, privacy: privacyContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { photosContent } from "@/content/photos";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function PhotosPage() {
+export default async function PhotosPage() {
+  const { home: homeContent, photos: photosContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

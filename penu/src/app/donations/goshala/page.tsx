@@ -1,6 +1,7 @@
 import { DonationPage } from "@/components/donation-page";
-import { goshalaContent } from "@/content/donation-goshala";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function GoshalaDonationPage() {
-  return <DonationPage {...goshalaContent} />;
+export default async function GoshalaDonationPage() {
+  const { donationPages } = await getSiteContent();
+  return <DonationPage {...donationPages.goshala} />;
 }

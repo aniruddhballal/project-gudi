@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
@@ -95,7 +96,7 @@ export default async function CmsTestPage() {
               return (
                 <article key={article.id} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
                   {imageUrl && (
-                    <img src={imageUrl} alt={imageAlt} className="max-h-96 w-full object-cover" />
+                    <Image src={imageUrl} alt={imageAlt} width={1200} height={600} className="max-h-96 w-full object-cover" />
                   )}
                   <div className="p-6 sm:p-8">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">

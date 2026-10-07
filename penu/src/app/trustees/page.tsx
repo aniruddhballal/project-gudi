@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { trusteesContent, type Trustee } from "@/content/trustees";
+import { getSiteContent } from "@/lib/site-content";
+import type { Trustee } from "@/content/trustees";
 
 function TrusteeCard({ trustee }: { trustee: Trustee }) {
   return (
@@ -20,7 +20,8 @@ function TrusteeCard({ trustee }: { trustee: Trustee }) {
   );
 }
 
-export default function TrusteesPage() {
+export default async function TrusteesPage() {
+  const { home: homeContent, trustees: trusteesContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

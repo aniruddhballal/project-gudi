@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { newsContent } from "@/content/news";
+import { getNewsItems, getSiteContent } from "@/lib/site-content";
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const { home: homeContent, news: newsContent } = await getSiteContent();
+  const newsItems = await getNewsItems();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />
@@ -20,7 +21,7 @@ export default function NewsPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {newsContent.items.map((item) => (
+          {newsItems.map((item) => (
             <article id={`article-${item.id}`} key={item.id} className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
               <div className="relative flex aspect-[16/9] items-center justify-center bg-stone-100">
                 {item.image ? (

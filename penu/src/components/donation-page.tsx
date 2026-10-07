@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
+import { getSiteContent } from "@/lib/site-content";
 
 type DonationPageProps = {
   title: string;
@@ -14,7 +14,7 @@ type DonationPageProps = {
   sectionTitle?: string;
 };
 
-export function DonationPage({
+export async function DonationPage({
   title,
   eyebrow,
   image,
@@ -23,6 +23,7 @@ export function DonationPage({
   highlight,
   sectionTitle,
 }: DonationPageProps) {
+  const { home: homeContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

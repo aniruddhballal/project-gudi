@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { aboutContent } from "@/content/about";
-import { homeContent } from "@/content/home";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { about: aboutContent, home: homeContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />
@@ -84,13 +84,13 @@ function ProjectFeature({
   project,
   reverse,
 }: {
-  project: (typeof aboutContent.underConstruction)[number];
+  project: { image: string | null; title: string; description: string };
   reverse: boolean;
 }) {
   return (
     <article className={`grid gap-6 rounded-2xl border border-stone-200 p-5 lg:grid-cols-2 lg:items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
       <div className="relative min-h-64 overflow-hidden rounded-xl bg-stone-100">
-        <Image src={project.image} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+        <Image src={project.image ?? "/legacy/home/logo.png"} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
       </div>
       <div>
         <h3 className="text-2xl font-semibold">{project.title}</h3>

@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep the standard Next runtime so V2 API integration and admin flows are not
-  // constrained by static export requirements before hosting is confirmed.
+  images: {
+    remotePatterns: [
+      { protocol: "http", hostname: "localhost", port: "3000" },
+      { protocol: "http", hostname: "127.0.0.1", port: "3000" },
+    ],
+  },
 };
 
 export default nextConfig;
-

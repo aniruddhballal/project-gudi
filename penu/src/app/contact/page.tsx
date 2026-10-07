@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { contactContent } from "@/content/contact";
-import { homeContent } from "@/content/home";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const { contact: contactContent, home: homeContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

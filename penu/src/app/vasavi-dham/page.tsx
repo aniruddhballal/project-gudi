@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { vasaviDhamContent } from "@/content/vasavi-dham";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function VasaviDhamPage() {
+export default async function VasaviDhamPage() {
+  const { home: homeContent, vasaviDham: vasaviDhamContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

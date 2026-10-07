@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { storyContent } from "@/content/story";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function StoryPage() {
+export default async function StoryPage() {
+  const { home: homeContent, story: storyContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />
@@ -25,7 +25,7 @@ export default function StoryPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 pb-12 sm:px-8 lg:px-12">
-        <Image src="/legacy/story/1.png" alt="Vasavi story illustration" width={1200} height={700} className="mx-auto max-h-[32rem] w-auto rounded-2xl object-contain" />
+        <Image src={storyContent.coverImage ?? "/legacy/story/1.png"} alt="Vasavi story illustration" width={1200} height={700} className="mx-auto max-h-[32rem] w-auto rounded-2xl object-contain" />
         <div className="mt-10 space-y-5 text-base leading-8 text-stone-700">
           {storyContent.introduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>

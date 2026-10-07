@@ -1,6 +1,7 @@
 import { DonationPage } from "@/components/donation-page";
-import { annadanamContent } from "@/content/donation-annadanam";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function AnnadanamDonationPage() {
-  return <DonationPage {...annadanamContent} />;
+export default async function AnnadanamDonationPage() {
+  const { donationPages } = await getSiteContent();
+  return <DonationPage {...donationPages.annadanam} />;
 }

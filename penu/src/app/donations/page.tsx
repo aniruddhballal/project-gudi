@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { donationsContent } from "@/content/donations";
-import { homeContent } from "@/content/home";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function DonationsPage() {
+export default async function DonationsPage() {
+  const { donations: donationsContent, home: homeContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />

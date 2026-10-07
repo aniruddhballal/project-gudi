@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { overviewContent } from "@/content/overview";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function OverviewPage() {
+export default async function OverviewPage() {
+  const { home: homeContent, overview: overviewContent } = await getSiteContent();
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <SiteHeader />
@@ -21,7 +21,7 @@ export default function OverviewPage() {
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 lg:px-12">
         <div className="grid gap-6 overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200 lg:grid-cols-[1fr_1.4fr] lg:items-center">
           <div className="relative min-h-56 overflow-hidden rounded-xl bg-stone-100">
-            <Image src="/legacy/overview/top.png" alt="Vasavi Rishi Gothra Suvarna Mandir" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
+            <Image src={overviewContent.heroImage ?? "/legacy/overview/top.png"} alt="Vasavi Rishi Gothra Suvarna Mandir" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Overview of Activities</p>

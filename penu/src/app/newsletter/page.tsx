@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { homeContent } from "@/content/home";
-import { newsletterContent } from "@/content/newsletter";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function NewsletterPage() {
+export default async function NewsletterPage() {
+  const { home: homeContent, newsletter: newsletterContent } = await getSiteContent();
   const localCount = newsletterContent.documents.filter((document) => document.local).length;
 
   return (

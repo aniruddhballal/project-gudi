@@ -1,6 +1,7 @@
 import { DonationPage } from "@/components/donation-page";
-import { ehundiContent } from "@/content/donation-ehundi";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function EHundiDonationPage() {
-  return <DonationPage {...ehundiContent} />;
+export default async function EHundiDonationPage() {
+  const { donationPages } = await getSiteContent();
+  return <DonationPage {...donationPages.ehundi} />;
 }
