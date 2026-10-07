@@ -1,21 +1,50 @@
-# Penu
+# Penu frontend
 
-Frontend wrapper for the Vasavi Penugonda temple website revamp.
+The public Vasavi Penugonda Temple Trust website, built with Next.js, React, TypeScript, and Tailwind CSS.
 
-The project is intentionally minimal. The implementation will proceed in two public-site passes:
+The frontend reads all live page content, articles, videos, and media from the Payload backend. It does not contain a fallback content source.
 
-- V1: redesigned frontend rendered from typed local mock data
-- V2: the same frontend connected to the backend engineer's APIs
+## Requirements
 
-The frontend does not own the backend, database, hosting, payment secrets, webhooks, or server-side business logic.
+- Node.js 20+
+- pnpm 9+
+- The backend running on `http://localhost:3000`
 
-Read [AGENTS.md](./AGENTS.md) before making changes. It contains the stack, architecture boundaries, and implementation rules for human and AI contributors.
+## Setup
 
-The `/migration` page displays the original-site migration checklist from `src/content/page-inventory.json`. The source list and progress table are documented in [docs/page-inventory.md](./docs/page-inventory.md). The home page is the first endpoint rebuilt from the captured source content and assets.
-
-## Start
+From the repository root:
 
 ```bash
+cd frontend
 pnpm install
-pnpm dev
 ```
+
+The default backend URL is `http://localhost:3000`. To use another URL, create `frontend/.env.local`:
+
+```env
+PAYLOAD_API_URL=http://localhost:3000
+```
+
+## Run locally
+
+Start the backend first, then run the frontend in a second terminal:
+
+```bash
+cd frontend
+pnpm exec next dev --port 3001
+```
+
+Open [http://localhost:3001](http://localhost:3001).
+
+## Commands
+
+```bash
+pnpm dev          # default Next.js development server
+pnpm build        # production build
+pnpm start        # serve the production build
+pnpm lint         # lint the project
+pnpm typecheck    # run TypeScript checks
+pnpm test:e2e     # run Playwright tests
+```
+
+See [AGENTS.md](./AGENTS.md) for architecture and contribution rules.
