@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { authenticated } from '../access'
 
@@ -41,6 +42,7 @@ export const Articles: CollectionConfig = {
     {
       name: 'body',
       type: 'richText',
+      editor: lexicalEditor({}),
     },
     {
       name: 'image',
