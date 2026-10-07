@@ -2,7 +2,7 @@
 
 ## Important interpretation of Lalith's reference
 
-The WhatsApp message in `lalith-pricing-test.md` describes a different subscription/video product. It is not the Vasavi scope, and its 11-week timeline is not being used as the Vasavi deadline.
+The WhatsApp message in `../lalith-pricing-test.md` describes a different subscription/video product. It is not the Vasavi scope, and its 11-week timeline is not being used as the Vasavi deadline.
 
 It is useful only as a reference for:
 

@@ -1,6 +1,6 @@
 # Original public page inventory
 
-Generated from `discovery-fixed/site_inventory.json`. This is the migration and implementation tracker for the Penu frontend.
+Generated from `rnd/discovery-fixed/site_inventory.json`. This is the migration and implementation tracker for the Penu frontend.
 
 - Original endpoints discovered: **18**
 - Reachable source endpoints: **17**
@@ -40,7 +40,7 @@ Status columns track the new Penu frontend. Source capture means the old public 
 Update the status fields in `src/content/page-inventory.json`, then run:
 
 ```bash
-python3 scripts/generate_penu_page_inventory.py
+python3 rnd/scripts/generate_penu_page_inventory.py
 ```
 
 When the source inventory is intentionally refreshed, regenerate this file and review any newly discovered URLs before implementation.

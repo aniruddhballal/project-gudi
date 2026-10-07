@@ -66,9 +66,9 @@ The starter currently contains the wrapper and a source-page migration tracker. 
 - `src/content/page-inventory.json` is the machine-readable tracker used by the `/migration` page.
 - `docs/page-inventory.md` is the human-readable checklist.
 - The tracker currently contains 18 original endpoints: 17 reachable pages and 1 endpoint that returned 404.
-- `discovery-fixed/site_inventory.json` remains the source crawl; captured source material is not the same as migrated Penu content.
+- `rnd/discovery-fixed/site_inventory.json` remains the source crawl; captured source material is not the same as migrated Penu content.
 - Update `contentStatus`, `imageStatus`, `videoAudioStatus`, `frontendStatus`, `apiStatus`, and `qaStatus` as work advances.
-- Refresh the generated tracker with `python3 scripts/generate_penu_page_inventory.py`; existing progress statuses are preserved by URL.
+- Refresh the generated tracker with `python3 rnd/scripts/generate_penu_page_inventory.py`; existing progress statuses are preserved by URL.
 
 ## Quality requirements
 

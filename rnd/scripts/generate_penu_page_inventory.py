@@ -10,8 +10,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = ROOT / "discovery-fixed" / "site_inventory.json"
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_SOURCE = ROOT / "rnd" / "discovery-fixed" / "site_inventory.json"
 DEFAULT_JSON_OUTPUT = ROOT / "frontend" / "src" / "content" / "page-inventory.json"
 DEFAULT_MARKDOWN_OUTPUT = ROOT / "frontend" / "docs" / "page-inventory.md"
 
@@ -260,7 +260,7 @@ def build_markdown(manifest: dict) -> str:
     lines = [
         "# Original public page inventory",
         "",
-        "Generated from `discovery-fixed/site_inventory.json`. This is the migration and implementation tracker for the Penu frontend.",
+        "Generated from `rnd/discovery-fixed/site_inventory.json`. This is the migration and implementation tracker for the Penu frontend.",
         "",
         f"- Original endpoints discovered: **{summary['totalEndpoints']}**",
         f"- Reachable source endpoints: **{summary['reachableEndpoints']}**",
@@ -306,7 +306,7 @@ def build_markdown(manifest: dict) -> str:
             "Update the status fields in `src/content/page-inventory.json`, then run:",
             "",
             "```bash",
-            "python3 scripts/generate_penu_page_inventory.py",
+            "python3 rnd/scripts/generate_penu_page_inventory.py",
             "```",
             "",
             "When the source inventory is intentionally refreshed, regenerate this file and review any newly discovered URLs before implementation.",

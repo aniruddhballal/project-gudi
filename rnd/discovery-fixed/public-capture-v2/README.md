@@ -1,7 +1,7 @@
 # Public capture v2
 
 Generated on 2026-09-26 from the public site and the existing
-`discovery-fixed/site_inventory.json` snapshot.
+`rnd/discovery-fixed/site_inventory.json` snapshot.
 
 ## What this pass adds
 
@@ -35,4 +35,4 @@ Generated on 2026-09-26 from the public site and the existing
 - `youtube/` — public thumbnails that could be retrieved
 
 The original page snapshots and same-origin asset archive remain in the parent
-`discovery-fixed/` directory.
+`rnd/discovery-fixed/` directory.

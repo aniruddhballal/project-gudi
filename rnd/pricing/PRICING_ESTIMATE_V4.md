@@ -7,7 +7,7 @@ This version estimates the total project expense across both engineers:
 - Frontend: Aniruddh
 - Backend/API/platform: Lalith
 
-Lalith's `lalith-pricing-test.md` is treated as reference material only. Its 11-week schedule belongs to a different subscription/video project. It is used here only as inspiration for phase gates, milestone payments, testing, deployment, training, and signoff.
+Lalith's `../lalith-pricing-test.md` is treated as reference material only. Its 11-week schedule belongs to a different subscription/video project. It is used here only as inspiration for phase gates, milestone payments, testing, deployment, training, and signoff.
 
 The Vasavi project is not being forced into an 11-week deadline.
 

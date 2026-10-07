@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Complete the public Vasavi capture without requiring private access.
 
-This pass builds on discovery-fixed/site_inventory.json. It:
+This pass builds on rnd/discovery-fixed/site_inventory.json. It:
 
 * scans captured HTML, CSS, and JavaScript for additional absolute/CSS URLs;
 * downloads public external images, documents, stylesheets, scripts, and fonts;
@@ -360,8 +360,8 @@ class Capture:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--inventory", default="discovery-fixed/site_inventory.json")
-    parser.add_argument("--out", default="discovery-fixed/public-capture-v2")
+    parser.add_argument("--inventory", default="rnd/discovery-fixed/site_inventory.json")
+    parser.add_argument("--out", default="rnd/discovery-fixed/public-capture-v2")
     parser.add_argument("--delay", type=float, default=0.25)
     parser.add_argument("--insecure", action="store_true")
     parser.add_argument("--max-asset-mb", type=int, default=50)

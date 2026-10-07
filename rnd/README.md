@@ -7,9 +7,9 @@ This folder is for building an evidence-based scope, content inventory, and migr
 The current site presents a self-signed TLS certificate. If you have confirmed that the domain is the intended client site, run:
 
 ```bash
-python3 scripts/scrape_site.py \
+python3 rnd/scripts/scrape_site.py \
   --base-url https://vasavipenugonda.com/ \
-  --out discovery \
+  --out rnd/discovery \
   --insecure \
   --download-assets
 ```
@@ -26,9 +26,9 @@ External CDN assets are recorded in the inventory but are not downloaded. The sc
 ## Useful review commands
 
 ```bash
-python3 -m json.tool discovery/page_index.json | less
-rg -n 'title|headings|forms|embeds|json_ld' discovery/site_inventory.json
-find discovery/assets -type f | sort
+python3 -m json.tool rnd/discovery/page_index.json | less
+rg -n 'title|headings|forms|embeds|json_ld' rnd/discovery/site_inventory.json
+find rnd/discovery/assets -type f | sort
 ```
 
 The discovery output is an input to the next phase: content model, page taxonomy, feature backlog, migration strategy, technical architecture, timeline, and pricing estimate.
