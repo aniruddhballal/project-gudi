@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "The new frontend for the Vasavi Penugonda temple website.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,4 +19,3 @@ export default function RootLayout({
     </html>
   );
 }
-

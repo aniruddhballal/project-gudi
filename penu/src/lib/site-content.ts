@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { homeContent } from "@/content/home";
-import { aboutContent } from "@/content/about";
-import { contactContent } from "@/content/contact";
-import { donationsContent } from "@/content/donations";
-import { annadanamContent } from "@/content/donation-annadanam";
-import { ehundiContent } from "@/content/donation-ehundi";
-import { goshalaContent } from "@/content/donation-goshala";
-import { newsContent } from "@/content/news";
-import { newsletterContent } from "@/content/newsletter";
-import { overviewContent } from "@/content/overview";
-import { photosContent } from "@/content/photos";
-import { privacyContent } from "@/content/privacy";
-import { storyContent } from "@/content/story";
-import { trusteesContent } from "@/content/trustees";
-import { vasaviDhamContent } from "@/content/vasavi-dham";
-import { videosContent } from "@/content/videos";
+import type { homeContent } from "@/content/home";
+import type { aboutContent } from "@/content/about";
+import type { contactContent } from "@/content/contact";
+import type { donationsContent } from "@/content/donations";
+import type { annadanamContent } from "@/content/donation-annadanam";
+import type { ehundiContent } from "@/content/donation-ehundi";
+import type { goshalaContent } from "@/content/donation-goshala";
+import type { newsletterContent } from "@/content/newsletter";
+import type { overviewContent } from "@/content/overview";
+import type { photosContent } from "@/content/photos";
+import type { privacyContent } from "@/content/privacy";
+import type { storyContent } from "@/content/story";
+import type { trusteesContent } from "@/content/trustees";
+import type { vasaviDhamContent } from "@/content/vasavi-dham";
 
 const payloadUrl = process.env.PAYLOAD_API_URL ?? "http://localhost:3000";
 
@@ -50,6 +48,7 @@ export type SiteContent = {
 type PayloadMedia = { url?: string | null };
 
 const mediaKeys = new Set(["image", "thumbnail", "logo", "heroImage", "coverImage"]);
+const textListKeys = new Set(["aims", "kannada", "english", "lines", "paragraphs", "introduction", "historicEvents"]);
 
 function mediaUrl(value: unknown): string | null {
   if (typeof value === "string") return value;
@@ -61,105 +60,26 @@ function mediaUrl(value: unknown): string | null {
 
 function normalize(value: unknown, key?: string): unknown {
   if (mediaKeys.has(key ?? "")) return mediaUrl(value);
-  if (Array.isArray(value)) return value.map((item) => normalize(item));
+  if (Array.isArray(value)) {
+    const items = value.map((item) => normalize(item));
+    if (textListKeys.has(key ?? "")) {
+      return items.map((item) => item && typeof item === "object" && "text" in item ? (item as { text?: string }).text ?? "" : item);
+    }
+    return items;
+  }
   if (value && typeof value === "object") {
     return Object.fromEntries(Object.entries(value).map(([childKey, childValue]) => [childKey, normalize(childValue, childKey)]));
   }
   return value;
 }
 
-function textList(value: unknown, fallback: readonly string[]): string[] {
-  if (value === undefined) return [...fallback];
-  if (!Array.isArray(value)) return [];
-  return value.map((item) => typeof item === "string" ? item : (item as { text?: string })?.text ?? "");
-}
-
-function contentFromPayload(data: any, settings: any): SiteContent {
-  const normalized = normalize(data) as any;
+function contentFromPayload(data: unknown, settings: unknown): SiteContent {
+  const normalized = normalize(data) as SiteContent;
+  const normalizedSettings = normalize(settings) as SiteContent["siteSettings"];
 
   return {
-    home: {
-      ...homeContent,
-      ...normalized.home,
-      aims: textList(normalized.home?.aims, homeContent.aims),
-      president: {
-        ...homeContent.president,
-        ...normalized.home?.president,
-        kannada: textList(normalized.home?.president?.kannada, homeContent.president.kannada),
-        english: textList(normalized.home?.president?.english, homeContent.president.english),
-      },
-      contact: normalized.home?.contact?.map((item: any) => ({ ...item, lines: textList(item.lines, []) })) ?? homeContent.contact,
-    },
-    about: {
-      ...aboutContent,
-      ...normalized.about,
-    },
-    contact: {
-      ...contactContent,
-      ...normalized.contact,
-      headOffice: textList(normalized.contact?.headOffice, contactContent.headOffice),
-      vasaviDham: textList(normalized.contact?.vasaviDham, contactContent.vasaviDham),
-    },
-    donations: {
-      ...donationsContent,
-      ...normalized.donations,
-    },
-    donationPages: {
-      annadanam: { ...annadanamContent, ...normalized.donationPages?.annadanam, paragraphs: textList(normalized.donationPages?.annadanam?.paragraphs, annadanamContent.paragraphs) },
-      ehundi: { ...ehundiContent, ...normalized.donationPages?.ehundi, paragraphs: textList(normalized.donationPages?.ehundi?.paragraphs, ehundiContent.paragraphs) },
-      goshala: { ...goshalaContent, ...normalized.donationPages?.goshala, paragraphs: textList(normalized.donationPages?.goshala?.paragraphs, goshalaContent.paragraphs) },
-    },
-    newsletter: {
-      ...newsletterContent,
-      ...normalized.newsletter,
-      announcement: { ...newsletterContent.announcement, ...normalized.newsletter?.announcement },
-    },
-    news: {
-      title: normalized.news?.title ?? newsContent.title,
-    },
-    overview: {
-      ...overviewContent,
-      ...normalized.overview,
-      activity: { ...overviewContent.activity, ...normalized.overview?.activity },
-      story: { ...overviewContent.story, ...normalized.overview?.story, paragraphs: textList(normalized.overview?.story?.paragraphs, overviewContent.story.paragraphs) },
-      donation: { ...overviewContent.donation, ...normalized.overview?.donation },
-      map: { ...overviewContent.map, ...normalized.overview?.map },
-      about: { ...overviewContent.about, ...normalized.overview?.about },
-      heroImage: normalized.overview?.heroImage ?? "/legacy/overview/top.png",
-    },
-    photos: {
-      ...photosContent,
-      ...normalized.photos,
-    },
-    privacy: {
-      ...privacyContent,
-      ...normalized.privacy,
-      sections: normalized.privacy?.sections?.map((section: any) => ({ ...section, paragraphs: textList(section.paragraphs, []) })) ?? privacyContent.sections,
-    },
-    story: {
-      ...storyContent,
-      ...normalized.story,
-      publication: { ...storyContent.publication, ...normalized.story?.publication },
-      introduction: textList(normalized.story?.introduction, storyContent.introduction),
-      historicEvents: textList(normalized.story?.historicEvents, storyContent.historicEvents),
-      coverImage: normalized.story?.coverImage ?? "/legacy/story/1.png",
-    },
-    trustees: {
-      ...trusteesContent,
-      ...normalized.trustees,
-    },
-    vasaviDham: {
-      ...vasaviDhamContent,
-      ...normalized.vasaviDham,
-    },
-    siteSettings: {
-      siteTitle: settings?.siteTitle ?? homeContent.siteTitle,
-      logo: mediaUrl(settings?.logo) ?? "/legacy/home/logo.png",
-      location: settings?.location ?? contactContent.location,
-      email: settings?.email ?? contactContent.email,
-      phone: settings?.phone ?? contactContent.phone,
-      mapEmbed: settings?.mapEmbed ?? contactContent.mapEmbed,
-    },
+    ...normalized,
+    siteSettings: normalizedSettings,
   };
 }
 
@@ -176,8 +96,8 @@ export async function getSiteContent(): Promise<SiteContent> {
       fetchJson("/api/globals/site-settings?depth=1"),
     ]);
     return contentFromPayload(content, settings);
-  } catch {
-    return contentFromPayload({}, {});
+  } catch (error) {
+    throw new Error(`Payload is unavailable at ${payloadUrl}.`, { cause: error });
   }
 }
 
@@ -195,7 +115,7 @@ export type RuntimeNewsItem = {
 export async function getNewsItems(): Promise<RuntimeNewsItem[]> {
   try {
     const data = await fetchJson("/api/articles?limit=100&sort=legacyId&depth=1");
-    if (!Array.isArray(data.docs)) return newsContent.items;
+    if (!Array.isArray(data.docs)) throw new Error("Payload articles response is invalid.");
     return data.docs.map((article: any) => ({
       id: article.legacyId ?? article.id,
       title: article.title,
@@ -206,20 +126,20 @@ export async function getNewsItems(): Promise<RuntimeNewsItem[]> {
       sourceImage: article.sourceImage,
       href: article.externalLink,
     }));
-  } catch {
-    return newsContent.items;
+  } catch (error) {
+    throw new Error(`Payload articles are unavailable at ${payloadUrl}.`, { cause: error });
   }
 }
 
 export async function getGalleryVideos(): Promise<Array<{ id: string; title: string }>> {
   try {
     const data = await fetchJson("/api/videos?limit=100&sort=sortOrder&depth=1");
-    if (!Array.isArray(data.docs)) return [...videosContent.videos];
+    if (!Array.isArray(data.docs)) throw new Error("Payload videos response is invalid.");
     return data.docs.map((video: any) => ({
       id: video.videoId,
       title: video.title,
     }));
-  } catch {
-    return [...videosContent.videos];
+  } catch (error) {
+    throw new Error(`Payload videos are unavailable at ${payloadUrl}.`, { cause: error });
   }
 }
