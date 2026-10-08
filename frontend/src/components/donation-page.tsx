@@ -30,10 +30,10 @@ export async function DonationPage({
 
       <section className="px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
         <div className="mx-auto max-w-7xl">
-          <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
-            <div className="mx-auto max-w-6xl">
+          <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2] lg:rounded-l-none lg:rounded-r-[1.5rem]">
+            <div>
               <div className="grid items-start lg:grid-cols-2 lg:items-center">
-                <div className="relative w-full overflow-hidden bg-[#2c1916] lg:rounded-l-[1.5rem]">
+                <div className="relative w-full overflow-hidden bg-[#2c1916]">
                     <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[48rem] w-full object-contain" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
