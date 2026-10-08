@@ -37,8 +37,8 @@ export default async function DonationsPage() {
         <div className="grid items-start gap-6 lg:grid-cols-2">
           {donationsContent.options.filter((option) => option.title !== "Go Shala").map((option) => (
             <article key={option.title} className="overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200">
-              <div className="flex items-center justify-center border-b border-[#eadfd2] px-6 py-7 sm:px-8 sm:py-9">
-                <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[34rem] w-auto max-w-full object-contain" />
+              <div className="flex items-center justify-center border-b border-[#eadfd2]">
+                <ContentImage src={option.image} alt={option.title} className="h-auto w-full object-contain" />
               </div>
               <DonationCopy option={option} />
             </article>
@@ -47,7 +47,7 @@ export default async function DonationsPage() {
 
         {donationsContent.options.filter((option) => option.title === "Go Shala").map((option) => (
           <article key={option.title} className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-stretch">
-            <div className="flex items-center justify-center border-b border-[#eadfd2] px-5 py-5 sm:px-8 sm:py-8 lg:border-b-0 lg:border-r">
+            <div className="flex items-center justify-center border-b border-[#eadfd2] lg:border-b-0 lg:border-r">
               <ContentImage src={option.image} alt={option.title} className="h-auto w-full max-w-4xl object-contain" />
             </div>
             <DonationCopy option={option} />
