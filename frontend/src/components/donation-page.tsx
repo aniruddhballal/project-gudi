@@ -23,8 +23,6 @@ export async function DonationPage({
   sectionTitle,
 }: DonationPageProps) {
   const { home: homeContent } = await getSiteContent();
-  const initialParagraphs = paragraphs.slice(0, 4);
-  const remainingParagraphs = paragraphs.slice(4);
   return (
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
@@ -44,13 +42,10 @@ export async function DonationPage({
                 </div>
                 {sectionTitle && <h2 className="display-type mt-10 text-3xl leading-tight text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
                 <div className="space-y-4 pt-5">
-                  {initialParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 </div>
                 <div className="clear-both" />
                 {highlight && <p className="mt-10 border-l-4 border-[#e4b34e] bg-[#fff8e7] px-5 py-4 text-lg font-bold leading-8 text-[#5d2c19]">{highlight}</p>}
-                <div className="space-y-4 pt-5">
-                  {remainingParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                </div>
               </div>
             </div>
           </article>
