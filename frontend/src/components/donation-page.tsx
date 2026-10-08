@@ -30,19 +30,21 @@ export async function DonationPage({
       <section className="px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
         <div className="mx-auto max-w-7xl">
           <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
-            <div className="relative bg-[#2c1916]">
-              <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[42rem] w-full object-contain" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">{eyebrow}</p>
-                <h1 className="display-type mt-3 text-5xl leading-tight sm:text-6xl">{title}</h1>
-              </div>
-            </div>
-            <div className="mx-auto max-w-5xl px-6 py-8 sm:px-10 sm:py-12">
-              {highlight && <p className="rounded-2xl bg-[#fff8e7] p-5 text-lg font-bold leading-8 text-[#5d2c19] ring-1 ring-[#f1d892] sm:p-6">{highlight}</p>}
-              {sectionTitle && <h2 className="display-type mt-10 text-3xl text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
-              <div className="space-y-5 pt-5 text-base leading-8 text-stone-700">
-                {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            <div className="mx-auto max-w-6xl px-6 py-8 sm:px-10 sm:py-12">
+              <div className="flow-root text-base leading-8 text-stone-700">
+                <div className="relative mb-8 w-full overflow-hidden rounded-2xl bg-[#2c1916] lg:float-left lg:mr-10 lg:w-[42%]">
+                  <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[42rem] w-full object-contain" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">{eyebrow}</p>
+                    <h1 className="display-type mt-3 text-4xl leading-tight sm:text-5xl">{title}</h1>
+                  </div>
+                </div>
+                {highlight && <p className="border-l-4 border-[#e4b34e] bg-[#fff8e7] px-5 py-4 text-lg font-bold leading-8 text-[#5d2c19]">{highlight}</p>}
+                {sectionTitle && <h2 className="display-type mt-10 text-3xl leading-tight text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
+                <div className="space-y-5 pt-5">
+                  {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
               </div>
             </div>
           </article>
