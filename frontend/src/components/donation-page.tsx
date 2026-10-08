@@ -34,37 +34,41 @@ export async function DonationPage({
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
-        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200 sm:p-8">
-          <Image src={image} alt={title} width={1000} height={620} className="mb-8 h-auto max-h-[28rem] w-full rounded-xl object-cover" />
-          {highlight && <p className="rounded-xl bg-amber-50 p-5 text-lg font-semibold leading-8 text-amber-950 ring-1 ring-amber-100">{highlight}</p>}
-          {sectionTitle && <h2 className="mt-8 text-2xl font-semibold">{sectionTitle}</h2>}
-          <div className="space-y-5 pt-5 text-base leading-8 text-stone-700">
-            {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </div>
-        </article>
+      <section className="px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
+        <div className="mx-auto max-w-7xl">
+          <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
+            <div className="relative h-[18rem] sm:h-[26rem] lg:h-[32rem]">
+              <Image src={image} alt={title} fill sizes="100vw" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <p className="absolute bottom-6 left-6 rounded-full bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm sm:bottom-8 sm:left-8">{eyebrow}</p>
+            </div>
+            <div className="mx-auto max-w-5xl px-6 py-8 sm:px-10 sm:py-12">
+              {highlight && <p className="rounded-2xl bg-[#fff8e7] p-5 text-lg font-bold leading-8 text-[#5d2c19] ring-1 ring-[#f1d892] sm:p-6">{highlight}</p>}
+              {sectionTitle && <h2 className="display-type mt-10 text-3xl text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
+              <div className="space-y-5 pt-5 text-base leading-8 text-stone-700">
+                {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <aside className="h-fit rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200 sm:p-8">
-          <h2 className="text-2xl font-semibold">Make a donation</h2>
-          <p className="mt-3 text-sm leading-6 text-stone-600">Enter your details below to continue with the {title} donation journey.</p>
-          <form className="mt-6 space-y-4">
+      <section className="bg-[#ead6b4] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Support this seva</p>
+            <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
+            <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
+          </div>
+          <form className="grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:grid-cols-3 sm:p-7">
             <input type="hidden" name="type" value={formType} />
-            <label className="block text-sm font-medium text-stone-700">
-              Name
-              <input name="name" minLength={5} required className="mt-2 w-full rounded-lg border border-stone-300 px-3 py-2.5" placeholder="Your full name" />
-            </label>
-            <label className="block text-sm font-medium text-stone-700">
-              Phone number
-              <input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-lg border border-stone-300 px-3 py-2.5" placeholder="10-digit phone number" />
-            </label>
-            <label className="block text-sm font-medium text-stone-700">
-              Donation amount (₹)
-              <input name="amount" inputMode="decimal" min="1" required className="mt-2 w-full rounded-lg border border-stone-300 px-3 py-2.5" placeholder="Enter amount" />
-            </label>
-            <button type="button" className="w-full rounded-lg bg-amber-800 px-4 py-3 text-sm font-semibold text-white hover:bg-amber-900">Continue to payment</button>
+            <label className="block text-sm font-medium text-stone-700">Name<input name="name" minLength={5} required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Your full name" /></label>
+            <label className="block text-sm font-medium text-stone-700">Phone number<input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="10-digit phone number" /></label>
+            <label className="block text-sm font-medium text-stone-700">Donation amount (₹)<input name="amount" inputMode="decimal" min="1" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Enter amount" /></label>
+            <button type="button" className="rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17] sm:col-span-3">Continue to payment <span aria-hidden="true" className="ml-2">→</span></button>
+            <p className="text-xs leading-5 text-stone-500 sm:col-span-3">Payment creation, provider checkout, confirmation, and donor records will be connected when the backend API is available.</p>
           </form>
-          <p className="mt-4 text-xs leading-5 text-stone-500">Payment creation, provider checkout, confirmation, and donor records will be connected when the backend API is available.</p>
-        </aside>
+        </div>
       </section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />
