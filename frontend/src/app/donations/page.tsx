@@ -19,14 +19,17 @@ export default async function DonationsPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-12">
+      <section className="mx-auto max-w-7xl space-y-6 px-4 py-12 sm:px-8 lg:px-12">
         {donationsContent.options.map((option) => (
-          <article key={option.title} className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-            <ContentImage src={option.image} alt={option.title} className="h-auto w-full object-contain" />
-            <div className="flex flex-1 flex-col p-6">
-              <h2 className="text-2xl font-semibold">{option.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-stone-600">{option.description}</p>
-              <Link href={option.href} className="mt-6 inline-flex w-fit rounded-lg bg-amber-800 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-900">
+          <article key={option.title} className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <div className="flex items-center justify-center bg-[#2c1916] p-6 sm:p-10">
+              <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[34rem] w-auto max-w-full object-contain" />
+            </div>
+            <div className="flex flex-col justify-center p-7 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Vasavi Penugonda seva</p>
+              <h2 className="display-type mt-3 text-4xl text-[#3b241c]">{option.title}</h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-stone-600">{option.description}</p>
+              <Link href={option.href} className="mt-7 inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
                 View donation details
               </Link>
             </div>
