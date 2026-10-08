@@ -46,7 +46,7 @@ export async function DonationPage({
                     <div className="space-y-4 pt-5">
                       {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     </div>
-                    {highlight && <p className="mt-10 border-l-4 border-[#e4b34e] bg-[#fff8e7] px-5 py-4 text-lg font-bold leading-8 text-[#5d2c19]">{highlight}</p>}
+                    {highlight && <p className="mt-0 border-l-4 border-[#e4b34e] bg-[#fff8e7] px-5 py-4 text-lg font-bold leading-8 text-[#5d2c19]">{highlight}</p>}
                   </div>
                 </div>
               </div>
