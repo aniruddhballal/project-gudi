@@ -33,13 +33,15 @@ export async function DonationPage({
           <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2] lg:rounded-l-none lg:rounded-r-[1.5rem]">
             <div>
               <div className="grid items-start lg:grid-cols-2 lg:items-center">
-                <div className="relative w-full overflow-hidden bg-[#2c1916]">
-                    <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[48rem] w-full object-contain" />
+                <div className="flex w-full items-center justify-start bg-white">
+                  <div className="relative w-fit max-w-full">
+                    <ContentImage src={image} alt={title} className="h-auto max-h-[42rem] w-auto max-w-full object-contain" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
                       <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">{eyebrow}</p>
                       <h1 className="display-type mt-3 text-4xl leading-tight sm:text-5xl">{title}</h1>
                     </div>
+                  </div>
                 </div>
                 <div className="min-w-0 px-6 py-8 text-base leading-7 text-stone-700 sm:px-10 sm:py-12">
                   {sectionTitle && <h2 className="display-type text-3xl leading-tight text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
