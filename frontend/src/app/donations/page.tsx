@@ -8,13 +8,15 @@ import type { DonationOption } from "@/content/donations";
 
 function DonationCopy({ option }: { option: DonationOption }) {
   return (
-    <div className="flex min-w-0 flex-col p-7 sm:p-9">
+    <div className="flex h-full min-w-0 flex-col p-7 sm:p-9">
       <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Vasavi Penugonda seva</p>
       <h2 className="display-type mt-3 text-4xl text-[#3b241c]">{option.title}</h2>
       <p className="mt-4 text-base leading-8 text-stone-600">{option.description}</p>
-      <Link href={option.href} className="mt-6 inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
-        View donation details
-      </Link>
+      <div className="mt-auto pt-6">
+        <Link href={option.href} className="inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
+          View donation details
+        </Link>
+      </div>
     </div>
   );
 }
@@ -34,7 +36,7 @@ export default async function DonationsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl space-y-6 px-4 py-12 sm:px-8 lg:px-12">
-        <div className="grid items-start gap-6 lg:grid-cols-2">
+        <div className="grid items-stretch gap-6 lg:grid-cols-2">
           {donationsContent.options.filter((option) => option.title !== "Go Shala").map((option) => (
             <article key={option.title} className="overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200">
               <div className="flex items-center justify-center border-b border-[#eadfd2]">
