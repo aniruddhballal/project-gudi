@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { ContentImage } from "@/components/content-image";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getSiteContent } from "@/lib/site-content";
@@ -14,8 +14,8 @@ export default async function HomePage() {
       <SiteHeader />
 
       <section className="px-4 pb-5 pt-5 sm:px-8 lg:px-12 lg:pb-7 lg:pt-7">
-        <div className="relative mx-auto min-h-[34rem] max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-[#2c1916] shadow-[0_24px_70px_rgba(78,42,24,0.18)] sm:min-h-[40rem]">
-          <Image src={hero.image} alt={hero.title} fill priority sizes="100vw" className="object-cover opacity-75 transition duration-700 hover:scale-105" />
+        <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-[#2c1916] shadow-[0_24px_70px_rgba(78,42,24,0.18)]">
+          <ContentImage src={hero.image} alt={hero.title} className="mx-auto h-auto max-h-[44rem] w-full object-contain opacity-75 transition duration-700 hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#20100e]/90 via-[#2c1916]/45 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-12 lg:max-w-3xl lg:p-16">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Vasavi Penugonda · Sacred beginnings</p>
@@ -34,10 +34,9 @@ export default async function HomePage() {
           <SectionHeading eyebrow="Explore Penugonda" title="A living centre of faith and service" description="Move through the Trust’s story, places, people, and ways to participate." />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featuredSlides.map((slide) => (
-              <Link key={slide.image} href={slide.href} className="group relative min-h-72 overflow-hidden rounded-2xl bg-[#2c1916] text-white shadow-sm">
-                <Image src={slide.image} alt={slide.title} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover opacity-70 transition duration-500 group-hover:scale-105 group-hover:opacity-85" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
+              <Link key={slide.image} href={slide.href} className="group overflow-hidden rounded-2xl bg-[#2c1916] text-white shadow-sm">
+                <ContentImage src={slide.image} alt={slide.title} className="h-auto w-full opacity-75 transition duration-500 group-hover:scale-105 group-hover:opacity-90" />
+                <div className="p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-300">Vasavi Penugonda</p>
                   <h2 className="mt-2 text-2xl font-semibold leading-tight">{slide.title}</h2>
                   <p className="mt-2 text-sm leading-6 text-stone-200">{slide.description}</p>
@@ -73,10 +72,9 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="A message from the Trust" title="For every devotee who visits" />
           <div className="mt-9 grid overflow-hidden rounded-[1.5rem] bg-[#2c1916] text-white lg:grid-cols-[0.8fr_1.1fr_1.1fr]">
-            <div className="relative min-h-96">
-              <Image src={homeContent.president.image} alt="Dr. P. N. Govindarajulu" fill sizes="(max-width: 1024px) 100vw, 30vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6"><p className="text-sm font-bold text-amber-300">Dr. P. N. Govindarajulu</p><p className="mt-1 text-xs text-stone-300">President, Akhila Bharata Vasavi Penugonda Trust</p></div>
+            <div className="bg-[#2c1916]">
+              <ContentImage src={homeContent.president.image} alt="Dr. P. N. Govindarajulu" className="h-auto w-full" />
+              <div className="p-6"><p className="text-sm font-bold text-amber-300">Dr. P. N. Govindarajulu</p><p className="mt-1 text-xs text-stone-300">President, Akhila Bharata Vasavi Penugonda Trust</p></div>
             </div>
             <MessageColumn title="ಕನ್ನಡ" paragraphs={homeContent.president.kannada} />
             <MessageColumn title="English" paragraphs={homeContent.president.english} />
@@ -112,7 +110,7 @@ export default async function HomePage() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {homeContent.greatSouls.slice(0, 8).map((person) => (
               <article key={person.name} className="overflow-hidden rounded-2xl border border-[#eadfd2] bg-[#f7f3ed]">
-                <div className="relative aspect-[4/3] bg-[#e9dfd3]"><Image src={person.image} alt={person.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" /></div>
+                <div className="bg-[#e9dfd3]"><ContentImage src={person.image} alt={person.name} className="h-auto w-full" /></div>
                 <div className="p-5"><h3 className="font-semibold text-[#3b241c]">{person.name}</h3>{person.role && <p className="mt-1 text-sm font-semibold text-[#a45826]">{person.role}</p>}{person.description && <p className="mt-3 line-clamp-4 text-sm leading-6 text-stone-600">{person.description}</p>}</div>
               </article>
             ))}
@@ -124,7 +122,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><SectionHeading eyebrow="Gallery" title="A glimpse of the kshetram" /><Link href="/gallery/photos" className="text-sm font-bold text-[#8f3d1e] hover:text-[#5d2615]">View full gallery <span aria-hidden="true">→</span></Link></div>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {homeContent.gallery.map((photo, index) => <div key={photo.image} className={`relative overflow-hidden rounded-2xl bg-[#e9dfd3] ${index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`}><Image src={photo.image} alt={photo.alt} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover transition duration-500 hover:scale-105" /></div>)}
+            {homeContent.gallery.map((photo, index) => <div key={photo.image} className={`overflow-hidden rounded-2xl bg-[#e9dfd3] ${index === 0 ? "col-span-2" : ""}`}><ContentImage src={photo.image} alt={photo.alt} className="h-auto w-full transition duration-500 hover:scale-105" /></div>)}
           </div>
         </div>
       </section>

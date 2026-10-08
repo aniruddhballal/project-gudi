@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getNewsItems, getSiteContent } from "@/lib/site-content";
@@ -22,9 +22,9 @@ export default async function NewsPage() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {newsItems.map((item) => (
             <article id={`article-${item.id}`} key={item.id} className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-              <div className="relative flex aspect-[16/9] items-center justify-center bg-stone-100">
+              <div className="flex items-center justify-center bg-stone-100">
                 {item.image ? (
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover" />
+                  <ContentImage src={item.image} alt={item.title} className="h-auto w-full object-contain" />
                 ) : (
                   <div className="px-6 text-center text-sm text-stone-500">Original article image unavailable in the public capture.</div>
                 )}

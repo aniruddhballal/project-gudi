@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 
 export const dynamic = "force-dynamic";
@@ -96,7 +96,7 @@ export default async function CmsTestPage() {
               return (
                 <article key={article.id} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
                   {imageUrl && (
-                    <Image src={imageUrl} alt={imageAlt} width={1200} height={600} className="max-h-96 w-full object-cover" />
+                    <ContentImage src={imageUrl} alt={imageAlt} className="h-auto w-full object-contain" />
                   )}
                   <div className="p-6 sm:p-8">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">

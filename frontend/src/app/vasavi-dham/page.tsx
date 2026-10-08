@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -28,7 +28,7 @@ export default async function VasaviDhamPage() {
         <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl font-semibold">Featured facilities</h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {vasaviDhamContent.featured.map((project) => <article key={project.title} className="overflow-hidden rounded-2xl bg-stone-50 ring-1 ring-stone-200"><Image src={project.image} alt={project.title} width={800} height={520} className="h-56 w-full object-cover" /><div className="p-6"><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p></div></article>)}
+            {vasaviDhamContent.featured.map((project) => <article key={project.title} className="overflow-hidden rounded-2xl bg-stone-50 ring-1 ring-stone-200"><ContentImage src={project.image} alt={project.title} className="h-auto w-full object-contain" /><div className="p-6"><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p></div></article>)}
           </div>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default async function VasaviDhamPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
         <h2 className="text-3xl font-semibold">Completed Projects</h2>
         <div className="mt-8 space-y-5">
-          {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[12rem_1fr] sm:items-center"><Image src={project.image} alt={project.title} width={300} height={220} className="mx-auto h-36 w-full rounded-xl object-contain" /><div><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-2 text-sm font-semibold text-amber-700">{project.date}</p></div></article>)}
+          {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[12rem_1fr] sm:items-center"><ContentImage src={project.image} alt={project.title} className="mx-auto h-auto max-h-48 w-full rounded-xl object-contain" /><div><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-2 text-sm font-semibold text-amber-700">{project.date}</p></div></article>)}
         </div>
       </section>
 

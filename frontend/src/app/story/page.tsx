@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -24,7 +24,7 @@ export default async function StoryPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 pb-12 sm:px-8 lg:px-12">
-        <Image src={storyContent.coverImage ?? "/legacy/story/1.png"} alt="Vasavi story illustration" width={1200} height={700} className="mx-auto max-h-[32rem] w-auto rounded-2xl object-contain" />
+        <ContentImage src={storyContent.coverImage ?? "/legacy/story/1.png"} alt="Vasavi story illustration" className="mx-auto h-auto max-h-[32rem] w-auto rounded-2xl object-contain" />
         <div className="mt-10 space-y-5 text-base leading-8 text-stone-700">
           {storyContent.introduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
@@ -38,7 +38,7 @@ export default async function StoryPage() {
         <div className="mt-8 space-y-8">
           {storyContent.narrative.map((chapter) => (
             <article key={chapter.image} className="grid gap-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[minmax(0,14rem)_1fr] sm:items-center sm:p-6">
-              <Image src={chapter.image} alt="Illustration from the story of Goddess Vasavi" width={500} height={500} className="mx-auto max-h-64 w-full object-contain" />
+              <ContentImage src={chapter.image} alt="Illustration from the story of Goddess Vasavi" className="mx-auto h-auto max-h-64 w-full object-contain" />
               <p className="text-sm font-semibold leading-7 text-stone-700">{chapter.text}</p>
             </article>
           ))}

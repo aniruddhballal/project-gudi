@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -21,8 +21,8 @@ export default async function OverviewPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 lg:px-12">
         <div className="grid gap-6 overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-          <div className="relative min-h-56 overflow-hidden rounded-xl bg-stone-100">
-            <Image src={overviewContent.heroImage ?? "/legacy/overview/top.png"} alt="Vasavi Rishi Gothra Suvarna Mandir" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
+          <div className="overflow-hidden rounded-xl bg-stone-100">
+            <ContentImage src={overviewContent.heroImage ?? "/legacy/overview/top.png"} alt="Vasavi Rishi Gothra Suvarna Mandir" className="h-auto w-full object-contain" />
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Overview of Activities</p>
@@ -59,8 +59,8 @@ export default async function OverviewPage() {
 
       <section className="bg-amber-50 px-4 py-10 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center">
-          <div className="relative min-h-64 overflow-hidden rounded-2xl bg-white">
-            <Image src={overviewContent.donation.image} alt="Vasavi Dham donation" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          <div className="overflow-hidden rounded-2xl bg-white">
+            <ContentImage src={overviewContent.donation.image} alt="Vasavi Dham donation" className="h-auto w-full object-contain" />
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Support the project</p>
@@ -87,7 +87,7 @@ export default async function OverviewPage() {
                 {video.youtubeEmbed ? (
                   <iframe title={video.title} src={video.youtubeEmbed} className="aspect-video w-full border-0" loading="lazy" allowFullScreen />
                 ) : video.videoSrc ? (
-                  <video className="aspect-video w-full bg-black object-cover" controls poster={video.thumbnail ?? undefined} src={video.videoSrc} />
+                  <video className="aspect-video w-full bg-black object-contain" controls poster={video.thumbnail ?? undefined} src={video.videoSrc} />
                 ) : (
                   <div className="flex aspect-video items-center justify-center bg-stone-200 text-sm text-stone-500">Video source unavailable</div>
                 )}
@@ -119,8 +119,8 @@ export default async function OverviewPage() {
 
       <section className="bg-white px-4 py-12 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center">
-          <div className="relative min-h-64 overflow-hidden rounded-2xl bg-stone-100">
-            <Image src={overviewContent.about.image} alt="Vasavi Dham" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          <div className="overflow-hidden rounded-2xl bg-stone-100">
+            <ContentImage src={overviewContent.about.image} alt="Vasavi Dham" className="h-auto w-full object-contain" />
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">{overviewContent.about.title}</p>

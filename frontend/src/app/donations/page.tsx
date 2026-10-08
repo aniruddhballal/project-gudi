@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -22,7 +22,7 @@ export default async function DonationsPage() {
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-12">
         {donationsContent.options.map((option) => (
           <article key={option.title} className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-            <Image src={option.image} alt={option.title} width={900} height={560} className="h-56 w-full object-cover" />
+            <ContentImage src={option.image} alt={option.title} className="h-auto w-full object-contain" />
             <div className="flex flex-1 flex-col p-6">
               <h2 className="text-2xl font-semibold">{option.title}</h2>
               <p className="mt-4 text-sm leading-7 text-stone-600">{option.description}</p>

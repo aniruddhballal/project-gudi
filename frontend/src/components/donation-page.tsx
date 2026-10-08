@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContentImage } from "@/components/content-image";
 import { getSiteContent } from "@/lib/site-content";
 
 type DonationPageProps = {
@@ -37,8 +37,8 @@ export async function DonationPage({
       <section className="px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
         <div className="mx-auto max-w-7xl">
           <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
-            <div className="relative h-[18rem] sm:h-[26rem] lg:h-[32rem]">
-              <Image src={image} alt={title} fill sizes="100vw" className="object-cover" />
+            <div className="relative bg-[#2c1916]">
+              <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[42rem] w-full object-contain" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
               <p className="absolute bottom-6 left-6 rounded-full bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm sm:bottom-8 sm:left-8">{eyebrow}</p>
             </div>

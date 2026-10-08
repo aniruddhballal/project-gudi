@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -43,9 +43,9 @@ export default async function AboutPage() {
         <div className="mt-8 space-y-5">
           {aboutContent.projects.map((project, index) => (
             <article key={`${project.date}-${project.title}`} className="grid gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[9rem_1fr]">
-              <div className="relative min-h-36 overflow-hidden rounded-xl bg-stone-100">
+              <div className="overflow-hidden rounded-xl bg-stone-100">
                 {project.image ? (
-                  <Image src={project.image} alt={project.title} fill sizes="9rem" className="object-cover" />
+                  <ContentImage src={project.image} alt={project.title} className="h-auto w-full object-contain" />
                 ) : (
                   <div className="flex h-full min-h-36 items-center justify-center p-4 text-center text-xs text-stone-500">Original image unavailable</div>
                 )}
@@ -83,8 +83,8 @@ function ProjectFeature({
 }) {
   return (
     <article className={`grid gap-6 rounded-2xl border border-stone-200 p-5 lg:grid-cols-2 lg:items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
-      <div className="relative min-h-64 overflow-hidden rounded-xl bg-stone-100">
-        <Image src={project.image ?? "/legacy/home/logo.png"} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+      <div className="overflow-hidden rounded-xl bg-stone-100">
+        <ContentImage src={project.image ?? "/legacy/home/logo.png"} alt={project.title} className="h-auto w-full object-contain" />
       </div>
       <div>
         <h3 className="text-2xl font-semibold">{project.title}</h3>
