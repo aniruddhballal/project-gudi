@@ -4,6 +4,20 @@ import { ContentImage } from "@/components/content-image";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
+import type { DonationOption } from "@/content/donations";
+
+function DonationCopy({ option }: { option: DonationOption }) {
+  return (
+    <div className="flex min-w-0 flex-col p-7 sm:p-9">
+      <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Vasavi Penugonda seva</p>
+      <h2 className="display-type mt-3 text-4xl text-[#3b241c]">{option.title}</h2>
+      <p className="mt-4 text-base leading-8 text-stone-600">{option.description}</p>
+      <Link href={option.href} className="mt-6 inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
+        View donation details
+      </Link>
+    </div>
+  );
+}
 
 export default async function DonationsPage() {
   const { donations: donationsContent, home: homeContent } = await getSiteContent();
@@ -20,26 +34,23 @@ export default async function DonationsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl space-y-6 px-4 py-12 sm:px-8 lg:px-12">
-        {donationsContent.options.map((option) => (
-          <article
-            key={option.title}
-            className={`grid overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200 ${option.title === "Go Shala" ? "lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]" : "lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]"}`}
-          >
-            <div className="flex items-center justify-center bg-[#2c1916] p-6 sm:p-8 lg:p-9">
-              <ContentImage
-                src={option.image}
-                alt={option.title}
-                className={option.title === "Go Shala" ? "h-auto w-full max-w-full object-contain" : "h-auto max-h-[32rem] w-auto max-w-full object-contain"}
-              />
+        <div className="grid items-start gap-6 lg:grid-cols-2">
+          {donationsContent.options.filter((option) => option.title !== "Go Shala").map((option) => (
+            <article key={option.title} className="overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200">
+              <div className="flex items-center justify-center border-b border-[#eadfd2] px-6 py-7 sm:px-8 sm:py-9">
+                <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[34rem] w-auto max-w-full object-contain" />
+              </div>
+              <DonationCopy option={option} />
+            </article>
+          ))}
+        </div>
+
+        {donationsContent.options.filter((option) => option.title === "Go Shala").map((option) => (
+          <article key={option.title} className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-stretch">
+            <div className="flex items-center justify-center border-b border-[#eadfd2] px-5 py-5 sm:px-8 sm:py-8 lg:border-b-0 lg:border-r">
+              <ContentImage src={option.image} alt={option.title} className="h-auto w-full max-w-4xl object-contain" />
             </div>
-            <div className="flex min-w-0 flex-col justify-center p-7 sm:p-9 lg:p-10">
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Vasavi Penugonda seva</p>
-              <h2 className="display-type mt-3 text-4xl text-[#3b241c]">{option.title}</h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-stone-600">{option.description}</p>
-              <Link href={option.href} className="mt-7 inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
-                View donation details
-              </Link>
-            </div>
+            <DonationCopy option={option} />
           </article>
         ))}
       </section>
