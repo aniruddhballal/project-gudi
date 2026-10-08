@@ -65,7 +65,10 @@ export async function DonationPage({
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Support this seva</p>
               <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
-              {highlight && <p className="mt-8 border-l-4 border-[#e4b34e] bg-[#fff8e7]/80 px-5 py-4 text-base font-bold leading-7 text-[#5d2c19] sm:text-lg">{highlight}</p>}
+              {highlight && <div className="mt-8 border-t border-[#d6b681] pt-6">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f3d1e]">Impact so far</p>
+                <p className="mt-3 max-w-lg text-base font-semibold leading-7 text-[#5d2c19] sm:text-lg">{highlight}</p>
+              </div>}
             </div>
           </div>
           <form className="grid w-full gap-4 rounded-[1.75rem] bg-white p-6 shadow-[0_18px_50px_rgba(78,42,24,0.1)] ring-1 ring-[#dfc89f] sm:p-8 lg:max-w-xl lg:justify-self-end">
