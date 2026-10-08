@@ -1,18 +1,17 @@
-import Link from "next/link";
-
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
 
 export default async function ContactPage() {
   const { contact: contactContent, home: homeContent } = await getSiteContent();
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-900">
+    <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="border-b border-stone-200 bg-amber-950 px-4 py-16 text-white sm:px-8 lg:px-12">
+      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">Visit and connect</p>
-          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{contactContent.title}</h1>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">Visit and connect</p>
+          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{contactContent.title}</h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">Reach Vasavi Shanti Dham in Penugonda or contact the Trust office in Bangalore.</p>
         </div>
       </section>
@@ -56,12 +55,7 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <footer className="border-t border-stone-200 bg-white px-4 py-6 text-sm text-stone-500 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl justify-between gap-4">
-          <p>{homeContent.siteTitle}</p>
-          <Link href="/" className="hover:text-stone-900">Back to home</Link>
-        </div>
-      </footer>
+      <SiteFooter siteTitle={homeContent.siteTitle} />
     </main>
   );
 }

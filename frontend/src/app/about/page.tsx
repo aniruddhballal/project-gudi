@@ -1,19 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
-
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
 
 export default async function AboutPage() {
   const { about: aboutContent, home: homeContent } = await getSiteContent();
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-900">
+    <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="border-b border-stone-200 bg-amber-950 px-4 py-16 text-white sm:px-8 lg:px-12">
+      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">About</p>
-          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{aboutContent.title}</h1>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">About the Trust</p>
+          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{aboutContent.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-amber-50">{aboutContent.introduction}</p>
         </div>
       </section>
@@ -61,12 +60,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <footer className="border-t border-stone-200 bg-white px-4 py-6 text-sm text-stone-500 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>{homeContent.siteTitle}</p>
-          <Link href="/" className="hover:text-stone-900">Back to home</Link>
-        </div>
-      </footer>
+      <SiteFooter siteTitle={homeContent.siteTitle} />
     </main>
   );
 }
