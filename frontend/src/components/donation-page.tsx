@@ -62,13 +62,13 @@ export async function DonationPage({
             <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
             <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
           </div>
-          <form className="grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:grid-cols-3 sm:p-7">
+          <form className="grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:p-7">
             <input type="hidden" name="type" value={formType} />
             <label className="block text-sm font-medium text-stone-700">Name<input name="name" minLength={5} required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Your full name" /></label>
             <label className="block text-sm font-medium text-stone-700">Phone number<input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="10-digit phone number" /></label>
             <label className="block text-sm font-medium text-stone-700">Donation amount (₹)<input name="amount" inputMode="decimal" min="1" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Enter amount" /></label>
-            <button type="button" className="rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17] sm:col-span-3">Continue to payment <span aria-hidden="true" className="ml-2">→</span></button>
-            <p className="text-xs leading-5 text-stone-500 sm:col-span-3">Payment creation, provider checkout, confirmation, and donor records will be connected when the backend API is available.</p>
+            <button type="button" className="rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">Continue to payment <span aria-hidden="true" className="ml-2">→</span></button>
+            <p className="text-xs leading-5 text-stone-500">Payment creation, provider checkout, confirmation, and donor records will be connected when the backend API is available.</p>
           </form>
         </div>
       </section>
