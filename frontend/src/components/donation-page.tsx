@@ -33,7 +33,7 @@ export async function DonationPage({
           <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
             <div className="mx-auto max-w-6xl px-6 py-8 sm:px-10 sm:py-12">
               <div className="text-base leading-7 text-stone-700">
-                <div className="grid items-start gap-10 lg:grid-cols-2">
+                <div className="grid items-start gap-10 lg:grid-cols-2 lg:items-center">
                   <div className="relative mb-8 w-full overflow-hidden rounded-2xl bg-[#2c1916] lg:mb-0">
                     <ContentImage src={image} alt={title} className="mx-auto h-auto max-h-[48rem] w-full object-contain" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
