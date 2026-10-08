@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContentImage } from "@/components/content-image";
 import { getSiteContent } from "@/lib/site-content";
+import { ChevronRight } from "lucide-react";
 
 type DonationPageProps = {
   title: string;
@@ -78,13 +79,12 @@ export async function DonationPage({
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f3d1e]">Donation details</p>
                 <p className="mt-1 text-sm text-stone-500">A few details to get started.</p>
               </div>
-              <span className="rounded-full bg-[#fff8e7] px-3 py-1 text-xs font-bold text-[#8f3d1e]">01 / 03</span>
             </div>
             <input type="hidden" name="type" value={formType} />
             <label className="block text-sm font-medium text-stone-700">Name<input name="name" minLength={5} required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Your full name" /></label>
             <label className="block text-sm font-medium text-stone-700">Phone number<input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="10-digit phone number" /></label>
             <label className="block text-sm font-medium text-stone-700">Donation amount (₹)<input name="amount" inputMode="decimal" min="1" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Enter amount" /></label>
-            <button type="button" className="rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">Continue to payment <span aria-hidden="true" className="ml-2">→</span></button>
+            <button type="button" className="inline-flex items-center justify-center rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">Continue to payment <ChevronRight aria-hidden="true" className="ml-2 h-4 w-4" /></button>
             <p className="text-xs leading-5 text-stone-500">Payment creation, provider checkout, confirmation, and donor records will be connected when the backend API is available.</p>
           </form>
         </div>
