@@ -488,6 +488,7 @@ export interface HomePage {
   heroSlides?:
     | {
         image?: (number | null) | Media;
+        href: string;
         title: string;
         description?: string | null;
         id?: string | null;
@@ -941,6 +942,7 @@ export interface SiteContent {
     heroSlides?:
       | {
           image?: (number | null) | Media;
+          href: string;
           title: string;
           description?: string | null;
           id?: string | null;
@@ -1339,6 +1341,7 @@ export interface HomePageSelect<T extends boolean = true> {
     | T
     | {
         image?: T;
+        href?: T;
         title?: T;
         description?: T;
         id?: T;
@@ -1812,6 +1815,7 @@ export interface SiteContentSelect<T extends boolean = true> {
           | T
           | {
               image?: T;
+              href?: T;
               title?: T;
               description?: T;
               id?: T;

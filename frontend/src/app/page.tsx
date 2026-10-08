@@ -12,9 +12,14 @@ export default async function HomePage() {
 
       <section className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:px-8 lg:grid-cols-2 lg:px-12">
         {homeContent.heroSlides.map((slide, index) => (
-          <article key={slide.image} className={`relative overflow-hidden rounded-2xl bg-stone-900 ${index === 0 ? "lg:col-span-2" : ""}`}>
+          <Link
+            key={slide.image}
+            href={slide.href}
+            aria-label={`Open ${slide.title}`}
+            className={`group relative block overflow-hidden rounded-2xl bg-stone-900 ${index === 0 ? "lg:col-span-2" : ""}`}
+          >
             <div className={`relative ${index === 0 ? "h-[26rem]" : "h-56"}`}>
-              <Image src={slide.image} alt={slide.title} fill priority={index === 0} sizes={index === 0 ? "100vw" : "(max-width: 1024px) 100vw, 50vw"} className="object-cover opacity-75" />
+              <Image src={slide.image} alt={slide.title} fill priority={index === 0} sizes={index === 0 ? "100vw" : "(max-width: 1024px) 100vw, 50vw"} className="object-cover opacity-75 transition duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">Vasavi Penugonda</p>
@@ -22,7 +27,7 @@ export default async function HomePage() {
                 <p className="mt-2 max-w-xl text-sm text-stone-200">{slide.description}</p>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </section>
 

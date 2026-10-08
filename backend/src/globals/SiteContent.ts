@@ -66,7 +66,7 @@ export const SiteContent: GlobalConfig = {
         {
           name: 'heroSlides',
           type: 'array',
-          fields: [media('image'), { name: 'title', type: 'text', required: true }, { name: 'description', type: 'textarea' }],
+          fields: [media('image'), { name: 'href', type: 'text', required: true }, { name: 'title', type: 'text', required: true }, { name: 'description', type: 'textarea' }],
         },
         {
           name: 'president',

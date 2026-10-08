@@ -1,5 +1,6 @@
 export type HomeHeroSlide = {
   image: string;
+  href: string;
   title: string;
   description: string;
 };
@@ -18,27 +19,32 @@ export const homeContent = {
   heroSlides: [
     {
       image: "/legacy/home/hero/1.jpg",
+      href: "/overview",
       title: "Vasavi Penugonda Trust",
       description: "A place of devotion, history, and community.",
     },
     {
       image: "/legacy/home/hero/vasavi5.jpg",
+      href: "/vasavi-dham",
       title: "Vasavidham",
       description:
         "Details of the world’s tallest 90 ft. Panchaloha idol of Matha Vasavi.",
     },
     {
       image: "/legacy/home/hero/3.jpg",
+      href: "/story",
       title: "Story of Vasavi Kanyakaparameshwari",
       description: "The divine story of Goddess Vasavi Kanyakaparameshwari.",
     },
     {
       image: "/legacy/home/hero/vasaviFull.jpg",
+      href: "/donations",
       title: "Seva details",
       description: "Donate to Sevas to help bring Vasavi Dham to life.",
     },
     {
       image: "/legacy/home/hero/vasaviFull1.jpg",
+      href: "/trustees",
       title: "Trustees",
       description: "Details of the Vasavi Penugonda Trust’s office bearers.",
     },
