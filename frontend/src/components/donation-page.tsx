@@ -43,7 +43,7 @@ export async function DonationPage({
                     </div>
                   </div>
                 </div>
-                <div className="min-w-0 px-6 py-8 text-base leading-7 text-stone-700 sm:px-8 sm:py-12 lg:pl-8 lg:pr-10">
+                <div className="min-w-0 px-6 py-8 text-lg leading-8 text-stone-700 sm:px-8 sm:py-12 lg:pl-8 lg:pr-10">
                   {sectionTitle && <h2 className="display-type text-3xl leading-tight text-[#3b241c] sm:text-4xl">{sectionTitle}</h2>}
                   <div className="space-y-4 pt-5">
                     {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
