@@ -8,11 +8,11 @@ import type { DonationOption } from "@/content/donations";
 
 function DonationCopy({ option }: { option: DonationOption }) {
   return (
-    <div className="flex h-full min-w-0 flex-col p-7 sm:p-9">
+    <div className="flex min-w-0 flex-col p-7 sm:p-9">
       <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Vasavi Penugonda seva</p>
       <h2 className="display-type mt-3 text-4xl text-[#3b241c]">{option.title}</h2>
       <p className="mt-4 text-base leading-8 text-stone-600">{option.description}</p>
-      <div className="mt-auto pt-6">
+      <div className="pt-6">
         <Link href={option.href} className="inline-flex w-fit rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">
           View donation details
         </Link>
