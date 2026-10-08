@@ -38,7 +38,7 @@ export default async function DonationsPage() {
           {donationsContent.options.filter((option) => option.title !== "Go Shala").map((option) => (
             <article key={option.title} className="overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-stone-200">
               <div className="flex items-center justify-center border-b border-[#eadfd2]">
-                <ContentImage src={option.image} alt={option.title} className="h-auto w-full object-contain" />
+                <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[30rem] w-auto max-w-[88%] object-contain" />
               </div>
               <DonationCopy option={option} />
             </article>
