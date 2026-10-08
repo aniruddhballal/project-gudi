@@ -24,6 +24,7 @@ export async function DonationPage({
   sectionTitle,
 }: DonationPageProps) {
   const { home: homeContent } = await getSiteContent();
+  const imageFrameClass = title === "E-Hundi" ? "bg-black" : "bg-white";
   return (
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
@@ -33,7 +34,7 @@ export async function DonationPage({
           <article className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2] lg:rounded-l-none lg:rounded-r-[1.5rem]">
             <div>
               <div className="grid items-start lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-stretch">
-                <div className="relative flex w-full items-stretch justify-start bg-white lg:h-full">
+                <div className={`relative flex w-full items-stretch justify-start ${imageFrameClass} lg:h-full`}>
                   <div className="relative flex h-full min-h-full w-fit max-w-full flex-col self-stretch">
                     <ContentImage src={image} alt={title} className="block h-full min-h-full w-auto max-w-full object-contain" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
