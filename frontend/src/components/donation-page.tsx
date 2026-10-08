@@ -62,7 +62,7 @@ export async function DonationPage({
             <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
             <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
           </div>
-          <form className="grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:p-7">
+          <form className="grid w-full gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:p-7 lg:max-w-xl lg:justify-self-end">
             <input type="hidden" name="type" value={formType} />
             <label className="block text-sm font-medium text-stone-700">Name<input name="name" minLength={5} required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Your full name" /></label>
             <label className="block text-sm font-medium text-stone-700">Phone number<input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="10-digit phone number" /></label>
