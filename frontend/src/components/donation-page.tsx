@@ -55,14 +55,31 @@ export async function DonationPage({
         </div>
       </section>
 
-      <section className="bg-[#ead6b4] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Support this seva</p>
-            <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
-            <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
+      <section className="relative overflow-hidden bg-[#ead6b4] px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
+        <div className="pointer-events-none absolute -bottom-40 left-[38%] h-96 w-96 rounded-full bg-[#f3d8a6]/50 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch lg:gap-14">
+          <div className="relative flex min-h-full flex-col justify-center overflow-hidden rounded-[1.75rem] border border-[#d6b681] bg-[#f8edda]/65 px-7 py-8 sm:px-9 sm:py-10 lg:px-10">
+            <span aria-hidden="true" className="display-type pointer-events-none absolute -bottom-8 -right-5 text-[9rem] font-bold uppercase leading-none text-[#8f3d1e]/[0.06]">Seva</span>
+            <div className="relative">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Support this seva</p>
+              <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
+              <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
+              <div className="mt-8 space-y-3 border-t border-[#d6b681] pt-6 text-sm text-[#634a3c]">
+                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">01</span><span>Share your details</span></div>
+                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">02</span><span>Choose your contribution</span></div>
+                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">03</span><span>Continue to payment</span></div>
+              </div>
+            </div>
           </div>
-          <form className="grid w-full gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfc89f] sm:p-7 lg:max-w-xl lg:justify-self-end">
+          <form className="grid w-full gap-4 rounded-[1.75rem] bg-white p-6 shadow-[0_18px_50px_rgba(78,42,24,0.1)] ring-1 ring-[#dfc89f] sm:p-8 lg:max-w-xl lg:justify-self-end">
+            <div className="flex items-start justify-between gap-4 border-b border-stone-200 pb-5">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f3d1e]">Donation details</p>
+                <p className="mt-1 text-sm text-stone-500">A few details to get started.</p>
+              </div>
+              <span className="rounded-full bg-[#fff8e7] px-3 py-1 text-xs font-bold text-[#8f3d1e]">01 / 03</span>
+            </div>
             <input type="hidden" name="type" value={formType} />
             <label className="block text-sm font-medium text-stone-700">Name<input name="name" minLength={5} required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="Your full name" /></label>
             <label className="block text-sm font-medium text-stone-700">Phone number<input name="phone" inputMode="numeric" pattern="[0-9]{10}" required className="mt-2 w-full rounded-xl border border-stone-300 px-3 py-3" placeholder="10-digit phone number" /></label>
