@@ -47,7 +47,6 @@ export async function DonationPage({
                     <div className="space-y-4 pt-5">
                       {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     </div>
-                    {highlight && <p className="mt-0 border-l-4 border-[#e4b34e] bg-[#fff8e7] px-5 py-4 text-lg font-bold leading-8 text-[#5d2c19]">{highlight}</p>}
                   </div>
                 </div>
               </div>
@@ -66,11 +65,7 @@ export async function DonationPage({
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Support this seva</p>
               <h2 className="display-type mt-3 text-4xl text-[#3b241c] sm:text-5xl">Make a donation</h2>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#634a3c]">Enter your details below to continue with the {title} donation journey.</p>
-              <div className="mt-8 space-y-3 border-t border-[#d6b681] pt-6 text-sm text-[#634a3c]">
-                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">01</span><span>Share your details</span></div>
-                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">02</span><span>Choose your contribution</span></div>
-                <div className="flex items-center gap-3"><span className="display-type text-xl text-[#8f3d1e]">03</span><span>Continue to payment</span></div>
-              </div>
+              {highlight && <p className="mt-8 border-l-4 border-[#e4b34e] bg-[#fff8e7]/80 px-5 py-4 text-base font-bold leading-7 text-[#5d2c19] sm:text-lg">{highlight}</p>}
             </div>
           </div>
           <form className="grid w-full gap-4 rounded-[1.75rem] bg-white p-6 shadow-[0_18px_50px_rgba(78,42,24,0.1)] ring-1 ring-[#dfc89f] sm:p-8 lg:max-w-xl lg:justify-self-end">
