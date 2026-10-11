@@ -58,7 +58,7 @@ export function ProjectJourney({ projects, unavailableImage }: ProjectJourneyPro
 
   return (
     <div className="mt-9 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
-      <aside className="lg:sticky lg:top-28 lg:self-start">
+      <aside className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 lg:self-start">
         <div className="rounded-[1.5rem] bg-[#2c1916] p-6 text-white shadow-[0_18px_50px_rgba(78,42,24,0.14)] sm:p-7">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-300">The journey</p>
           <p className="mt-3 text-sm leading-6 text-[#f5e5d5]">Scroll through the moments that shaped Vasavi Dham.</p>
