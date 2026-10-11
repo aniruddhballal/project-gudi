@@ -27,20 +27,40 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
   const progress = projects.length > 1 ? (activeIndex / (projects.length - 1)) * 100 : 100;
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => Math.abs(left.boundingClientRect.top) - Math.abs(right.boundingClientRect.top));
+    let frame = 0;
 
-        const index = visible[0]?.target.getAttribute("data-index");
-        if (index) setActiveIndex(Number(index));
-      },
-      { rootMargin: "-32% 0px -52%", threshold: [0, 0.25, 0.6] },
-    );
+    function updateActiveMilestone() {
+      frame = 0;
+      const readingLine = window.innerHeight * 0.34;
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
 
-    itemRefs.current.forEach((item) => item && observer.observe(item));
-    return () => observer.disconnect();
+      itemRefs.current.forEach((item, index) => {
+        if (!item) return;
+
+        const distance = Math.abs(item.getBoundingClientRect().top - readingLine);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex((currentIndex) => currentIndex === closestIndex ? currentIndex : closestIndex);
+    }
+
+    function handleScroll() {
+      if (frame === 0) frame = window.requestAnimationFrame(updateActiveMilestone);
+    }
+
+    updateActiveMilestone();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, [projects.length]);
 
   function jumpToEra(era: string) {
