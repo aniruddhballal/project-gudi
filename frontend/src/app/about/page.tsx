@@ -1,7 +1,9 @@
 import { ContentImage } from "@/components/content-image";
+import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
+import { CheckCircle2 } from "lucide-react";
 
 export default async function AboutPage() {
   const { about: aboutContent, home: homeContent } = await getSiteContent();
@@ -9,87 +11,67 @@ export default async function AboutPage() {
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">About the Trust</p>
-          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{aboutContent.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-amber-50">{aboutContent.introduction}</p>
+      <PageHero eyebrow="About the Trust" title={aboutContent.title} description={aboutContent.introduction} />
+
+      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <SectionHeading eyebrow="The Trust" title="A place with a purpose" description="The Trust exists to nurture faith, service, community, and the future of Vasavi Penugonda." />
+          <div>
+            <h2 className="display-type text-3xl text-[#3b241c] sm:text-4xl">Aims &amp; objectives</h2>
+            <ol className="mt-7 grid gap-3 sm:grid-cols-2">
+              {homeContent.aims.map((aim, index) => (
+                <li key={aim} className="rounded-2xl bg-white p-5 shadow-[0_5px_18px_rgba(87,50,29,0.05)] ring-1 ring-[#eadfd2]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5c66b] text-sm font-bold text-[#3b241c]">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="mt-4 text-sm leading-6 text-stone-600">{aim}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">The trust</p>
-          <h2 className="mt-3 text-3xl font-semibold">Aims &amp; objectives of the Trust</h2>
-        </div>
-        <ol className="space-y-3 text-sm leading-7 text-stone-600">
-          {homeContent.aims.map((aim, index) => <li key={aim}><span className="mr-3 font-semibold text-amber-800">{index + 1}.</span>{aim}</li>)}
-        </ol>
-      </section>
-
-      <section className="bg-white px-4 py-12 sm:px-8 lg:px-12">
+      <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Projects under construction" title="Building Vasavi Shanthi Dham" />
-          <div className="mt-8 space-y-8">
-            {aboutContent.underConstruction.map((project, index) => (
-              <ProjectFeature key={project.title} project={project} reverse={index % 2 === 1} />
+          <SectionHeading eyebrow="Projects under construction" title="Building Vasavi Shanthi Dham" description="A sacred place grows through patient work, shared service, and the generosity of devotees." />
+          <div className="mt-9 grid gap-6 lg:grid-cols-2">
+            {aboutContent.underConstruction.map((project) => (
+              <article key={project.title} className="overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] ring-1 ring-[#eadfd2]">
+                <div className="flex items-center justify-center border-b border-[#eadfd2] p-5 sm:p-7">
+                  <ContentImage src={project.image ?? "/legacy/home/logo.png"} alt={project.title} className="h-auto max-h-[26rem] w-auto max-w-full object-contain" />
+                </div>
+                <div className="p-7 sm:p-9">
+                  <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]"><CheckCircle2 className="h-4 w-4" /> In progress</p>
+                  <h2 className="display-type mt-3 text-3xl text-[#3b241c]">{project.title}</h2>
+                  <p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
-        <SectionHeading eyebrow="Completed projects" title="The Vasavi Dham journey" />
-        <div className="mt-8 space-y-5">
-          {aboutContent.projects.map((project, index) => (
-            <article key={`${project.date}-${project.title}`} className="grid gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[9rem_1fr]">
-              <div className="overflow-hidden rounded-xl bg-stone-100">
-                {project.image ? (
-                  <ContentImage src={project.image} alt={project.title} className="h-auto w-full object-contain" />
-                ) : (
-                  <div className="flex h-full min-h-36 items-center justify-center p-4 text-center text-xs text-stone-500">Original image unavailable</div>
-                )}
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{project.date}</p>
-                <h3 className="mt-2 text-xl font-semibold">{index + 1}. {project.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p>
-              </div>
-            </article>
-          ))}
+      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading eyebrow="Completed projects" title="The Vasavi Dham journey" />
+          <div className="mt-9 grid gap-5 lg:grid-cols-2">
+            {aboutContent.projects.map((project, index) => (
+              <article key={`${project.date}-${project.title}`} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#eadfd2] sm:grid-cols-[10rem_1fr] sm:items-start">
+                <div className="flex min-h-32 items-center justify-center rounded-xl bg-[#fbf2e6] p-3">
+                  {project.image ? <ContentImage src={project.image} alt={project.title} className="h-auto max-h-40 w-auto max-w-full object-contain" /> : <p className="text-center text-xs text-stone-500">Original image unavailable</p>}
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#a45826]">{project.date}</p>
+                  <h3 className="display-type mt-2 text-2xl text-[#3b241c]">{index + 1}. {project.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <PrimaryLink href="/donations">Support the next chapter</PrimaryLink>
         </div>
       </section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />
     </main>
-  );
-}
-
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
-  return (
-    <div>
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">{eyebrow}</p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h2>
-    </div>
-  );
-}
-
-function ProjectFeature({
-  project,
-  reverse,
-}: {
-  project: { image: string | null; title: string; description: string };
-  reverse: boolean;
-}) {
-  return (
-    <article className={`grid gap-6 rounded-2xl border border-stone-200 p-5 lg:grid-cols-2 lg:items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
-      <div className="overflow-hidden rounded-xl bg-stone-100">
-        <ContentImage src={project.image ?? "/legacy/home/logo.png"} alt={project.title} className="h-auto w-full object-contain" />
-      </div>
-      <div>
-        <h3 className="text-2xl font-semibold">{project.title}</h3>
-        <p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p>
-      </div>
-    </article>
   );
 }

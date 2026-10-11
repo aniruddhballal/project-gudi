@@ -1,7 +1,9 @@
 import { ContentImage } from "@/components/content-image";
+import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
+import { CheckCircle2, Landmark } from "lucide-react";
 
 export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent } = await getSiteContent();
@@ -9,34 +11,38 @@ export default async function VasaviDhamPage() {
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">Trust and facilities</p>
-          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{vasaviDhamContent.title}</h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-amber-50">{vasaviDhamContent.description}</p>
+      <PageHero eyebrow="Trust and facilities" title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
+
+      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <SectionHeading eyebrow="The Trust" title="A shared foundation" description="The same aims guide the facilities, projects, and service that make Vasavi Dham a living centre for the community." />
+          <ol className="grid gap-3 sm:grid-cols-2">
+            {homeContent.aims.map((aim, index) => <li key={aim} className="rounded-2xl bg-white p-5 shadow-[0_5px_18px_rgba(87,50,29,0.05)] ring-1 ring-[#eadfd2]"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5c66b] text-sm font-bold text-[#3b241c]">{String(index + 1).padStart(2, "0")}</span><p className="mt-4 text-sm leading-6 text-stone-600">{aim}</p></li>)}
+          </ol>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
-        <h2 className="text-3xl font-semibold">Aims &amp; objectives of the Trust</h2>
-        <ol className="mt-6 grid gap-4 md:grid-cols-2">
-          {homeContent.aims.map((aim, index) => <li key={aim} className="rounded-xl bg-white p-5 text-sm leading-7 shadow-sm ring-1 ring-stone-200"><span className="mr-2 font-semibold text-amber-800">{index + 1}.</span>{aim}</li>)}
-        </ol>
-      </section>
-
-      <section className="bg-white px-4 py-12 sm:px-8 lg:px-12">
+      <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-3xl font-semibold">Featured facilities</h2>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {vasaviDhamContent.featured.map((project) => <article key={project.title} className="overflow-hidden rounded-2xl bg-stone-50 ring-1 ring-stone-200"><ContentImage src={project.image} alt={project.title} className="h-auto w-full object-contain" /><div className="p-6"><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p></div></article>)}
+          <SectionHeading eyebrow="Featured facilities" title="Spaces made for devotion and gathering" />
+          <div className="mt-9 grid gap-6 lg:grid-cols-3">
+            {vasaviDhamContent.featured.map((project) => (
+              <article key={project.title} className="overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] ring-1 ring-[#eadfd2]">
+                <div className="flex items-center justify-center border-b border-[#eadfd2] p-5 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-[24rem] w-auto max-w-full object-contain" /></div>
+                <div className="p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#a45826]"><Landmark className="h-4 w-4" /> Vasavi Dham</p><h2 className="display-type mt-3 text-2xl text-[#3b241c]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
-        <h2 className="text-3xl font-semibold">Completed Projects</h2>
-        <div className="mt-8 space-y-5">
-          {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:grid-cols-[12rem_1fr] sm:items-center"><ContentImage src={project.image} alt={project.title} className="mx-auto h-auto max-h-48 w-full rounded-xl object-contain" /><div><h3 className="text-xl font-semibold">{project.title}</h3><p className="mt-2 text-sm font-semibold text-amber-700">{project.date}</p></div></article>)}
+      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading eyebrow="Completed projects" title="A journey built over time" />
+          <div className="mt-9 grid gap-5 md:grid-cols-2">
+            {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#eadfd2] sm:grid-cols-[12rem_1fr] sm:items-center"><div className="flex items-center justify-center rounded-xl bg-[#fbf2e6] p-3"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-48 w-auto max-w-full object-contain" /></div><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a45826]"><CheckCircle2 className="h-4 w-4" /> {project.date}</p><h3 className="display-type mt-2 text-2xl text-[#3b241c]">{project.title}</h3></div></article>)}
+          </div>
+          <div className="mt-9"><PrimaryLink href="/contact">Plan your visit</PrimaryLink></div>
         </div>
       </section>
 

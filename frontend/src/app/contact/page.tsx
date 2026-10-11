@@ -1,6 +1,8 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { getSiteContent } from "@/lib/site-content";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export default async function ContactPage() {
   const { contact: contactContent, home: homeContent } = await getSiteContent();
@@ -8,51 +10,62 @@ export default async function ContactPage() {
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">Visit and connect</p>
-          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{contactContent.title}</h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">Reach Vasavi Shanti Dham in Penugonda or contact the Trust office in Bangalore.</p>
+      <PageHero eyebrow="Visit and connect" title={contactContent.title} description="Reach Vasavi Shanti Dham in Penugonda or connect with the Trust office in Bangalore." />
+
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
+        <div className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
+          <div className="flex items-end justify-between gap-4 border-b border-[#eadfd2] px-6 py-5 sm:px-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]">Find your way</p>
+              <h2 className="display-type mt-2 text-3xl text-[#3b241c]">The kshetram in Penugonda</h2>
+            </div>
+            <MapPin className="h-6 w-6 text-[#a45826]" aria-hidden="true" />
+          </div>
+          <iframe title="Vasavi Penugonda Trust location" src={contactContent.mapEmbed} className="h-[24rem] w-full border-0 sm:h-[32rem]" loading="lazy" allowFullScreen />
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-8 lg:px-12">
-        <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-          <iframe title="Vasavi Penugonda Trust location" src={contactContent.mapEmbed} className="h-[24rem] w-full border-0" loading="lazy" allowFullScreen />
+      <section className="relative overflow-hidden bg-[#ead6b4] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
+        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-14">
+          <div>
+            <SectionHeading eyebrow="Contact the Trust" title="We are here to help." description="Questions about visiting, volunteering, donating, or the work of Vasavi Penugonda? Reach out and the Trust team will guide you." />
+            <div className="mt-8 grid gap-3">
+              <ContactCard icon={MapPin} label="Location" value={contactContent.location} />
+              <ContactCard icon={Mail} label="Email" value={contactContent.email} />
+              <ContactCard icon={Phone} label="Call" value={contactContent.phone} />
+            </div>
+          </div>
+
+          <form className="grid gap-5 rounded-[2rem] bg-white p-6 shadow-[0_22px_60px_rgba(71,36,22,0.12)] ring-1 ring-[#eadfd2] sm:p-8">
+            <div className="border-b border-stone-200 pb-5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#9d431f]">Write to us</p>
+              <h2 className="display-type mt-2 text-3xl text-[#321c17]">Send a message</h2>
+              <p className="mt-2 text-sm leading-6 text-stone-500">The form is ready for backend contact delivery in the next integration phase.</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field id="name" label="Your name" />
+              <Field id="email" label="Your email" type="email" />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field id="phone" label="Phone number" type="tel" />
+              <Field id="subject" label="Subject" />
+            </div>
+            <div>
+              <label htmlFor="message" className="text-sm font-medium text-stone-700">Message</label>
+              <textarea id="message" name="message" rows={5} placeholder="How can we help?" className="mt-2 w-full rounded-xl border border-stone-300 bg-[#fffdf9] px-3 py-3 text-sm outline-none transition focus:border-[#9d431f] focus:ring-4 focus:ring-[#9d431f]/10" />
+            </div>
+            <button type="button" className="inline-flex w-fit items-center rounded-xl bg-[#9d431f] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7d3218]">Send message</button>
+          </form>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 pb-12 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12">
-        <div className="space-y-5">
-          <ContactCard label="Location" value={contactContent.location} />
-          <ContactCard label="Email" value={contactContent.email} />
-          <ContactCard label="Call" value={contactContent.phone} />
-        </div>
-
-        <form className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200">
-          <h2 className="text-2xl font-semibold">Send a message</h2>
-          <p className="mt-2 text-sm text-stone-500">The current site exposes this form; submission will be connected to the backend contact API in V2.</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <Field id="name" label="Your Name" />
-            <Field id="email" label="Your Email" type="email" />
-            <Field id="phone" label="Your Contact Number" type="tel" />
-          </div>
-          <div className="mt-4">
-            <Field id="subject" label="Subject" />
-          </div>
-          <div className="mt-4">
-            <label htmlFor="message" className="text-sm font-medium">Message</label>
-            <textarea id="message" name="message" rows={5} placeholder="Message" className="mt-2 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-amber-700" />
-          </div>
-          <button type="button" className="mt-5 rounded-lg bg-amber-900 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-800">Send Message</button>
-        </form>
-      </section>
-
-      <section className="bg-white px-4 py-12 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2">
+      <section className="bg-white px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           <AddressCard title="Trust Head Office" lines={contactContent.headOffice} />
           <AddressCard title="Vasavi Shanthi Dham" lines={contactContent.vasaviDham} />
         </div>
+        <div className="mx-auto mt-8 max-w-7xl"><PrimaryLink href="/overview">Explore the kshetram</PrimaryLink></div>
       </section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />
@@ -60,31 +73,19 @@ export default async function ContactPage() {
   );
 }
 
-function ContactCard({ label, value }: { label: string; value: string }) {
+function ContactCard({ icon: Icon, label, value }: { icon: typeof MapPin; label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{label}</p>
-      <p className="mt-2 text-sm leading-7 text-stone-600">{value}</p>
+    <div className="flex gap-4 rounded-2xl border border-[#d6b681] bg-[#f8edda]/70 p-4">
+      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#9d431f]" aria-hidden="true" />
+      <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8f3d1e]">{label}</p><p className="mt-1 text-sm leading-6 text-[#634a3c]">{value}</p></div>
     </div>
   );
 }
 
 function Field({ id, label, type = "text" }: { id: string; label: string; type?: string }) {
-  return (
-    <div>
-      <label htmlFor={id} className="text-sm font-medium">{label}</label>
-      <input id={id} name={id} type={type} placeholder={label} className="mt-2 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-amber-700" />
-    </div>
-  );
+  return <label htmlFor={id} className="text-sm font-medium text-stone-700">{label}<input id={id} name={id} type={type} placeholder={label} className="mt-2 w-full rounded-xl border border-stone-300 bg-[#fffdf9] px-3 py-3 outline-none transition focus:border-[#9d431f] focus:ring-4 focus:ring-[#9d431f]/10" /></label>;
 }
 
 function AddressCard({ title, lines }: { title: string; lines: readonly string[] }) {
-  return (
-    <address className="not-italic">
-      <h2 className="text-xl font-semibold">{title}</h2>
-      <div className="mt-3 text-sm leading-7 text-stone-600">
-        {lines.map((line) => <p key={line}>{line}</p>)}
-      </div>
-    </address>
-  );
+  return <address className="not-italic rounded-2xl bg-[#fbf2e6] p-6 ring-1 ring-[#eadfd2]"><h2 className="display-type text-2xl text-[#3b241c]">{title}</h2><div className="mt-3 text-sm leading-7 text-stone-600">{lines.map((line) => <p key={line}>{line}</p>)}</div></address>;
 }
