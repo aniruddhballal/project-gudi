@@ -47,7 +47,7 @@ export default async function AboutPage() {
       <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.completed.eyebrow} title={copy.completed.title} />
-          <ProjectJourney projects={aboutContent.projects} unavailableImage={copy.unavailableImage} />
+          <ProjectJourney projects={aboutContent.projects} />
           <PrimaryLink href="/donations">{copy.completed.action}</PrimaryLink>
         </div>
       </section>
