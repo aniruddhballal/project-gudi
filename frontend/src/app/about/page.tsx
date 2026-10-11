@@ -1,5 +1,6 @@
 import { ContentImage } from "@/components/content-image";
 import { AimsList } from "@/components/aims-list";
+import { ProjectJourney } from "@/components/project-journey";
 import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -46,20 +47,7 @@ export default async function AboutPage() {
       <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.completed.eyebrow} title={copy.completed.title} />
-          <div className="mt-9 grid gap-5 lg:grid-cols-2">
-            {aboutContent.projects.map((project, index) => (
-              <article key={`${project.date}-${project.title}`} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#eadfd2] sm:grid-cols-[10rem_1fr] sm:items-start">
-                <div className="flex min-h-32 items-center justify-center rounded-xl bg-[#fbf2e6] p-3">
-                  {project.image ? <ContentImage src={project.image} alt={project.title} className="h-auto max-h-40 w-auto max-w-full object-contain" /> : <p className="text-center text-xs text-stone-500">{copy.unavailableImage}</p>}
-                </div>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#a45826]">{project.date}</p>
-                  <h3 className="display-type mt-2 text-2xl text-[#3b241c]">{index + 1}. {project.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProjectJourney projects={aboutContent.projects} unavailableImage={copy.unavailableImage} />
           <PrimaryLink href="/donations">{copy.completed.action}</PrimaryLink>
         </div>
       </section>
