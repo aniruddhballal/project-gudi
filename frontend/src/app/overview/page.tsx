@@ -16,17 +16,15 @@ export default async function OverviewPage() {
 
       <PageHero eyebrow={copy.eyebrow} title={overviewContent.title} description={copy.description} />
 
-      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
-          <div className="flex items-center justify-center overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] p-5 shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2] sm:p-8">
-            <ContentImage src={overviewContent.heroImage ?? "/legacy/overview/top.png"} alt={copy.heroAlt} className="h-auto max-h-[34rem] w-auto max-w-full object-contain" />
+      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="mx-auto flex w-fit max-w-full items-center justify-center rounded-full bg-[#fbf2e6]/80 px-8 py-4 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#eadfd2] sm:px-12 sm:py-5">
+            <ContentImage src={overviewContent.heroImage ?? "/legacy/overview/top.png"} alt="" className="h-auto w-[min(18rem,60vw)] max-w-full object-contain" />
           </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#a45826]">{copy.activityEyebrow}</p>
-            <h2 className="display-type mt-3 text-4xl leading-tight text-[#3b241c] sm:text-5xl">{overviewContent.activity.title}</h2>
-            <p className="mt-5 max-w-xl text-base leading-8 text-stone-600">{copy.activityDescription}</p>
-            <div className="mt-7 flex flex-wrap gap-3"><PrimaryLink href={overviewContent.activity.donationHref} external>{copy.donate}</PrimaryLink><SecondaryLink href="/about">{copy.learn}</SecondaryLink></div>
-          </div>
+          <p className="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-[#a45826]">{copy.activityEyebrow}</p>
+          <h2 className="display-type mx-auto mt-3 max-w-4xl text-4xl leading-tight text-[#3b241c] sm:text-5xl lg:text-6xl">{overviewContent.activity.title}</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-stone-600">{copy.activityDescription}</p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3"><PrimaryLink href={overviewContent.activity.donationHref} external>{copy.donate}</PrimaryLink><SecondaryLink href="/about">{copy.learn}</SecondaryLink></div>
         </div>
       </section>
 
