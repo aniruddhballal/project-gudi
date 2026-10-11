@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 import { ContentImage } from "@/components/content-image";
+import { PrimaryLink, SectionHeading, SecondaryLink } from "@/components/public-page";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getSiteContent } from "@/lib/site-content";
+import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 
 export default async function HomePage() {
   const { home: homeContent } = await getSiteContent();
@@ -13,134 +15,32 @@ export default async function HomePage() {
     <main className="min-h-screen bg-[#f7f3ed] text-[#241b18]">
       <SiteHeader />
 
-      <section className="px-4 pb-5 pt-5 sm:px-8 lg:px-12 lg:pb-7 lg:pt-7">
-        <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-[#2c1916] shadow-[0_24px_70px_rgba(78,42,24,0.18)]">
-          <ContentImage src={hero.image} alt={hero.title} className="mx-auto h-auto max-h-[44rem] w-full object-contain opacity-75 transition duration-700 hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#20100e]/90 via-[#2c1916]/45 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-12 lg:max-w-3xl lg:p-16">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Vasavi Penugonda · Sacred beginnings</p>
-            <h1 className="display-type mt-4 text-5xl leading-[0.98] sm:text-7xl">{hero.title}</h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-stone-200 sm:text-lg">{hero.description}</p>
-            <Link href={hero.href} className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f5c66b] px-5 py-3 text-sm font-bold text-[#2c1916] hover:bg-white">
-              Discover the Trust <span aria-hidden="true" className="text-lg">↗</span>
-            </Link>
-          </div>
-          <div className="absolute right-6 top-6 hidden rounded-full border border-white/30 px-4 py-2 text-xs font-semibold text-white/80 sm:block">Penugonda, Andhra Pradesh</div>
+      <section className="bg-[#2c1916] px-4 py-5 text-white sm:px-8 lg:px-12 lg:py-7">
+        <div className="mx-auto grid max-w-[1440px] gap-8 overflow-hidden rounded-[2rem] bg-[#321c17] p-5 shadow-[0_24px_70px_rgba(78,42,24,0.18)] sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14 lg:p-12">
+          <div className="order-2 lg:order-1"><p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Vasavi Penugonda · Sacred beginnings</p><h1 className="display-type mt-4 text-5xl leading-[0.98] sm:text-7xl">{hero.title}</h1><p className="mt-5 max-w-xl text-base leading-7 text-stone-200 sm:text-lg">{hero.description}</p><div className="mt-8"><PrimaryLink href={hero.href}>Discover the Trust</PrimaryLink></div></div>
+          <div className="order-1 flex min-h-[18rem] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[#17100e] p-4 sm:min-h-[24rem] sm:p-7 lg:order-2"><ContentImage src={hero.image} alt={hero.title} className="h-auto max-h-[38rem] w-auto max-w-full object-contain" /></div>
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Explore Penugonda" title="A living centre of faith and service" description="Move through the Trust’s story, places, people, and ways to participate." />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredSlides.map((slide) => (
-              <Link key={slide.image} href={slide.href} className="group overflow-hidden rounded-2xl bg-[#2c1916] text-white shadow-sm">
-                <ContentImage src={slide.image} alt={slide.title} className="h-auto w-full opacity-75 transition duration-500 group-hover:scale-105 group-hover:opacity-90" />
-                <div className="p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-300">Vasavi Penugonda</p>
-                  <h2 className="mt-2 text-2xl font-semibold leading-tight">{slide.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-stone-200">{slide.description}</p>
-                  <span className="mt-4 inline-flex text-sm font-bold text-amber-200">Explore <span aria-hidden="true" className="ml-2 transition-transform group-hover:translate-x-1">→</span></span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto max-w-7xl"><SectionHeading eyebrow="Explore Penugonda" title="A living centre of faith and service" description="Move through the Trust's story, places, people, and ways to participate." /><div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{featuredSlides.map((slide) => <Link key={slide.image} href={slide.href} className="group overflow-hidden rounded-[1.5rem] bg-[#2c1916] text-white shadow-[0_12px_35px_rgba(78,42,24,0.07)]"><div className="flex min-h-44 items-center justify-center bg-[#17100e] p-4"><ContentImage src={slide.image} alt={slide.title} className="h-auto max-h-56 w-auto max-w-full object-contain transition duration-500" /></div><div className="p-5"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-300">Vasavi Penugonda</p><h2 className="display-type mt-2 text-2xl">{slide.title}</h2><p className="mt-2 text-sm leading-6 text-stone-200">{slide.description}</p><span className="mt-4 inline-flex items-center text-sm font-bold text-amber-200">Explore <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></span></div></Link>)}</div></div></section>
 
-      <section className="page-grid border-y border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.8fr] lg:items-start">
-          <div className="lg:sticky lg:top-8">
-            <SectionHeading eyebrow="The Trust" title="A place with a purpose" description={homeContent.description} />
-            <Link href="/about" className="mt-7 inline-flex rounded-full border border-[#8f3d1e] px-5 py-3 text-sm font-bold text-[#8f3d1e] hover:bg-[#8f3d1e] hover:text-white">Read about the Trust <span aria-hidden="true" className="ml-2">↗</span></Link>
-          </div>
-          <div>
-            <h2 className="display-type text-3xl text-[#3b241c] sm:text-4xl">Aims &amp; objectives</h2>
-            <ol className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {homeContent.aims.map((aim, index) => (
-                <li key={aim} className="rounded-2xl bg-white p-5 shadow-[0_5px_18px_rgba(87,50,29,0.05)] ring-1 ring-[#eadfd2]">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f5c66b] text-sm font-bold text-[#3b241c]">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="mt-4 text-sm leading-6 text-stone-600">{aim}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <section className="page-grid border-y border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"><div className="lg:sticky lg:top-8"><SectionHeading eyebrow="The Trust" title="A place with a purpose" description={homeContent.description} /><div className="mt-7"><SecondaryLink href="/about">Read about the Trust</SecondaryLink></div></div><div><h2 className="display-type text-3xl text-[#3b241c] sm:text-4xl">Aims &amp; objectives</h2><ol className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{homeContent.aims.map((aim, index) => <li key={aim} className="rounded-2xl bg-white p-5 shadow-[0_5px_18px_rgba(87,50,29,0.05)] ring-1 ring-[#eadfd2]"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f5c66b] text-sm font-bold text-[#3b241c]">{String(index + 1).padStart(2, "0")}</span><p className="mt-4 text-sm leading-6 text-stone-600">{aim}</p></li>)}</ol></div></div></section>
 
-      <section className="bg-[#fffdf9] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="A message from the Trust" title="For every devotee who visits" />
-          <div className="mt-9 grid overflow-hidden rounded-[1.5rem] bg-[#2c1916] text-white lg:grid-cols-[0.8fr_1.1fr_1.1fr]">
-            <div className="bg-[#2c1916]">
-              <ContentImage src={homeContent.president.image} alt="Dr. P. N. Govindarajulu" className="h-auto w-full" />
-              <div className="p-6"><p className="text-sm font-bold text-amber-300">Dr. P. N. Govindarajulu</p><p className="mt-1 text-xs text-stone-300">President, Akhila Bharata Vasavi Penugonda Trust</p></div>
-            </div>
-            <MessageColumn title="ಕನ್ನಡ" paragraphs={homeContent.president.kannada} />
-            <MessageColumn title="English" paragraphs={homeContent.president.english} />
-          </div>
-        </div>
-      </section>
+      <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto max-w-7xl"><SectionHeading eyebrow="A message from the Trust" title="For every devotee who visits" /><div className="mt-9 grid overflow-hidden rounded-[1.5rem] bg-[#2c1916] text-white lg:grid-cols-[0.8fr_1.1fr_1.1fr]"><div className="flex flex-col bg-[#321c17]"><div className="flex flex-1 items-center justify-center bg-[#17100e] p-5"><ContentImage src={homeContent.president.image} alt="Dr. P. N. Govindarajulu" className="h-auto max-h-[28rem] w-auto max-w-full object-contain" /></div><div className="p-6"><p className="text-sm font-bold text-amber-300">Dr. P. N. Govindarajulu</p><p className="mt-1 text-xs text-stone-300">President, Akhila Bharata Vasavi Penugonda Trust</p></div></div><MessageColumn title="ಕನ್ನಡ" paragraphs={homeContent.president.kannada} /><MessageColumn title="English" paragraphs={homeContent.president.english} /></div></div></section>
 
-      <section className="bg-[#ead6b4] px-4 py-12 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Upcoming event</p><h2 className="display-type mt-2 text-3xl text-[#3b241c] sm:text-4xl">{homeContent.event.name}</h2></div>
-          <a href={homeContent.event.bulletinHref} target="_blank" rel="noreferrer" className="inline-flex w-fit shrink-0 rounded-full bg-[#8f3d1e] px-5 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">Open bulletin <span aria-hidden="true" className="ml-2">↗</span></a>
-        </div>
-      </section>
+      <section className="bg-[#ead6b4] px-4 py-12 sm:px-8 lg:px-12 lg:py-16"><div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]"><CalendarDays className="h-4 w-4" /> Upcoming event</p><h2 className="display-type mt-2 text-3xl text-[#3b241c] sm:text-4xl">{homeContent.event.name}</h2></div><a href={homeContent.event.bulletinHref} target="_blank" rel="noreferrer" className="inline-flex w-fit shrink-0 items-center rounded-full bg-[#9d431f] px-5 py-3 text-sm font-bold text-white hover:bg-[#7d3218]">Open bulletin <ArrowRight className="ml-2 h-4 w-4" /></a></div></section>
 
-      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Explore further" title="Everything you need for your visit" />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {homeContent.majorLinks.map((link, index) => (
-              <Link key={link.href} href={link.href} className="group rounded-2xl border border-[#dfd1c2] bg-white p-6 shadow-sm hover:-translate-y-1 hover:border-[#c58a43] hover:shadow-lg">
-                <span className="text-xs font-bold text-[#b66b2a]">0{index + 1}</span>
-                <h2 className="mt-8 text-xl font-semibold text-[#3b241c]">{link.label}</h2>
-                <span className="mt-5 block text-sm font-bold text-[#8f3d1e]">Visit page <span aria-hidden="true" className="ml-1 transition-transform group-hover:translate-x-1">→</span></span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto max-w-7xl"><SectionHeading eyebrow="Explore further" title="Everything you need for your visit" /><div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{homeContent.majorLinks.map((link, index) => <Link key={link.href} href={link.href} className="group rounded-[1.5rem] border border-[#dfd1c2] bg-white p-6 shadow-[0_8px_24px_rgba(78,42,24,0.05)] transition hover:-translate-y-1 hover:border-[#c58a43] hover:shadow-lg"><span className="text-xs font-bold text-[#b66b2a]">0{index + 1}</span><h2 className="display-type mt-8 text-2xl text-[#3b241c]">{link.label}</h2><span className="mt-5 inline-flex items-center text-sm font-bold text-[#9d431f]">Visit page <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></span></Link>)}</div></div></section>
 
-      <section className="bg-[#fffdf9] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="People behind the project" title="Great souls" description="The people whose service and vision continue to shape Vasavi Penugonda." />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {homeContent.greatSouls.slice(0, 8).map((person) => (
-              <article key={person.name} className="overflow-hidden rounded-2xl border border-[#eadfd2] bg-[#f7f3ed]">
-                <div className="bg-[#e9dfd3]"><ContentImage src={person.image} alt={person.name} className="h-auto w-full" /></div>
-                <div className="p-5"><h3 className="font-semibold text-[#3b241c]">{person.name}</h3>{person.role && <p className="mt-1 text-sm font-semibold text-[#a45826]">{person.role}</p>}{person.description && <p className="mt-3 line-clamp-4 text-sm leading-6 text-stone-600">{person.description}</p>}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto max-w-7xl"><SectionHeading eyebrow="People behind the project" title="Great souls" description="The people whose service and vision continue to shape Vasavi Penugonda." /><div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{homeContent.greatSouls.slice(0, 8).map((person) => <article key={person.name} className="overflow-hidden rounded-[1.5rem] border border-[#eadfd2] bg-[#f7f3ed]"><div className="flex min-h-52 items-center justify-center bg-[#fbf2e6] p-4"><ContentImage src={person.image} alt={person.name} className="h-auto max-h-64 w-auto max-w-full object-contain" /></div><div className="p-5"><h3 className="font-semibold text-[#3b241c]">{person.name}</h3>{person.role && <p className="mt-1 text-sm font-semibold text-[#a45826]">{person.role}</p>}{person.description && <p className="mt-3 line-clamp-4 text-sm leading-6 text-stone-600">{person.description}</p>}</div></article>)}</div></div></section>
 
-      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><SectionHeading eyebrow="Gallery" title="A glimpse of the kshetram" /><Link href="/gallery/photos" className="text-sm font-bold text-[#8f3d1e] hover:text-[#5d2615]">View full gallery <span aria-hidden="true">→</span></Link></div>
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {homeContent.gallery.map((photo, index) => <div key={photo.image} className={`overflow-hidden rounded-2xl bg-[#e9dfd3] ${index === 0 ? "col-span-2" : ""}`}><ContentImage src={photo.image} alt={photo.alt} className="h-auto w-full transition duration-500 hover:scale-105" /></div>)}
-          </div>
-        </div>
-      </section>
+      <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto max-w-7xl"><div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><SectionHeading eyebrow="Gallery" title="A glimpse of the kshetram" /><Link href="/gallery/photos" className="inline-flex items-center text-sm font-bold text-[#9d431f] hover:text-[#6e2c17]">View full gallery <ArrowRight className="ml-2 h-4 w-4" /></Link></div><div className="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4">{homeContent.gallery.map((photo, index) => <div key={photo.image} className={`flex items-center justify-center overflow-hidden rounded-2xl bg-[#fbf2e6] p-3 ${index === 0 ? "col-span-2" : ""}`}><ContentImage src={photo.image} alt={photo.alt} className="h-auto max-h-[22rem] w-auto max-w-full object-contain" /></div>)}</div></div></section>
 
-      <section className="bg-[#2c1916] px-4 py-14 text-white sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div><p className="text-xs font-bold uppercase tracking-[0.24em] text-amber-300">Visit us</p><h2 className="display-type mt-3 text-4xl sm:text-5xl">Come to Penugonda.<br />Stay connected.</h2><div className="mt-8 grid gap-6 sm:grid-cols-2">{homeContent.contact.map((location) => <address key={location.name} className="not-italic text-sm leading-7 text-stone-300"><h3 className="font-bold text-white">{location.name}</h3>{location.lines.map((line) => <p key={line}>{line}</p>)}</address>)}</div><Link href="/contact" className="mt-8 inline-flex rounded-full bg-[#f5c66b] px-5 py-3 text-sm font-bold text-[#2c1916] hover:bg-white">Get directions and contact details <span aria-hidden="true" className="ml-2">↗</span></Link></div>
-          <div className="rounded-[1.5rem] bg-white p-7 text-[#3b241c] sm:p-9"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Stay in the loop</p><h2 className="display-type mt-3 text-3xl">Our Newsletter</h2><p className="mt-3 text-sm leading-6 text-stone-600">Receive updates about events, sevas, and the work of the Trust.</p><form className="mt-6 grid gap-3"><label htmlFor="newsletter-email" className="sr-only">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" className="rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm outline-none focus:border-[#a45826]" /><button type="submit" className="rounded-xl bg-[#8f3d1e] px-4 py-3 text-sm font-bold text-white hover:bg-[#6e2c17]">Subscribe</button></form><p className="mt-3 text-xs text-stone-400">Subscription will be connected to the backend API in V2.</p></div>
-        </div>
-      </section>
+      <section className="bg-[#2c1916] px-4 py-14 text-white sm:px-8 lg:px-12 lg:py-20"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-amber-300"><MapPin className="h-4 w-4" /> Visit us</p><h2 className="display-type mt-3 text-4xl sm:text-5xl">Come to Penugonda.<br />Stay connected.</h2><div className="mt-8 grid gap-6 sm:grid-cols-2">{homeContent.contact.map((location) => <address key={location.name} className="not-italic text-sm leading-7 text-stone-300"><h3 className="font-bold text-white">{location.name}</h3>{location.lines.map((line) => <p key={line}>{line}</p>)}</address>)}</div><div className="mt-8"><PrimaryLink href="/contact">Get directions and contact details</PrimaryLink></div></div><div className="rounded-[1.5rem] bg-white p-7 text-[#3b241c] sm:p-9"><p className="text-xs font-bold uppercase tracking-[0.24em] text-[#a45826]">Stay in the loop</p><h2 className="display-type mt-3 text-3xl">Our Newsletter</h2><p className="mt-3 text-sm leading-6 text-stone-600">Receive updates about events, sevas, and the work of the Trust.</p><form className="mt-6 grid gap-3"><label htmlFor="newsletter-email" className="sr-only">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" className="rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm outline-none focus:border-[#a45826]" /><button type="submit" className="rounded-xl bg-[#9d431f] px-4 py-3 text-sm font-bold text-white hover:bg-[#7d3218]">Subscribe</button></form><p className="mt-3 text-xs text-stone-400">Subscription will be connected to the backend API in V2.</p></div></div></section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />
     </main>
   );
-}
-
-function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
-  return <div><p className="text-xs font-bold uppercase tracking-[0.25em] text-[#a45826]">{eyebrow}</p><h2 className="display-type mt-3 text-4xl leading-tight text-[#3b241c] sm:text-5xl">{title}</h2>{description && <p className="mt-4 max-w-2xl text-base leading-7 text-stone-600">{description}</p>}</div>;
 }
 
 function MessageColumn({ title, paragraphs }: { title: string; paragraphs: readonly string[] }) {
