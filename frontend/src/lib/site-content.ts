@@ -103,7 +103,7 @@ export type RuntimeNewsItem = {
 
 export async function getNewsItems(): Promise<RuntimeNewsItem[]> {
   try {
-    const data = await fetchJson("/api/articles?limit=100&sort=legacyId&depth=1");
+    const data = await fetchJson("/api/articles?limit=100&sort=-publishedAt&depth=1");
     if (!Array.isArray(data.docs)) throw new Error("Payload articles response is invalid.");
     return data.docs.map((article: any) => ({
       id: article.legacyId ?? article.id,
