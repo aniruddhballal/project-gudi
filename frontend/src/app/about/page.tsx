@@ -1,4 +1,5 @@
 import { ContentImage } from "@/components/content-image";
+import { AimsExplorer } from "@/components/aims-explorer";
 import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -14,20 +15,7 @@ export default async function AboutPage() {
       <PageHero eyebrow="About the Trust" title={aboutContent.title} description={aboutContent.introduction} />
 
       <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <SectionHeading eyebrow="The Trust" title="A place with a purpose" description="The Trust exists to nurture faith, service, community, and the future of Vasavi Penugonda." />
-          <div>
-            <h2 className="display-type text-3xl text-[#3b241c] sm:text-4xl">Aims &amp; objectives</h2>
-            <ol className="mt-7 grid gap-3 sm:grid-cols-2">
-              {homeContent.aims.map((aim, index) => (
-                <li key={aim} className="rounded-2xl bg-white p-5 shadow-[0_5px_18px_rgba(87,50,29,0.05)] ring-1 ring-[#eadfd2]">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5c66b] text-sm font-bold text-[#3b241c]">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="mt-4 text-sm leading-6 text-stone-600">{aim}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="The Trust" title="A place with a purpose" description="The Trust exists to nurture faith, service, community, and the future of Vasavi Penugonda." /><div className="mt-9"><AimsExplorer aims={homeContent.aims} /></div></div>
       </section>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
