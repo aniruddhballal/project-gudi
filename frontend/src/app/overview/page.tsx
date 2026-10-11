@@ -38,9 +38,9 @@ export default async function OverviewPage() {
       </section>
 
       <section className="bg-[#ead6b4] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-14">
-          <SectionHeading eyebrow={overviewContent.story.eyebrow} title={overviewContent.story.title} description={copy.storyDescription} />
-          <div className="rounded-[1.5rem] border border-[#d6b681] bg-[#f8edda]/70 p-7 sm:p-9"><div className="space-y-5 text-base leading-8 text-[#634a3c]">{overviewContent.story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="mt-7"><SecondaryLink href="/story">{copy.storyAction}</SecondaryLink></div></div>
+        <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-4xl text-center"><SectionHeading eyebrow={overviewContent.story.eyebrow} title={overviewContent.story.title} description={copy.storyDescription} /></div>
+          <div className="mx-auto mt-8 max-w-4xl rounded-[1.5rem] border border-[#d6b681] bg-[#f8edda]/70 p-7 sm:p-9"><div className="space-y-5 text-base leading-8 text-[#634a3c]">{overviewContent.story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="mt-7"><SecondaryLink href="/story">{copy.storyAction}</SecondaryLink></div></div>
         </div>
       </section>
 
