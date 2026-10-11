@@ -6,22 +6,23 @@ import path from 'node:path'
 import { getPayload } from 'payload'
 
 import config from '../src/payload.config'
-import { homeContent } from '../../frontend/src/content/home'
-import { aboutContent } from '../../frontend/src/content/about'
-import { contactContent } from '../../frontend/src/content/contact'
-import { donationsContent } from '../../frontend/src/content/donations'
-import { annadanamContent } from '../../frontend/src/content/donation-annadanam'
-import { ehundiContent } from '../../frontend/src/content/donation-ehundi'
-import { goshalaContent } from '../../frontend/src/content/donation-goshala'
-import { newsletterContent } from '../../frontend/src/content/newsletter'
-import { overviewContent } from '../../frontend/src/content/overview'
-import { photosContent } from '../../frontend/src/content/photos'
-import { privacyContent } from '../../frontend/src/content/privacy'
-import { storyContent } from '../../frontend/src/content/story'
-import { trusteesContent } from '../../frontend/src/content/trustees'
-import { vasaviDhamContent } from '../../frontend/src/content/vasavi-dham'
-import { videosContent } from '../../frontend/src/content/videos'
-import { newsContent } from '../../frontend/src/content/news'
+import { homeContent } from '../src/content/home'
+import { aboutContent } from '../src/content/about'
+import { contactContent } from '../src/content/contact'
+import { donationsContent } from '../src/content/donations'
+import { annadanamContent } from '../src/content/donation-annadanam'
+import { ehundiContent } from '../src/content/donation-ehundi'
+import { goshalaContent } from '../src/content/donation-goshala'
+import { newsletterContent } from '../src/content/newsletter'
+import { overviewContent } from '../src/content/overview'
+import { photosContent } from '../src/content/photos'
+import { privacyContent } from '../src/content/privacy'
+import { storyContent } from '../src/content/story'
+import { trusteesContent } from '../src/content/trustees'
+import { vasaviDhamContent } from '../src/content/vasavi-dham'
+import { videosContent } from '../src/content/videos'
+import { newsContent } from '../src/content/news'
+import { siteCopy } from '../src/content/site-copy'
 
 const frontendPublic = path.resolve(process.cwd(), '../frontend/public')
 const legacyRoot = path.join(frontendPublic, 'legacy')
@@ -120,6 +121,7 @@ async function main() {
     data: {
       logo: image('/legacy/home/logo.png'),
       siteTitle: homeContent.siteTitle,
+      copy: siteCopy,
     } as any,
   })
 
@@ -127,7 +129,7 @@ async function main() {
       home: {
         siteTitle: homeContent.siteTitle,
         description: homeContent.description,
-        aims: textList(homeContent.aims),
+        aims: homeContent.aims,
         heroSlides: homeContent.heroSlides.map((slide) => ({ ...slide, image: image(slide.image) })),
         president: {
           image: image(homeContent.president.image),

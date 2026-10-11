@@ -468,6 +468,15 @@ export interface SiteSetting {
   id: number;
   logo?: (number | null) | Media;
   siteTitle: string;
+  copy?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -482,6 +491,7 @@ export interface HomePage {
   aims?:
     | {
         text?: string | null;
+        emphasis?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -617,6 +627,7 @@ export interface DonationsPage {
   intro?: string | null;
   options?:
     | {
+        key: string;
         image?: (number | null) | Media;
         title: string;
         description?: string | null;
@@ -936,6 +947,7 @@ export interface SiteContent {
     aims?:
       | {
           text?: string | null;
+          emphasis?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -1056,6 +1068,7 @@ export interface SiteContent {
     intro?: string | null;
     options?:
       | {
+          key: string;
           image?: (number | null) | Media;
           title: string;
           description?: string | null;
@@ -1320,6 +1333,7 @@ export interface SiteContent {
 export interface SiteSettingsSelect<T extends boolean = true> {
   logo?: T;
   siteTitle?: T;
+  copy?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1335,6 +1349,7 @@ export interface HomePageSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
+        emphasis?: T;
         id?: T;
       };
   heroSlides?:
@@ -1474,6 +1489,7 @@ export interface DonationsPageSelect<T extends boolean = true> {
   options?:
     | T
     | {
+        key?: T;
         image?: T;
         title?: T;
         description?: T;
@@ -1809,6 +1825,7 @@ export interface SiteContentSelect<T extends boolean = true> {
           | T
           | {
               text?: T;
+              emphasis?: T;
               id?: T;
             };
         heroSlides?:
@@ -1939,6 +1956,7 @@ export interface SiteContentSelect<T extends boolean = true> {
         options?:
           | T
           | {
+              key?: T;
               image?: T;
               title?: T;
               description?: T;

@@ -62,7 +62,12 @@ export const SiteContent: GlobalConfig = {
       fields: [
         { name: 'siteTitle', type: 'text', required: true },
         { name: 'description', type: 'textarea' },
-        textList('aims', 'Aims and objectives'),
+        {
+          name: 'aims',
+          label: 'Aims and objectives',
+          type: 'array',
+          fields: [{ name: 'text', type: 'textarea' }, { name: 'emphasis', type: 'text', label: 'Highlighted phrase' }],
+        },
         {
           name: 'heroSlides',
           type: 'array',
@@ -132,7 +137,13 @@ export const SiteContent: GlobalConfig = {
         {
           name: 'options',
           type: 'array',
-          fields: [media('image'), { name: 'title', type: 'text', required: true }, { name: 'description', type: 'textarea' }, { name: 'href', type: 'text' }],
+          fields: [
+            { name: 'key', type: 'text', required: true },
+            media('image'),
+            { name: 'title', type: 'text', required: true },
+            { name: 'description', type: 'textarea' },
+            { name: 'href', type: 'text' },
+          ],
         },
       ],
     },

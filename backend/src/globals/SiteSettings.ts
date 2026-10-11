@@ -26,5 +26,10 @@ export const SiteSettings: GlobalConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'copy',
+      label: 'Frontend copy and navigation',
+      type: 'json',
+    },
   ],
 }

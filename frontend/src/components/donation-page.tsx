@@ -8,7 +8,7 @@ import { ArrowDown, CheckCircle2, HeartHandshake, Sparkles } from "lucide-react"
 type DonationPageProps = {
   title: string;
   eyebrow: string;
-  image: string;
+  image: string | null;
   formType: string;
   paragraphs: readonly string[];
   highlight?: string;
@@ -24,8 +24,9 @@ export async function DonationPage({
   highlight,
   sectionTitle,
 }: DonationPageProps) {
-  const { home: homeContent } = await getSiteContent();
-  const imageFrameClass = title === "E-Hundi" ? "bg-[#17100e]" : "bg-[#ead8bd]";
+  const { home: homeContent, siteSettings } = await getSiteContent();
+  const copy = siteSettings.copy.pages.donationDetail;
+  const imageFrameClass = formType === "eHundi" ? "bg-[#17100e]" : "bg-[#ead8bd]";
 
   return (
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
@@ -36,17 +37,17 @@ export async function DonationPage({
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-amber-300"><Sparkles className="h-4 w-4" /> {eyebrow}</p>
-            <h1 className="display-type mt-4 max-w-xl text-5xl leading-[0.98] sm:text-6xl">{title} is a quiet act of care.</h1>
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#f5e5d5]">Offer support to Vasavi Shanthidham Penugonda and help keep this sacred place welcoming for every devotee who arrives.</p>
+            <h1 className="display-type mt-4 max-w-xl text-5xl leading-[0.98] sm:text-6xl">{title} {copy.heroSuffix}</h1>
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#f5e5d5]">{copy.heroDescription}</p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#f5e5d5]">
-              <span className="inline-flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-amber-300" /> Directly supports this seva</span>
-              <span className="inline-flex items-center gap-2"><HeartHandshake className="h-4 w-4 text-amber-300" /> Every offering matters</span>
+              <span className="inline-flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-amber-300" /> {copy.supportLabel}</span>
+              <span className="inline-flex items-center gap-2"><HeartHandshake className="h-4 w-4 text-amber-300" /> {copy.offeringLabel}</span>
             </div>
           </div>
           <div className={`relative mx-auto w-full max-w-2xl overflow-hidden rounded-[2rem] ${imageFrameClass} shadow-[0_24px_70px_rgba(0,0,0,0.24)]`}>
             <ContentImage src={image} alt={title} className="h-auto max-h-[38rem] w-full object-contain" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/5" />
-            <p className="absolute bottom-5 left-5 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur sm:bottom-7 sm:left-7">Vasavi Penugonda · seva</p>
+            <p className="absolute bottom-5 left-5 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur sm:bottom-7 sm:left-7">{copy.imageLabel}</p>
           </div>
         </div>
       </section>
@@ -55,8 +56,8 @@ export async function DonationPage({
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-14">
           <div className="lg:sticky lg:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">Why your offering matters</p>
-            <h2 className="display-type mt-3 max-w-lg text-4xl leading-tight text-[#3b241c] sm:text-5xl">A simple offering. A lasting blessing.</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#8f3d1e]">{copy.whyEyebrow}</p>
+            <h2 className="display-type mt-3 max-w-lg text-4xl leading-tight text-[#3b241c] sm:text-5xl">{copy.whyTitle}</h2>
             <div className="mt-8 space-y-4 text-sm leading-7 text-[#634a3c]">
               {paragraphs.slice(0, 3).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
@@ -66,8 +67,8 @@ export async function DonationPage({
             </div>}
           </div>
           <div>
-            <DonationForm formType={formType} title={title} />
-            <p className="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold text-[#634a3c]"><ArrowDown className="h-4 w-4" /> Your details stay with the Trust for this offering</p>
+            <DonationForm formType={formType} title={title} copy={copy} />
+            <p className="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold text-[#634a3c]"><ArrowDown className="h-4 w-4" /> {copy.privacyNote}</p>
           </div>
         </div>
       </section>

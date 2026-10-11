@@ -5,15 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
-type MenuItem = { label: string; href: string };
-
-const menuGroups: Array<{ label: string; items: MenuItem[] }> = [
-  { label: "Overview", items: [{ label: "Overview", href: "/overview" }, { label: "News", href: "/news" }, { label: "Newsletter", href: "/newsletter" }] },
-  { label: "Services", items: [{ label: "About the Trust", href: "/about" }, { label: "Vasavi Dham", href: "/vasavi-dham" }] },
-  { label: "Donations", items: [{ label: "All donations", href: "/donations" }, { label: "Annadanam", href: "/donations/annadanam" }, { label: "Go Shala", href: "/donations/goshala" }, { label: "E-Hundi", href: "/donations/e-hundi" }] },
-  { label: "Gallery", items: [{ label: "Photos", href: "/gallery/photos" }, { label: "Videos", href: "/gallery/videos" }] },
-];
+import type { SiteCopy } from "@/lib/site-content-types";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -23,7 +15,7 @@ function linkClass(active: boolean) {
   return `rounded-md px-2.5 py-2 text-sm transition-colors ${active ? "font-bold text-[#8f3d1e]" : "text-stone-600 hover:bg-[#f3eee6] hover:text-[#8f3d1e]"}`;
 }
 
-export function SiteHeaderClient({ siteTitle, logo }: { siteTitle: string; logo: string }) {
+export function SiteHeaderClient({ siteTitle, logo, copy }: { siteTitle: string; logo: string; copy: SiteCopy["navigation"] }) {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -50,8 +42,8 @@ export function SiteHeaderClient({ siteTitle, logo }: { siteTitle: string; logo:
     <header className="relative z-30 bg-[#fffdf9] shadow-[0_1px_0_rgba(71,42,30,0.08)]">
       <div className="bg-[#2c1916] px-5 py-2 text-[11px] font-semibold tracking-[0.12em] text-amber-100 sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <p className="truncate">AKHILA BHARAT SRI VASAVI PENUGONDA TRUST</p>
-          <Link href="/contact" className="shrink-0 text-amber-300 hover:text-white">PLAN YOUR VISIT <span aria-hidden="true">↗</span></Link>
+          <p className="truncate">{copy.topbarLabel}</p>
+          <Link href="/contact" className="shrink-0 text-amber-300 hover:text-white">{copy.visitCta} <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8 lg:px-12">
@@ -60,13 +52,13 @@ export function SiteHeaderClient({ siteTitle, logo }: { siteTitle: string; logo:
           <span className="max-w-64 text-[13px] font-bold uppercase leading-[1.15] tracking-[0.035em] text-[#2c1916] sm:text-sm">{siteTitle}</span>
         </Link>
 
-        <button type="button" className="rounded-lg border border-stone-200 p-2.5 text-[#2c1916] lg:hidden" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>
+        <button type="button" className="rounded-lg border border-stone-200 p-2.5 text-[#2c1916] lg:hidden" aria-label={mobileOpen ? copy.closeMenu : copy.openMenu} aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
         <nav ref={menuRef} className={`${mobileOpen ? "flex" : "hidden"} absolute inset-x-0 top-full flex-col gap-1 border-t border-stone-200 bg-[#fffdf9] p-4 shadow-xl lg:static lg:flex lg:flex-1 lg:flex-row lg:items-center lg:justify-end lg:gap-1 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none`} aria-label="Primary navigation">
-          <Link href="/" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/"))}>Home</Link>
-          {menuGroups.map((group) => {
+          <Link href="/" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/"))}>{copy.home}</Link>
+          {copy.groups.map((group) => {
             const active = group.items.some((item) => isActive(pathname, item.href));
             const isOpen = openMenu === group.label;
             return (
@@ -81,9 +73,9 @@ export function SiteHeaderClient({ siteTitle, logo }: { siteTitle: string; logo:
               </div>
             );
           })}
-          <Link href="/story" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/story"))}>Story</Link>
-          <Link href="/trustees" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/trustees"))}>Trustees</Link>
-          <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-2 rounded-lg bg-[#9d431f] px-4 py-2.5 text-center text-sm font-bold text-white hover:bg-[#7d3218] lg:ml-2 lg:mt-0">Contact the Trust</Link>
+          <Link href="/story" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/story"))}>{copy.story}</Link>
+          <Link href="/trustees" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/trustees"))}>{copy.trustees}</Link>
+          <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-2 rounded-lg bg-[#9d431f] px-4 py-2.5 text-center text-sm font-bold text-white hover:bg-[#7d3218] lg:ml-2 lg:mt-0">{copy.contact}</Link>
         </nav>
       </div>
     </header>

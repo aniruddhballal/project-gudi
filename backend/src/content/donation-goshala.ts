@@ -12,3 +12,5 @@ export const goshalaContent = {
     "Thank you for your kind contribution, and may your act of giving bring you profound blessings and fulfillment.",
   ],
 } as const;
+
+

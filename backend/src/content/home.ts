@@ -50,15 +50,15 @@ export const homeContent = {
     },
   ] satisfies HomeHeroSlide[],
   aims: [
-    "To develop Penugonda on par with Kasi, Tirumala, Annavaram, Bhadrachalam, Simhachalam etc.",
-    "To provide accommodation, free food, free Hostels and Hospitals.",
-    "To build Vasavi Rishi Gothra Suvarna Mandir.",
-    "To install the world’s tallest 90 ft. tall Panchaloha idol of Matha Vasavi in the sanctum sanctorum of Vasavi Rishi Gothra Suvarna Mandir.",
-    "To preach and spread the principles of non-violence, love, peace and sacrifice to the world.",
-    "To inspire Vysyas spread all over the world to visit Penugonda at least once during their lifetime.",
-    "To finalise the history of Penugonda and pooja vidhanas, Astothara / Sahasra Namavali of Vasavi and adopt the same in all Vasavi Temples worldwide.",
-    "To start Veda Patasala, Guru Peetam, educational institutions up to deemed university, an old age home, and a widow rehabilitation centre.",
-    "To perform free marriages and set up libraries for in-depth study of Vasavi charithra.",
+    { text: "To develop Penugonda on par with Kasi, Tirumala, Annavaram, Bhadrachalam, Simhachalam etc.", emphasis: "To develop Penugonda" },
+    { text: "To provide accommodation, free food, free Hostels and Hospitals.", emphasis: "To provide accommodation, free food, free Hostels and Hospitals" },
+    { text: "To build Vasavi Rishi Gothra Suvarna Mandir.", emphasis: "To build Vasavi Rishi Gothra Suvarna Mandir" },
+    { text: "To install the world’s tallest 90 ft. tall Panchaloha idol of Matha Vasavi in the sanctum sanctorum of Vasavi Rishi Gothra Suvarna Mandir.", emphasis: "To install the world’s tallest 90 ft. tall Panchaloha idol" },
+    { text: "To preach and spread the principles of non-violence, love, peace and sacrifice to the world.", emphasis: "To preach and spread the principles of non-violence, love, peace and sacrifice" },
+    { text: "To inspire Vysyas spread all over the world to visit Penugonda at least once during their lifetime.", emphasis: "To inspire Vysyas spread all over the world" },
+    { text: "To finalise the history of Penugonda and pooja vidhanas, Astothara / Sahasra Namavali of Vasavi and adopt the same in all Vasavi Temples worldwide.", emphasis: "To finalise the history of Penugonda" },
+    { text: "To start Veda Patasala, Guru Peetam, educational institutions up to deemed university, an old age home, and a widow rehabilitation centre.", emphasis: "To start Veda Patasala, Guru Peetam" },
+    { text: "To perform free marriages and set up libraries for in-depth study of Vasavi charithra.", emphasis: "To perform free marriages and set up libraries" },
   ],
   president: {
     image: "/legacy/home/president.jpg",
@@ -153,3 +153,5 @@ export const homeContent = {
   ],
   email: "vasavipenugonda@gmail.com",
 } as const;
+
+

@@ -53,7 +53,7 @@ Next.js frontend
 Public website
 ```
 
-The frontend reads its live page content, articles, videos, and media from the backend. It has no static content fallback, so the backend must be running during local development.
+The frontend reads its live page content, copy, articles, videos, and media from the backend. It has no static content fallback, so the backend must be running during local development. Seed content and the editable copy dictionary live under [`backend/src/content/`](./backend/src/content/); the frontend contains only API response types and rendering logic.
 
 ## Repository structure
 

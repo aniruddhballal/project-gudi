@@ -39,3 +39,5 @@ export const vasaviDhamContent = {
     ["50 KW Solar Power Plant", "Completed project", "solar.jpg"],
   ].map(([title, date, image]) => ({ title, date, image: `/legacy/vasavi-dham/projects/${image}` })),
 } as const;
+
+

@@ -15,3 +15,5 @@ export const annadanamContent = {
     "We have served more than 1 crore (1,00,00,000) meals to devotees devoid of Caste, Creed, Religion to anyone who visits Vasavi Shanthidham, Penugonda",
   sectionTitle: "Shaswatha Annadanam Scheme",
 } as const;
+
+

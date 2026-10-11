@@ -5,23 +5,24 @@ import { getSiteContent } from "@/lib/site-content";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export default async function ContactPage() {
-  const { contact: contactContent, home: homeContent } = await getSiteContent();
+  const { contact: contactContent, home: homeContent, siteSettings } = await getSiteContent();
+  const copy = siteSettings.copy.pages.contact;
   return (
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <PageHero eyebrow="Visit and connect" title={contactContent.title} description="Reach Vasavi Shanti Dham in Penugonda or connect with the Trust office in Bangalore." />
+      <PageHero eyebrow={copy.eyebrow} title={contactContent.title} description={copy.description} />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
         <div className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_18px_50px_rgba(78,42,24,0.08)] ring-1 ring-[#eadfd2]">
           <div className="flex items-end justify-between gap-4 border-b border-[#eadfd2] px-6 py-5 sm:px-8">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]">Find your way</p>
-              <h2 className="display-type mt-2 text-3xl text-[#3b241c]">The kshetram in Penugonda</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]">{copy.map.eyebrow}</p>
+              <h2 className="display-type mt-2 text-3xl text-[#3b241c]">{copy.map.title}</h2>
             </div>
             <MapPin className="h-6 w-6 text-[#a45826]" aria-hidden="true" />
           </div>
-          <iframe title="Vasavi Penugonda Trust location" src={contactContent.mapEmbed} className="h-[24rem] w-full border-0 sm:h-[32rem]" loading="lazy" allowFullScreen />
+          <iframe title={copy.map.iframeTitle} src={contactContent.mapEmbed} className="h-[24rem] w-full border-0 sm:h-[32rem]" loading="lazy" allowFullScreen />
         </div>
       </section>
 
@@ -29,43 +30,43 @@ export default async function ContactPage() {
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-14">
           <div>
-            <SectionHeading eyebrow="Contact the Trust" title="We are here to help." description="Questions about visiting, volunteering, donating, or the work of Vasavi Penugonda? Reach out and the Trust team will guide you." />
+            <SectionHeading eyebrow={copy.trust.eyebrow} title={copy.trust.title} description={copy.trust.description} />
             <div className="mt-8 grid gap-3">
-              <ContactCard icon={MapPin} label="Location" value={contactContent.location} />
-              <ContactCard icon={Mail} label="Email" value={contactContent.email} />
-              <ContactCard icon={Phone} label="Call" value={contactContent.phone} />
+              <ContactCard icon={MapPin} label={copy.labels.location} value={contactContent.location} />
+              <ContactCard icon={Mail} label={copy.labels.email} value={contactContent.email} />
+              <ContactCard icon={Phone} label={copy.labels.phone} value={contactContent.phone} />
             </div>
           </div>
 
           <form className="grid gap-5 rounded-[2rem] bg-white p-6 shadow-[0_22px_60px_rgba(71,36,22,0.12)] ring-1 ring-[#eadfd2] sm:p-8">
             <div className="border-b border-stone-200 pb-5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#9d431f]">Write to us</p>
-              <h2 className="display-type mt-2 text-3xl text-[#321c17]">Send a message</h2>
-              <p className="mt-2 text-sm leading-6 text-stone-500">The form is ready for backend contact delivery in the next integration phase.</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#9d431f]">{copy.form.eyebrow}</p>
+              <h2 className="display-type mt-2 text-3xl text-[#321c17]">{copy.form.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-stone-500">{copy.form.description}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field id="name" label="Your name" />
-              <Field id="email" label="Your email" type="email" />
+              <Field id="name" label={copy.form.name} />
+              <Field id="email" label={copy.form.email} type="email" />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field id="phone" label="Phone number" type="tel" />
-              <Field id="subject" label="Subject" />
+              <Field id="phone" label={copy.form.phone} type="tel" />
+              <Field id="subject" label={copy.form.subject} />
             </div>
             <div>
-              <label htmlFor="message" className="text-sm font-medium text-stone-700">Message</label>
-              <textarea id="message" name="message" rows={5} placeholder="How can we help?" className="mt-2 w-full rounded-xl border border-stone-300 bg-[#fffdf9] px-3 py-3 text-sm outline-none transition focus:border-[#9d431f] focus:ring-4 focus:ring-[#9d431f]/10" />
+              <label htmlFor="message" className="text-sm font-medium text-stone-700">{copy.form.message}</label>
+              <textarea id="message" name="message" rows={5} placeholder={copy.form.messagePlaceholder} className="mt-2 w-full rounded-xl border border-stone-300 bg-[#fffdf9] px-3 py-3 text-sm outline-none transition focus:border-[#9d431f] focus:ring-4 focus:ring-[#9d431f]/10" />
             </div>
-            <button type="button" className="inline-flex w-fit items-center rounded-xl bg-[#9d431f] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7d3218]">Send message</button>
+            <button type="button" className="inline-flex w-fit items-center rounded-xl bg-[#9d431f] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7d3218]">{copy.form.submit}</button>
           </form>
         </div>
       </section>
 
       <section className="bg-white px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
-          <AddressCard title="Trust Head Office" lines={contactContent.headOffice} />
-          <AddressCard title="Vasavi Shanthi Dham" lines={contactContent.vasaviDham} />
+          <AddressCard title={copy.labels.headOffice} lines={contactContent.headOffice} />
+          <AddressCard title={copy.labels.dham} lines={contactContent.vasaviDham} />
         </div>
-        <div className="mx-auto mt-8 max-w-7xl"><PrimaryLink href="/overview">Explore the kshetram</PrimaryLink></div>
+        <div className="mx-auto mt-8 max-w-7xl"><PrimaryLink href="/overview">{copy.labels.explore}</PrimaryLink></div>
       </section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />

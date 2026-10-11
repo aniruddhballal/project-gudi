@@ -107,3 +107,5 @@ export const newsContent = {
     },
   ] satisfies NewsItem[],
 } as const;
+
+

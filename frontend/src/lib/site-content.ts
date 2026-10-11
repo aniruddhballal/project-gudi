@@ -1,50 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { homeContent } from "@/content/home";
-import type { aboutContent } from "@/content/about";
-import type { contactContent } from "@/content/contact";
-import type { donationsContent } from "@/content/donations";
-import type { annadanamContent } from "@/content/donation-annadanam";
-import type { ehundiContent } from "@/content/donation-ehundi";
-import type { goshalaContent } from "@/content/donation-goshala";
-import type { newsletterContent } from "@/content/newsletter";
-import type { overviewContent } from "@/content/overview";
-import type { photosContent } from "@/content/photos";
-import type { privacyContent } from "@/content/privacy";
-import type { storyContent } from "@/content/story";
-import type { trusteesContent } from "@/content/trustees";
-import type { vasaviDhamContent } from "@/content/vasavi-dham";
+import { cache } from "react";
+import type { SiteContent } from "@/lib/site-content-types";
 
 const payloadUrl = process.env.PAYLOAD_API_URL ?? "http://localhost:3000";
-
-export type SiteContent = {
-  home: typeof homeContent;
-  about: typeof aboutContent;
-  contact: typeof contactContent;
-  donations: typeof donationsContent;
-  donationPages: {
-    annadanam: typeof annadanamContent;
-    ehundi: typeof ehundiContent;
-    goshala: typeof goshalaContent;
-  };
-  newsletter: typeof newsletterContent;
-  news: { title: string };
-  overview: typeof overviewContent & { heroImage: string | null };
-  photos: typeof photosContent;
-  privacy: typeof privacyContent;
-  story: typeof storyContent & { coverImage: string | null };
-  trustees: typeof trusteesContent;
-  vasaviDham: typeof vasaviDhamContent;
-  siteSettings: {
-    siteTitle: string;
-    logo: string;
-  };
-};
 
 type PayloadMedia = { url?: string | null };
 
 const mediaKeys = new Set(["image", "thumbnail", "logo", "heroImage", "coverImage"]);
-const textListKeys = new Set(["aims", "kannada", "english", "lines", "paragraphs", "introduction", "historicEvents", "headOffice", "vasaviDham"]);
+const textListKeys = new Set(["kannada", "english", "lines", "paragraphs", "introduction", "historicEvents", "headOffice", "vasaviDham"]);
 
 function mediaUrl(value: unknown): string | null {
   if (typeof value === "string") return value;
@@ -85,7 +49,7 @@ async function fetchJson(path: string) {
   return response.json();
 }
 
-export async function getSiteContent(): Promise<SiteContent> {
+export const getSiteContent = cache(async (): Promise<SiteContent> => {
   try {
     const [home, about, contact, donations, annadanam, ehundi, goshala, newsletter, news, overview, photos, privacy, story, trustees, vasaviDham, settings] = await Promise.all([
       fetchJson("/api/globals/home-page?depth=1"),
@@ -124,7 +88,7 @@ export async function getSiteContent(): Promise<SiteContent> {
   } catch (error) {
     throw new Error(`Payload is unavailable at ${payloadUrl}.`, { cause: error });
   }
-}
+});
 
 export type RuntimeNewsItem = {
   id: number;

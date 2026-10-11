@@ -10,3 +10,5 @@ export const photosContent = {
     "Model Rishi Gotra Mandir",
   ].map((title) => ({ title, photoCount: 0 })),
 } as const;
+
+

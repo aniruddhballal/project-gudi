@@ -47,3 +47,5 @@ export const trusteesContent = {
     { name: "Sri Kotla Venkateswara Rao", role: "Chairman LAC", description: "Ex-President of Mandal Panchayath, Penugonda, Ex-President of SVKP & Dr. S.S. Raju Arts & Science College, Penugonda and a leading Jeweller in Bhimavaram, Hyderabad & Vizag.", image: "/legacy/trustees/kotla-venkateshwara-rao.png" },
   ] satisfies Trustee[],
 } as const;
+
+

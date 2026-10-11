@@ -68,3 +68,5 @@ export const storyContent = {
   ],
   closing: "Bharath Ratna Dr. Sarvepalli Radhakrishnan, Past President of India, has indeed very rightly described Goddess VASAVI as the FIRST ever known embodiment of NON-VIOLENCE in the world. Her path of non-violence was later tread by Jesus Christ, Goutam Buddha, Mahatma Gandhi, Satya Sai Baba, Potti Sriramulu of AP and Martin Luther King. Penugonda the abode of Vasavi, situated in West Godavari District of Andhra Pradesh is well connected by Road and Rail",
 } as const;
+
+
