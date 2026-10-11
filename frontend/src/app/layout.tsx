@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vasavi Penugonda",
+  title: "Vasavi Penugonda Temple",
   description: "The new frontend for the Vasavi Penugonda temple website.",
   icons: {
     icon: "/legacy/home/logo.png",
