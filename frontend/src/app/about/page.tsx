@@ -22,19 +22,23 @@ export default async function AboutPage() {
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.construction.eyebrow} title={copy.construction.title} description={copy.construction.description} />
-          <div className="mt-9 grid gap-6 lg:grid-cols-2">
-            {aboutContent.underConstruction.map((project) => (
-              <article key={project.title} className="overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] ring-1 ring-[#eadfd2]">
-                <div className="flex items-center justify-center border-b border-[#eadfd2] p-5 sm:p-7">
-                  <ContentImage src={project.image ?? "/legacy/home/logo.png"} alt={project.title} className="h-auto max-h-[26rem] w-auto max-w-full object-contain" />
-                </div>
-                <div className="p-7 sm:p-9">
-                  <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]"><CheckCircle2 className="h-4 w-4" /> {copy.progressLabel}</p>
-                  <h2 className="display-type mt-3 text-3xl text-[#3b241c]">{project.title}</h2>
-                  <p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-9 space-y-6">
+            {aboutContent.underConstruction.map((project, index) => {
+              const imageOnRight = index % 2 === 1;
+
+              return (
+                <article key={project.title} className="grid overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] ring-1 ring-[#eadfd2] lg:grid-cols-2">
+                  <div className={`flex items-center justify-center p-5 sm:p-8 ${imageOnRight ? "lg:order-2" : "lg:order-1"}`}>
+                    <ContentImage src={project.image ?? "/legacy/home/logo.png"} alt={project.title} className="h-auto max-h-[32rem] w-auto max-w-full object-contain" />
+                  </div>
+                  <div className={`flex flex-col justify-center border-t border-[#eadfd2] p-7 sm:p-10 lg:border-t-0 ${imageOnRight ? "lg:order-1 lg:border-r" : "lg:order-2 lg:border-l"}`}>
+                    <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#a45826]"><CheckCircle2 className="h-4 w-4" /> {copy.progressLabel}</p>
+                    <h2 className="display-type mt-3 text-3xl text-[#3b241c] sm:text-4xl">{project.title}</h2>
+                    <p className="mt-4 text-sm leading-7 text-stone-600">{project.description}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
