@@ -1,7 +1,9 @@
 import { ContentImage } from "@/components/content-image";
+import { PageHero, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getNewsItems, getSiteContent } from "@/lib/site-content";
+import { ArrowRight, Newspaper } from "lucide-react";
 
 export default async function NewsPage() {
   const { home: homeContent, news: newsContent } = await getSiteContent();
@@ -10,50 +12,10 @@ export default async function NewsPage() {
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">Updates</p>
-          <h1 className="display-type mt-4 text-5xl leading-tight sm:text-6xl">{newsContent.title}</h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">News and historical updates carried over from the original public website.</p>
-        </div>
-      </section>
+      <PageHero eyebrow="Updates" title={newsContent.title} description="News and historical updates carried over from the original public website." />
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8 lg:px-12">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {newsItems.map((item) => (
-            <article id={`article-${item.id}`} key={item.id} className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-              <div className="flex items-center justify-center bg-stone-100">
-                {item.image ? (
-                  <ContentImage src={item.image} alt={item.title} className="h-auto w-full object-contain" />
-                ) : (
-                  <div className="px-6 text-center text-sm text-stone-500">Original article image unavailable in the public capture.</div>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">{item.date}</p>
-                <h2 className="mt-3 text-xl font-semibold">{item.title}</h2>
-                <p className="mt-3 text-sm leading-7 text-stone-600">{item.summary}</p>
-                {item.details.length > 0 && (
-                  <details className="mt-4 text-sm text-stone-600">
-                    <summary className="cursor-pointer font-semibold text-amber-800">Read more</summary>
-                    <div className="mt-3 space-y-3 leading-7">
-                      {item.details.map((detail) => <p key={detail}>{detail}</p>)}
-                    </div>
-                  </details>
-                )}
-                <div className="mt-auto pt-5">
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noreferrer" className="text-sm font-semibold text-amber-800 hover:text-amber-950">Open attached item →</a>
-                  ) : item.sourceImage ? (
-                    <p className="text-xs leading-5 text-stone-400">Legacy image source: {item.sourceImage}</p>
-                  ) : (
-                    <p className="text-xs text-stone-400">Legacy article id: {item.id}; full detail endpoint was not captured.</p>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="From the Trust" title="Stay close to what is happening" description="Read announcements, programme updates, and the latest public information from Vasavi Penugonda." /><div className="mt-9 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{newsItems.map((item) => <article id={`article-${item.id}`} key={item.id} className="flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_12px_35px_rgba(78,42,24,0.07)] ring-1 ring-[#eadfd2]"><div className="flex items-center justify-center overflow-hidden border-b border-[#eadfd2] bg-[#fbf2e6] p-5">{item.image ? <ContentImage src={item.image} alt={item.title} className="h-auto max-h-[22rem] w-auto max-w-full object-contain" /> : <div className="flex min-h-40 items-center justify-center text-center text-sm text-stone-500">Original article image unavailable.</div>}</div><div className="flex flex-1 flex-col p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a45826]"><Newspaper className="h-4 w-4" /> {item.date}</p><h2 className="display-type mt-3 text-2xl text-[#3b241c]">{item.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{item.summary}</p>{item.details.length > 0 && <details className="mt-4 text-sm text-stone-600"><summary className="cursor-pointer font-semibold text-[#9d431f]">Read more</summary><div className="mt-3 space-y-3 leading-7">{item.details.map((detail) => <p key={detail}>{detail}</p>)}</div></details>}<div className="mt-auto pt-6">{item.href ? <a href={item.href} target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-bold text-[#9d431f] hover:text-[#6e2c17]">Open attached item <ArrowRight className="ml-2 h-4 w-4" /></a> : item.sourceImage ? <p className="text-xs leading-5 text-stone-400">Legacy image source: {item.sourceImage}</p> : <p className="text-xs text-stone-400">Legacy article id: {item.id}; full detail endpoint was not captured.</p>}</div></div></article>)}</div></div>
       </section>
 
       <SiteFooter siteTitle={homeContent.siteTitle} />

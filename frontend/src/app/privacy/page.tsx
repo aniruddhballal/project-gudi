@@ -1,6 +1,8 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/public-page";
 import { getSiteContent } from "@/lib/site-content";
+import { ShieldCheck } from "lucide-react";
 
 export default async function PrivacyPage() {
   const { home: homeContent, privacy: privacyContent } = await getSiteContent();
@@ -8,24 +10,12 @@ export default async function PrivacyPage() {
     <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
       <SiteHeader />
 
-      <section className="bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">Legal</p>
-          <h1 className="display-type mt-4 max-w-4xl text-5xl leading-tight sm:text-6xl">{privacyContent.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-amber-50">{privacyContent.intro}</p>
-        </div>
-      </section>
+      <PageHero eyebrow="Legal" title={privacyContent.title} description={privacyContent.intro} />
 
-      <article className="mx-auto max-w-4xl px-4 py-12 sm:px-8 lg:px-12">
-        <div className="space-y-10 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200 sm:p-10">
-          {privacyContent.sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="text-2xl font-semibold text-stone-900">{section.title}</h2>
-              <div className="mt-4 space-y-4 text-base leading-8 text-stone-700">
-                {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-            </section>
-          ))}
+      <article className="mx-auto max-w-5xl px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_12px_35px_rgba(78,42,24,0.07)] ring-1 ring-[#eadfd2]">
+          <div className="flex items-center gap-4 border-b border-[#eadfd2] bg-[#fbf2e6] px-6 py-5 sm:px-9"><ShieldCheck className="h-6 w-6 text-[#9d431f]" aria-hidden="true" /><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f3d1e]">Trust and privacy</p></div>
+          <div className="space-y-10 p-6 sm:p-10">{privacyContent.sections.map((section) => <section key={section.title} className="border-b border-[#eadfd2] pb-8 last:border-0 last:pb-0"><h2 className="display-type text-3xl text-[#3b241c]">{section.title}</h2><div className="mt-4 space-y-4 text-base leading-8 text-stone-700">{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section>)}</div>
         </div>
         <p className="mt-6 text-sm leading-6 text-stone-500">This page preserves the public source policy text. It requires legal and product review before the revamped site is treated as the operative policy.</p>
       </article>
