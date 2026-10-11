@@ -58,7 +58,7 @@ export function ProjectJourney({ projects, unavailableImage }: ProjectJourneyPro
 
   return (
     <div className="mt-9 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
-      <aside className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 lg:self-start">
+      <aside className="lg:sticky lg:top-28 lg:self-start lg:pt-10">
         <div className="rounded-[1.5rem] bg-[#2c1916] p-6 text-white shadow-[0_18px_50px_rgba(78,42,24,0.14)] sm:p-7">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-300">The journey</p>
           <p className="mt-3 text-sm leading-6 text-[#f5e5d5]">Scroll through the moments that shaped Vasavi Dham.</p>
@@ -84,10 +84,8 @@ export function ProjectJourney({ projects, unavailableImage }: ProjectJourneyPro
 
           {activeProject && (
             <div className="mt-7 border-t border-white/15 pt-5" aria-live="polite">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#cfae9b]">Now viewing</p>
-              <p className="mt-2 text-sm font-semibold text-amber-200">{activeProject.date}</p>
-              <h3 className="display-type mt-2 text-2xl leading-tight">{activeProject.title}</h3>
-              <p className="mt-3 text-xs font-semibold text-[#cfae9b]">Milestone {String(activeIndex + 1).padStart(2, "0")} of {projects.length}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#cfae9b]">Progress</p>
+              <p className="mt-2 text-2xl font-semibold text-amber-200">{String(activeIndex + 1).padStart(2, "0")} <span className="text-sm font-normal text-[#cfae9b]">/ {projects.length} milestones</span></p>
             </div>
           )}
         </div>
