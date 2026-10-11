@@ -32,20 +32,15 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
     function updateActiveMilestone() {
       frame = 0;
       const readingLine = window.innerHeight * 0.34;
-      let closestIndex = 0;
-      let closestDistance = Number.POSITIVE_INFINITY;
+      let currentIndex = 0;
 
       itemRefs.current.forEach((item, index) => {
         if (!item) return;
 
-        const distance = Math.abs(item.getBoundingClientRect().top - readingLine);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
+        if (item.getBoundingClientRect().top <= readingLine) currentIndex = index;
       });
 
-      setActiveIndex((currentIndex) => currentIndex === closestIndex ? currentIndex : closestIndex);
+      setActiveIndex((previousIndex) => previousIndex === currentIndex ? previousIndex : currentIndex);
     }
 
     function handleScroll() {
