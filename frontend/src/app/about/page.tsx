@@ -48,7 +48,9 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.completed.eyebrow} title={copy.completed.title} />
           <ProjectJourney projects={aboutContent.projects} />
-          <PrimaryLink href="/donations">{copy.completed.action}</PrimaryLink>
+          <div className="mt-10 flex justify-center border-t border-[#e8ddd0] pt-8">
+            <PrimaryLink href="/donations">{copy.completed.action}</PrimaryLink>
+          </div>
         </div>
       </section>
 
