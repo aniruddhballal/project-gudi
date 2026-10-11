@@ -1,5 +1,5 @@
 import { ContentImage } from "@/components/content-image";
-import { AimsExplorer } from "@/components/aims-explorer";
+import { AimsList } from "@/components/aims-list";
 import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,7 +15,7 @@ export default async function VasaviDhamPage() {
       <PageHero eyebrow="Trust and facilities" title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
 
       <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="The Trust" title="A shared foundation" description="The same aims guide the facilities, projects, and service that make Vasavi Dham a living centre for the community." /><div className="mt-9"><AimsExplorer aims={homeContent.aims} /></div></div>
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="The Trust" title="A shared foundation" description="The same aims guide the facilities, projects, and service that make Vasavi Dham a living centre for the community." /><div className="mt-9"><AimsList aims={homeContent.aims} /></div></div>
       </section>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">

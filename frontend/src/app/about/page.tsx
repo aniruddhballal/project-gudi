@@ -1,5 +1,5 @@
 import { ContentImage } from "@/components/content-image";
-import { AimsExplorer } from "@/components/aims-explorer";
+import { AimsList } from "@/components/aims-list";
 import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,7 +15,7 @@ export default async function AboutPage() {
       <PageHero eyebrow="About the Trust" title={aboutContent.title} description={aboutContent.introduction} />
 
       <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="The Trust" title="A place with a purpose" description="The Trust exists to nurture faith, service, community, and the future of Vasavi Penugonda." /><div className="mt-9"><AimsExplorer aims={homeContent.aims} /></div></div>
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow="The Trust" title="A place with a purpose" description="The Trust exists to nurture faith, service, community, and the future of Vasavi Penugonda." /><div className="mt-9"><AimsList aims={homeContent.aims} /></div></div>
       </section>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
