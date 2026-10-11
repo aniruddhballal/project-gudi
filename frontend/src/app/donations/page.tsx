@@ -70,8 +70,8 @@ export default async function DonationsPage() {
         <div className="grid items-stretch gap-6 lg:grid-cols-2">
           {donationsContent.options.filter((option) => option.title !== "Go Shala").map((option) => (
             <article key={option.title} className="flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_12px_35px_rgba(78,42,24,0.07)] ring-1 ring-[#eadfd2]">
-              <div className="flex min-h-[18rem] items-center justify-center overflow-hidden border-b border-[#eadfd2] bg-[#fbf2e6]">
-                <ContentImage src={option.image} alt={option.title} className="h-full max-h-[25rem] w-full object-cover transition duration-500 hover:scale-[1.03]" />
+              <div className="flex items-center justify-center overflow-hidden border-b border-[#eadfd2] bg-[#fbf2e6] p-5 sm:p-7">
+                <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[31rem] w-auto max-w-full object-contain transition duration-500 hover:scale-[1.015]" />
               </div>
               <DonationCopy option={option} />
             </article>
@@ -80,8 +80,8 @@ export default async function DonationsPage() {
 
         {donationsContent.options.filter((option) => option.title === "Go Shala").map((option) => (
           <article key={option.title} className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-[0_12px_35px_rgba(78,42,24,0.07)] ring-1 ring-[#eadfd2] lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-stretch">
-            <div className="flex min-h-[18rem] items-center justify-center overflow-hidden border-b border-[#eadfd2] bg-[#fbf2e6] lg:min-h-0 lg:border-b-0 lg:border-r">
-              <ContentImage src={option.image} alt={option.title} className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]" />
+            <div className="flex items-center justify-center overflow-hidden border-b border-[#eadfd2] bg-[#fbf2e6] p-5 sm:p-7 lg:border-b-0 lg:border-r">
+              <ContentImage src={option.image} alt={option.title} className="h-auto max-h-[28rem] w-auto max-w-full object-contain transition duration-500 hover:scale-[1.015]" />
             </div>
             <DonationCopy option={option} />
           </article>

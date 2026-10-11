@@ -43,8 +43,8 @@ export async function DonationPage({
               <span className="inline-flex items-center gap-2"><HeartHandshake className="h-4 w-4 text-amber-300" /> Every offering matters</span>
             </div>
           </div>
-          <div className={`relative mx-auto aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-[2rem] ${imageFrameClass} shadow-[0_24px_70px_rgba(0,0,0,0.24)]`}>
-            <ContentImage src={image} alt={title} className="h-full w-full object-cover" />
+          <div className={`relative mx-auto w-full max-w-2xl overflow-hidden rounded-[2rem] ${imageFrameClass} shadow-[0_24px_70px_rgba(0,0,0,0.24)]`}>
+            <ContentImage src={image} alt={title} className="h-auto max-h-[38rem] w-full object-contain" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/5" />
             <p className="absolute bottom-5 left-5 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur sm:bottom-7 sm:left-7">Vasavi Penugonda · seva</p>
           </div>
