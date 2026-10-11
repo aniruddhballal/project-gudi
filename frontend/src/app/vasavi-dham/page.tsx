@@ -1,6 +1,5 @@
 import { ContentImage } from "@/components/content-image";
-import { AimsList } from "@/components/aims-list";
-import { PageHero, PrimaryLink, SectionHeading } from "@/components/public-page";
+import { PageHero, PrimaryLink, SectionHeading, SecondaryLink } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
@@ -16,7 +15,7 @@ export default async function VasaviDhamPage() {
       <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
 
       <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.aimsEyebrow} title={copy.aimsTitle} description={copy.aimsDescription} /><div className="mt-9"><AimsList aims={homeContent.aims} /></div></div>
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.aimsEyebrow} title={copy.aimsTitle} description={copy.aimsDescription} /><div className="mt-8"><SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink></div></div>
       </section>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
