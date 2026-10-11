@@ -61,7 +61,7 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
         <div className="rounded-[1.5rem] bg-[#2c1916] p-5 text-white shadow-[0_18px_50px_rgba(78,42,24,0.14)] sm:p-6">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-300">The journey</p>
           <p className="mt-2 text-sm leading-6 text-[#f5e5d5]">Scroll through the moments that shaped Vasavi Dham.</p>
-          <nav aria-label="Project timeline" className="mt-5 grid grid-cols-3 gap-1.5">
+          <nav aria-label="Project timeline" className="mt-5 space-y-1.5">
             {eras.map((era) => {
               const firstIndex = projects.findIndex((project) => getYear(project.date) === era);
               const isActive = getYear(activeProject?.date ?? "") === era;
@@ -72,10 +72,10 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
                   type="button"
                   aria-current={isActive ? "step" : undefined}
                   onClick={() => jumpToEra(era)}
-                  className={`rounded-lg px-2 py-2 text-xs font-semibold transition-colors ${isActive ? "bg-[#f5c66b] text-[#3b241c]" : "text-[#f5e5d5] hover:bg-white/10"}`}
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-xs font-semibold transition-colors ${isActive ? "bg-[#f5c66b] text-[#3b241c]" : "text-[#f5e5d5] hover:bg-white/10"}`}
                 >
                   <span>{era}</span>
-                  <span className={`ml-1 ${isActive ? "text-[#7d3218]" : "text-[#cfae9b]"}`}>{String(firstIndex + 1).padStart(2, "0")}</span>
+                  <span className={isActive ? "text-[#7d3218]" : "text-[#cfae9b]"}>{String(firstIndex + 1).padStart(2, "0")}</span>
                 </button>
               );
             })}
