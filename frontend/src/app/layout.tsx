@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Vasavi Penugonda",
   description: "The new frontend for the Vasavi Penugonda temple website.",
+  icons: {
+    icon: "/legacy/home/logo.png",
+    apple: "/legacy/home/logo.png",
+  },
 };
 
 export const dynamic = "force-dynamic";
