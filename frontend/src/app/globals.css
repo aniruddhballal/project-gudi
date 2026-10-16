@@ -36,3 +36,24 @@ a {
   background-image: linear-gradient(rgba(113, 74, 42, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(113, 74, 42, 0.045) 1px, transparent 1px);
   background-size: 34px 34px;
 }
+
+.people-photo-frame {
+  display: flex;
+  width: 150px;
+  height: 180px;
+  flex: 0 0 150px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(197, 138, 67, 0.28);
+  border-radius: 1rem;
+  background: #f4e7d7;
+}
+
+@media (max-width: 639px) {
+  .people-photo-frame {
+    width: 126px;
+    height: 154px;
+    flex-basis: 126px;
+  }
+}
