@@ -77,6 +77,9 @@ test("theme switch applies the alternate page composition and persists across re
   await expect(page.locator("main[data-page='story'] section h2").first()).toHaveCSS("color", "rgb(255, 248, 231)");
   await page.goto("/donations");
   await expect(page.locator("main h1").first()).toHaveCSS("color", "rgb(255, 248, 231)");
+  const footerLink = page.locator("footer a").first();
+  await footerLink.focus();
+  await expect(footerLink).toHaveCSS("outline-color", "rgb(240, 207, 131)");
 
   if (process.env.CAPTURE_DESIGN === "1") {
     await page.screenshot({ path: "test-results/heritage-home.png", fullPage: true });

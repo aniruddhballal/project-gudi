@@ -222,7 +222,10 @@ html[data-theme="heritage"] body {
 
 [data-theme="heritage"] main[data-page] > section[class*="bg-[#183a34]"] :is(a, button, input, textarea, select, summary):focus-visible,
 [data-theme="heritage"] main[data-page] > section[class*="bg-[#142f2a]"] :is(a, button, input, textarea, select, summary):focus-visible,
-[data-theme="heritage"] main[data-page="story"] section > div[class*="bg-[#183a34]"] :is(a, button, input, textarea, select, summary):focus-visible { outline-color: #f0cf83; }
+[data-theme="heritage"] main[data-page="story"] section > div[class*="bg-[#183a34]"] :is(a, button, input, textarea, select, summary):focus-visible,
+[data-theme="heritage"] .page-hero :is(a, button, input, textarea, select, summary):focus-visible,
+[data-theme="heritage"] footer :is(a, button, input, textarea, select, summary):focus-visible,
+[data-theme="heritage"] .site-header > div:first-of-type :is(a, button, input, textarea, select, summary):focus-visible { outline-color: #f0cf83; }
 
 /* The second theme reorders the masthead into a centered temple-directory nav. */
 [data-theme="heritage"] .site-header {
