@@ -36,7 +36,7 @@ export default async function DonationsPage() {
   const { donations: donationsContent, home: homeContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.donations;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 py-16 text-white sm:px-8 lg:px-12 lg:py-20">
@@ -45,7 +45,7 @@ export default async function DonationsPage() {
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">{copy.eyebrow}</p>
-              <h1 className="display-type mt-4 max-w-3xl text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{copy.title}</h1>
+              <h1 id="page-content" className="display-type mt-4 max-w-3xl text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{copy.title}</h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-amber-50">{donationsContent.intro}</p>
             </div>
             <div className="rounded-xl border border-white/15 bg-white/10 p-6 backdrop-blur sm:p-7">

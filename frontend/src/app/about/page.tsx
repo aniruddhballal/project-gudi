@@ -11,7 +11,7 @@ export default async function AboutPage() {
   const { about: aboutContent, home: homeContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.about;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow="About the Trust" title={aboutContent.title} description={aboutContent.introduction} />

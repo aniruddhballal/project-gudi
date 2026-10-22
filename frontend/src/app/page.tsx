@@ -14,14 +14,14 @@ export default async function HomePage() {
   const people = homeContent.greatSouls;
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-[#20332e]">
+    <main className="min-h-screen bg-[#f8f6f1] text-[#20332e]">
       <SiteHeader />
 
       <section className="overflow-hidden border-b border-[#d9d2c4] bg-[#f0ece2] px-4 py-6 sm:px-8 sm:py-10 lg:px-12 lg:py-14">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-14">
           <div className="order-2 pb-3 lg:order-1 lg:py-8">
             <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#8c3c2e]"><span className="h-px w-8 bg-[#a86e38]" />{copy.home.heroEyebrow}</p>
-            <h1 className="display-type mt-5 max-w-2xl text-5xl leading-[1.02] text-[#183a34] sm:text-6xl lg:text-[5.25rem]">{hero.title}</h1>
+            <h1 id="page-content" className="display-type mt-5 max-w-2xl text-5xl leading-[1.02] text-[#183a34] sm:text-6xl lg:text-[5.25rem]">{hero.title}</h1>
             <p className="mt-5 max-w-lg text-base leading-7 text-[#4d5b52] sm:text-lg">{hero.description}</p>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3"><PrimaryLink href={hero.href}>{copy.home.heroCta}</PrimaryLink><Link href="/contact" className="inline-flex items-center text-sm font-bold text-[#203b35] underline decoration-[#bd9458] decoration-2 underline-offset-4 hover:text-[#8c3c2e]">{copy.home.visitCta}<ArrowRight className="ml-2 h-4 w-4" /></Link></div>
             <p className="mt-10 border-t border-[#d9d2c4] pt-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#697369]">{homeContent.siteTitle}</p>
@@ -29,7 +29,7 @@ export default async function HomePage() {
           <div className="order-1 relative min-h-[19rem] overflow-hidden border border-[#d5c6a9] bg-[#e7dfd0] p-3 sm:min-h-[26rem] sm:p-5 lg:order-2 lg:min-h-[34rem]">
             <div aria-hidden="true" className="pointer-events-none absolute inset-5 border border-white/65 sm:inset-7" />
             <ContentImage src={hero.image} alt={hero.title} className="relative h-full min-h-[18rem] w-full object-contain sm:min-h-[24rem] lg:min-h-[32rem]" />
-            <span className="absolute bottom-5 left-5 bg-[#f8f6f1]/95 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-[#203b35] sm:bottom-8 sm:left-8">Vasavi Penugonda Temple Trust</span>
+            <span className="absolute bottom-5 left-5 bg-[#f8f6f1]/95 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-[#203b35] sm:bottom-8 sm:left-8">{homeContent.siteTitle}</span>
           </div>
         </div>
       </section>

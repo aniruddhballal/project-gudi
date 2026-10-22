@@ -70,8 +70,6 @@ p { text-wrap: pretty; }
   background: #eee9dd;
 }
 
-main > section { scroll-margin-top: 5rem; }
-
 main > section[class*="bg-white"] { background-color: #fbfaf7; }
 
 main article[class*="rounded-[1.5rem]"],

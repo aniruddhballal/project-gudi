@@ -43,7 +43,7 @@ export function SiteHeaderClient({ siteTitle, logo, copy }: { siteTitle: string;
 
   return (
     <header className="relative z-30 border-b border-[#e2ddd1] bg-[#fbfaf7]">
-      <a href="#main-content" className="sr-only z-50 rounded-sm bg-white px-4 py-2 text-sm font-bold text-[#20332e] focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
+      <a href="#page-content" className="sr-only z-50 rounded-sm bg-white px-4 py-2 text-sm font-bold text-[#20332e] focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
       <div className="bg-[#183a34] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#eee4d3] sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <p className="truncate">{copy.topbarLabel}</p>

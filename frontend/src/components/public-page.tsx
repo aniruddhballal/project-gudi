@@ -16,7 +16,7 @@ export function PageHero({ eyebrow, title, description, children }: PageHeroProp
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-[8%] hidden h-24 w-24 translate-x-1/2 translate-y-1/2 rotate-45 border border-[#d8cfbd] lg:block" />
       <div className="relative mx-auto max-w-7xl lg:pr-[15%]">
         <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#8c3c2e]"><span className="h-px w-8 bg-[#a86e38]" />{eyebrow}</p>
-        <h1 className="display-type mt-5 max-w-5xl text-5xl leading-[1.02] text-[#203b35] sm:text-6xl lg:text-7xl">{title}</h1>
+        <h1 id="page-content" className="display-type mt-5 max-w-5xl text-5xl leading-[1.02] text-[#203b35] sm:text-6xl lg:text-7xl">{title}</h1>
         {description && <p className="mt-6 max-w-3xl text-base leading-8 text-[#4d5b52] sm:text-lg">{description}</p>}
         {children}
       </div>

@@ -9,7 +9,7 @@ export default async function StoryPage() {
   const { home: homeContent, story: storyContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.story;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={storyContent.title} description={copy.description} />

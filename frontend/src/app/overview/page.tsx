@@ -11,7 +11,7 @@ export default async function OverviewPage() {
   const { home: homeContent, overview: overviewContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.overview;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={overviewContent.title} description={copy.description} />

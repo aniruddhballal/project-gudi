@@ -8,7 +8,7 @@ export default async function ContactPage() {
   const { contact: contactContent, home: homeContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.contact;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={contactContent.title} description={copy.description} />

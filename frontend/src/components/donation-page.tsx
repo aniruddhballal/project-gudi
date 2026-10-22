@@ -29,7 +29,7 @@ export async function DonationPage({
   const imageFrameClass = formType === "eHundi" ? "bg-[#142b27]" : "bg-[#ead8bd]";
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 pb-10 pt-10 text-white sm:px-8 lg:px-12 lg:pb-14 lg:pt-14">
@@ -37,7 +37,7 @@ export async function DonationPage({
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-amber-300"><Sparkles className="h-4 w-4" /> {eyebrow}</p>
-            <h1 className="display-type mt-4 max-w-xl text-5xl leading-[0.98] sm:text-6xl">{title} {copy.heroSuffix}</h1>
+            <h1 id="page-content" className="display-type mt-4 max-w-xl text-5xl leading-[0.98] sm:text-6xl">{title} {copy.heroSuffix}</h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#f5e5d5]">{copy.heroDescription}</p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#f5e5d5]">
               <span className="inline-flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-amber-300" /> {copy.supportLabel}</span>

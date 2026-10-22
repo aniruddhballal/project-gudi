@@ -8,7 +8,7 @@ export default async function PrivacyPage() {
   const { home: homeContent, privacy: privacyContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.privacy;
   return (
-    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={privacyContent.title} description={privacyContent.intro} />
