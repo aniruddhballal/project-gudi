@@ -9,12 +9,12 @@ export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.vasaviDham;
   return (
-    <main className="min-h-screen bg-[#f7f3ed] text-stone-900">
+    <main id="main-content" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
 
-      <section className="page-grid border-b border-[#e8ddd0] bg-[#f3eee6] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
+      <section className="page-grid border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.aimsEyebrow} title={copy.aimsTitle} description={copy.aimsDescription} /><div className="mt-8"><SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink></div></div>
       </section>
 
@@ -23,9 +23,9 @@ export default async function VasaviDhamPage() {
           <SectionHeading eyebrow={copy.featuredEyebrow} title={copy.featuredTitle} />
           <div className="mt-9 grid gap-6 lg:grid-cols-3">
             {vasaviDhamContent.featured.map((project) => (
-              <article key={project.title} className="overflow-hidden rounded-[1.5rem] bg-[#fbf2e6] ring-1 ring-[#eadfd2]">
-                <div className="flex items-center justify-center border-b border-[#eadfd2] p-5 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-[24rem] w-auto max-w-full object-contain" /></div>
-                <div className="p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#a45826]"><Landmark className="h-4 w-4" /> {copy.featuredLabel}</p><h2 className="display-type mt-3 text-2xl text-[#3b241c]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
+              <article key={project.title} className="overflow-hidden rounded-xl bg-[#f6f0e3] ring-1 ring-[#e2ddd1]">
+                <div className="flex items-center justify-center border-b border-[#e2ddd1] p-5 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-[24rem] w-auto max-w-full object-contain" /></div>
+                <div className="p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#965b35]"><Landmark className="h-4 w-4" /> {copy.featuredLabel}</p><h2 className="display-type mt-3 text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
               </article>
             ))}
           </div>
@@ -36,7 +36,7 @@ export default async function VasaviDhamPage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.projectsEyebrow} title={copy.projectsTitle} />
           <div className="mt-9 grid gap-5 md:grid-cols-2">
-            {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#eadfd2] sm:grid-cols-[12rem_1fr] sm:items-center"><div className="flex items-center justify-center rounded-xl bg-[#fbf2e6] p-3"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-48 w-auto max-w-full object-contain" /></div><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a45826]"><CheckCircle2 className="h-4 w-4" /> {project.date}</p><h3 className="display-type mt-2 text-2xl text-[#3b241c]">{project.title}</h3></div></article>)}
+            {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#e2ddd1] sm:grid-cols-[12rem_1fr] sm:items-center"><div className="flex items-center justify-center rounded-xl bg-[#f6f0e3] p-3"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-48 w-auto max-w-full object-contain" /></div><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#965b35]"><CheckCircle2 className="h-4 w-4" /> {project.date}</p><h3 className="display-type mt-2 text-2xl text-[#203b35]">{project.title}</h3></div></article>)}
           </div>
           <div className="mt-9"><PrimaryLink href="/contact">{copy.projectLabel}</PrimaryLink></div>
         </div>
