@@ -11,12 +11,13 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description, children }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-[#2c1916] px-4 py-16 text-white sm:px-8 lg:px-12 lg:py-20">
-      <div className="pointer-events-none absolute -right-24 -top-28 h-96 w-96 rounded-full border-[34px] border-[#e9b86d]/10" />
-      <div className="relative mx-auto max-w-7xl">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-300">{eyebrow}</p>
-        <h1 className="display-type mt-4 max-w-5xl text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{title}</h1>
-        {description && <p className="mt-6 max-w-3xl text-lg leading-8 text-[#f5e5d5]">{description}</p>}
+    <section className="relative overflow-hidden border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#d8cfbd] lg:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-[8%] hidden h-24 w-24 translate-x-1/2 translate-y-1/2 rotate-45 border border-[#d8cfbd] lg:block" />
+      <div className="relative mx-auto max-w-7xl lg:pr-[15%]">
+        <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#8c3c2e]"><span className="h-px w-8 bg-[#a86e38]" />{eyebrow}</p>
+        <h1 className="display-type mt-5 max-w-5xl text-5xl leading-[1.02] text-[#203b35] sm:text-6xl lg:text-7xl">{title}</h1>
+        {description && <p className="mt-6 max-w-3xl text-base leading-8 text-[#4d5b52] sm:text-lg">{description}</p>}
         {children}
       </div>
     </section>
@@ -32,20 +33,19 @@ type SectionHeadingProps = {
 export function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#a45826]">{eyebrow}</p>
-      <h2 className="display-type mt-3 text-4xl leading-tight text-[#3b241c] sm:text-5xl">{title}</h2>
-      {description && <p className="mt-4 max-w-2xl text-base leading-7 text-stone-600">{description}</p>}
+      <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#965b35]"><span className="h-px w-7 bg-[#bd9458]" />{eyebrow}</p>
+      <h2 className="display-type mt-3 max-w-4xl text-4xl leading-[1.08] text-[#203b35] sm:text-5xl">{title}</h2>
+      {description && <p className="mt-4 max-w-2xl text-base leading-7 text-[#58645c]">{description}</p>}
     </div>
   );
 }
 
 export function PrimaryLink({ href, children, external = false }: { href: string; children: ReactNode; external?: boolean }) {
-  const className = "group inline-flex w-fit items-center rounded-full bg-[#9d431f] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7d3218]";
+  const className = "group inline-flex w-fit items-center rounded-sm bg-[#a44832] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#873b2b]";
   const content = <>{children}<ArrowRight aria-hidden="true" className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></>;
-
   return external ? <a href={href} target="_blank" rel="noreferrer" className={className}>{content}</a> : <Link href={href} className={className}>{content}</Link>;
 }
 
 export function SecondaryLink({ href, children }: { href: string; children: ReactNode }) {
-  return <Link href={href} className="group inline-flex w-fit items-center rounded-full border border-[#9d431f] px-5 py-3 text-sm font-bold text-[#9d431f] transition hover:bg-[#9d431f] hover:text-white">{children}<ArrowRight aria-hidden="true" className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>;
+  return <Link href={href} className="group inline-flex w-fit items-center rounded-sm border border-[#a44832] px-5 py-3 text-sm font-bold text-[#8c3c2e] transition hover:bg-[#a44832] hover:text-white">{children}<ArrowRight aria-hidden="true" className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>;
 }
