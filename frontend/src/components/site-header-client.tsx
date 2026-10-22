@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { SiteCopy } from "@/lib/site-content-types";
+import { SiteThemeToggle } from "./site-theme-toggle";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -42,7 +43,7 @@ export function SiteHeaderClient({ siteTitle, logo, copy }: { siteTitle: string;
   }, []);
 
   return (
-    <header className="relative z-30 border-b border-[#e2ddd1] bg-[#fbfaf7]">
+    <header className="site-header relative z-30 border-b border-[#e2ddd1] bg-[#fbfaf7]">
       <a href="#page-content" className="sr-only z-50 rounded-sm bg-white px-4 py-2 text-sm font-bold text-[#20332e] focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
       <div className="bg-[#183a34] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#eee4d3] sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
@@ -50,15 +51,18 @@ export function SiteHeaderClient({ siteTitle, logo, copy }: { siteTitle: string;
           <Link href="/contact" className="shrink-0 text-amber-300 hover:text-white">{copy.visitCta} <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 sm:px-8 lg:px-12">
+      <div className="site-header-main mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3 sm:gap-5 sm:px-8 lg:px-12">
         <Link href="/" className="flex min-w-0 items-center gap-3.5" aria-label={`${siteTitle} home`}>
           <Image src={logo} alt="" width={76} height={52} className="h-12 w-auto object-contain" priority />
           <span className="max-w-64 text-[11px] font-bold uppercase leading-[1.35] tracking-[0.08em] text-[#203b35] sm:text-xs">{siteTitle}</span>
         </Link>
 
-        <button type="button" className="rounded-sm border border-[#d6cec0] p-2.5 text-[#203b35] lg:hidden" aria-label={mobileOpen ? copy.closeMenu : copy.openMenu} aria-expanded={mobileOpen} aria-controls="primary-navigation" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="site-header-actions flex shrink-0 items-center gap-2">
+          <SiteThemeToggle />
+          <button type="button" className="site-menu-toggle rounded-sm border border-[#d6cec0] p-2.5 text-[#203b35] lg:hidden" aria-label={mobileOpen ? copy.closeMenu : copy.openMenu} aria-expanded={mobileOpen} aria-controls="primary-navigation" onClick={() => setMobileOpen(!mobileOpen)}>
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
 
         <nav id="primary-navigation" ref={menuRef} className={`${mobileOpen ? "flex" : "hidden"} absolute inset-x-0 top-full flex-col gap-1 border-t border-[#e2ddd1] bg-[#fbfaf7] p-4 shadow-xl lg:static lg:flex lg:flex-1 lg:flex-row lg:items-center lg:justify-end lg:gap-1 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none`} aria-label="Primary navigation">
           <Link href="/" onClick={() => setMobileOpen(false)} className={linkClass(isActive(pathname, "/"))}>{copy.home}</Link>
