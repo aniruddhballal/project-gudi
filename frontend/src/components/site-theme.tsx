@@ -19,6 +19,7 @@ export function SiteThemeProvider({ theme: initialTheme, children }: { theme: Si
   const toggleTheme = useCallback(() => {
     const nextTheme = theme === "editorial" ? "heritage" : "editorial";
     setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
     document.cookie = `${THEME_COOKIE}=${nextTheme}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
   }, [theme]);
 

@@ -29,7 +29,7 @@ export async function DonationPage({
   const imageFrameClass = formType === "eHundi" ? "bg-[#142b27]" : "bg-[#ead8bd]";
 
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="donation-detail" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 pb-10 pt-10 text-white sm:px-8 lg:px-12 lg:pb-14 lg:pt-14">

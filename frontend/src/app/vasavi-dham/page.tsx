@@ -9,7 +9,7 @@ export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.vasaviDham;
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="vasavi-dham" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description} />

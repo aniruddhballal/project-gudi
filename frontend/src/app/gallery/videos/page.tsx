@@ -9,7 +9,7 @@ export default async function VideosPage() {
   const copy = siteSettings.copy.pages.videos;
   const videos = await getGalleryVideos();
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="videos" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />

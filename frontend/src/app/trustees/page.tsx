@@ -26,7 +26,7 @@ export default async function TrusteesPage() {
   const { home: homeContent, trustees: trusteesContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.trustees;
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="trustees" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={trusteesContent.title} description={copy.description} />

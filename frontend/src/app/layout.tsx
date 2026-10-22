@@ -26,7 +26,7 @@ export default async function RootLayout({
   const theme: SiteTheme = savedTheme === "heritage" ? "heritage" : "editorial";
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme={theme}>
       <body>
         <SiteThemeProvider theme={theme}>{children}</SiteThemeProvider>
       </body>

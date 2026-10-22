@@ -10,7 +10,7 @@ export default async function NewsletterPage() {
   const localCount = newsletterContent.documents.filter((document) => document.local).length;
 
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="newsletter" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={newsletterContent.title} description={copy.description}><p className="mt-5 text-sm font-semibold text-amber-200">{localCount} of {newsletterContent.documents.length} {copy.countLabel}</p></PageHero>

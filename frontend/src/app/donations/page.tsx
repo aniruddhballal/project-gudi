@@ -36,7 +36,7 @@ export default async function DonationsPage() {
   const { donations: donationsContent, home: homeContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.donations;
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="donations" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 py-16 text-white sm:px-8 lg:px-12 lg:py-20">

@@ -17,7 +17,7 @@ export default async function NewsPage() {
   const copy = siteSettings.copy.pages.news;
   const newsItems = await getNewsItems();
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="news" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={newsContent.title} description={copy.description} />

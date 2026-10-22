@@ -14,7 +14,7 @@ export default async function HomePage() {
   const people = homeContent.greatSouls;
 
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-[#20332e]">
+    <main data-page="home" className="min-h-screen bg-[#f8f6f1] text-[#20332e]">
       <SiteHeader />
 
       <section className="overflow-hidden border-b border-[#d9d2c4] bg-[#f0ece2] px-4 py-6 sm:px-8 sm:py-10 lg:px-12 lg:py-14">
@@ -61,7 +61,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-[#d9d2c4] bg-[#eee4d3] px-4 py-8 sm:px-8 lg:px-12">
+      <section className="festival-highlight border-y border-[#d9d2c4] bg-[#eee4d3] px-4 py-8 sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><div><p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c3c2e]"><CalendarDays className="h-4 w-4" />{copy.home.eventEyebrow}</p><h2 className="display-type mt-2 text-2xl text-[#203b35] sm:text-3xl">{homeContent.event.name}</h2></div><a href={homeContent.event.bulletinHref} target="_blank" rel="noreferrer" className="inline-flex w-fit shrink-0 items-center border border-[#a44832] px-4 py-3 text-sm font-bold text-[#8c3c2e] hover:bg-[#a44832] hover:text-white">{copy.home.eventCta}<ArrowRight className="ml-2 h-4 w-4" /></a></div>
       </section>
 

@@ -8,7 +8,7 @@ export default async function PhotosPage() {
   const { home: homeContent, photos: photosContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.photos;
   return (
-    <main className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="photos" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={photosContent.title} description={copy.description} />

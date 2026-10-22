@@ -11,7 +11,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description, children }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+    <section className="page-hero relative overflow-hidden border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
       <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#d8cfbd] lg:block" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-[8%] hidden h-24 w-24 translate-x-1/2 translate-y-1/2 rotate-45 border border-[#d8cfbd] lg:block" />
       <div className="relative mx-auto max-w-7xl lg:pr-[15%]">
