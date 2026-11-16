@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { SiteThemeProvider, type SiteTheme } from "@/components/site-theme";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,18 +15,15 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const savedTheme = (await cookies()).get("penu-site-theme")?.value;
-  const theme: SiteTheme = savedTheme === "heritage" ? "heritage" : "editorial";
-
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en">
       <body>
-        <SiteThemeProvider theme={theme}>{children}</SiteThemeProvider>
+        {children}
       </body>
     </html>
   );

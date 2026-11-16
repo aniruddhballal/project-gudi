@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { SiteCopy } from "@/lib/site-content-types";
-import { SiteThemeToggle } from "./site-theme-toggle";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -58,7 +57,6 @@ export function SiteHeaderClient({ siteTitle, logo, copy }: { siteTitle: string;
         </Link>
 
         <div className="site-header-actions flex shrink-0 items-center gap-2">
-          <SiteThemeToggle onToggle={() => setMobileOpen(false)} />
           <button type="button" className="site-menu-toggle rounded-sm border border-[#d6cec0] p-2.5 text-[#203b35] lg:hidden" aria-label={mobileOpen ? copy.closeMenu : copy.openMenu} aria-expanded={mobileOpen} aria-controls="primary-navigation" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
