@@ -1,4 +1,5 @@
-import { HomeGallery } from "@/components/home/home-gallery";
+import { ContentImage } from "@/components/content-image";
+import galleryStyles from "@/components/home/home-gallery.module.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/public-page";
@@ -32,7 +33,20 @@ export default async function PhotosPage() {
             <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#965b35]">{siteSettings.copy.home.galleryEyebrow}</p>
             <h2 id="temple-photos-title" className="display-type mt-3 text-4xl text-[#203b35] sm:text-5xl">{siteSettings.copy.home.galleryTitle}</h2>
           </div>
-          <HomeGallery photos={albumCovers} captions={photosContent.albums.map((album) => album.title)} />
+          <div className={galleryStyles.albumGrid}>
+            {albumCovers.map((photo, index) => (
+              <figure key={`${photo.image}-${index}`} className={galleryStyles.album}>
+                <div className={galleryStyles.albumImage}>
+                  <ContentImage src={photo.image} alt={photo.alt} loading="lazy" />
+                </div>
+                {photosContent.albums[index] && (
+                  <figcaption className={galleryStyles.caption}>
+                    <h2 className={galleryStyles.albumTitle}>{photosContent.albums[index].title}</h2>
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
