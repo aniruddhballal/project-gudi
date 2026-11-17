@@ -1230,3 +1230,29 @@
     padding-inline: 12px;
   }
 }
+
+/* Give mobile feature titles their own full-width row. */
+@media (max-width: 767px) {
+  .home-feature:not(.home-feature-4) .home-feature-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 16px;
+  }
+  .home-feature:not(.home-feature-4) .home-feature-copy > div {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .home-feature:not(.home-feature-4) .home-feature-index {
+    grid-column: 1;
+    grid-row: 1;
+    line-height: 1.5;
+  }
+  .home-feature:not(.home-feature-4) .home-feature-arrow {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 0;
+  }
+  .home-feature-2 .home-feature-copy h3 {
+    font-size: clamp(1.375rem, 6vw, 1.875rem);
+  }
+}
