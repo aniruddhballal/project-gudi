@@ -80,7 +80,7 @@ These fields are rendered by the baseline homepage; retain their wording even if
 ## Shared navigation and footer
 
 - [x] Retain `siteSettings.siteTitle` and `siteSettings.logo`.
-- [x] Header: preserve topbar label, Plan Your Visit destination `/contact`, Home, Story `/story`, Trustees `/trustees`, Contact the Trust `/contact`, and all supplied menu groups/items.
+- [x] Header: preserve Home, Story `/story`, Trustees `/trustees`, Contact the Trust `/contact`, and all supplied menu groups/items. The duplicate utility bar (topbar label and Plan Your Visit) was subsequently removed at the user's explicit request; Trust identity and `/contact` remain available in the main header and homepage.
 - [x] Menu coverage: `/overview`, `/news`, `/newsletter`, `/about`, `/vasavi-dham`, `/donations`, `/donations/annadanam`, `/donations/goshala`, `/donations/e-hundi`, `/gallery/photos`, `/gallery/videos`.
 - [x] Preserve a working “Skip to content” destination and accessible mobile menu controls; retain open/close labels from the data.
 - [x] Footer: retain eyebrow, tagline, full Trust identity, all Explore/Connect labels and links, copyright, and community note.

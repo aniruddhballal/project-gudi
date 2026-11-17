@@ -44,12 +44,6 @@ export function SiteHeaderClient({ siteTitle, logo, copy, appearance }: { siteTi
   return (
     <header className={`site-header relative z-30 border-b border-[#e2ddd1] bg-[#fbfaf7] ${appearance === "home" ? "home-site-header" : ""}`}>
       <a href="#page-content" className="sr-only z-50 rounded-sm bg-white px-4 py-2 text-sm font-bold text-[#20332e] focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
-      <div className="site-header-utility bg-[#183a34] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#eee4d3] sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <p className="truncate">{copy.topbarLabel}</p>
-          <Link href="/contact" className="shrink-0 text-amber-300 hover:text-white">{copy.visitCta} <span aria-hidden="true">↗</span></Link>
-        </div>
-      </div>
       <div className="site-header-main mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3 sm:gap-5 sm:px-8 lg:px-12">
         <Link href="/" className="site-header-brand flex min-w-0 items-center gap-3.5" aria-label={`${siteTitle} home`}>
           <Image src={logo} alt="" width={76} height={52} className="h-12 w-auto object-contain" priority />
