@@ -3,7 +3,7 @@ import { PageHero, PrimaryLink, SectionHeading, SecondaryLink } from "@/componen
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
-import { CheckCircle2, Landmark } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent, siteSettings } = await getSiteContent();
@@ -29,8 +29,8 @@ export default async function VasaviDhamPage() {
           <div className="mt-9 grid gap-6 lg:grid-cols-3">
             {vasaviDhamContent.featured.map((project) => (
               <article key={project.title} className="overflow-hidden rounded-xl bg-[#f6f0e3] ring-1 ring-[#e2ddd1]">
-                <div className="flex items-center justify-center border-b border-[#e2ddd1] p-5 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-[24rem] w-auto max-w-full object-contain" /></div>
-                <div className="p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#965b35]"><Landmark className="h-4 w-4" /> {copy.featuredLabel}</p><h2 className="display-type mt-3 text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
+                <div className="flex h-64 items-center justify-center border-b border-[#e2ddd1] p-5 sm:h-72 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-full w-full object-contain" /></div>
+                <div className="p-6"><h2 className="display-type text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
               </article>
             ))}
           </div>
