@@ -81,7 +81,7 @@ export function CompletedProjectsTimeline({ projects }: { projects: VasaviDhamCo
   return (
     <div ref={rootRef} className={styles.timeline}>
       <div className={styles.overview}>
-        {datedGroups.length > 0 && <p className={styles.range}>{datedGroups[0].year}<span aria-hidden="true">?</span>{datedGroups[datedGroups.length - 1].year}</p>}
+        {datedGroups.length > 0 && <p className={styles.range}>{datedGroups[0].year}<span aria-hidden="true">&ndash;</span>{datedGroups[datedGroups.length - 1].year}</p>}
         <p className={styles.total}>{projects.length} completed projects<ArrowDown size={17} aria-hidden="true" /></p>
       </div>
 
