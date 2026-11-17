@@ -136,3 +136,5 @@ The new scroll cue to `#home-explore` is a navigation affordance labelled with t
 Source-content files, Payload schemas, seed records, data adapter contracts, and other routes must not be changed solely to fit the new presentation.
 
 Final browser verification: all four homepage checks and all five existing public-site checks passed in Chromium, Firefox, and WebKit (27 cases). One WebKit route traversal was interrupted by a development reload during formatting and passed on an isolated rerun. Additional visual checks covered 320, 390, 768, 1024, 1280, and 1440px; mobile navigation and footer link targets were enlarged. This document does not assert that a backend subscription API, payment integration, or new content migration was completed.
+
+User-requested copy exception: the homepage hero heading displays ?Vasavi Penugonda? by omitting the trailing ?Trust?. The stored source title, full organisation name elsewhere, image alt text, and other slide titles remain unchanged.

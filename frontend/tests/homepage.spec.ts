@@ -60,7 +60,10 @@ test("homepage preserves its existing content, people, languages, and destinatio
   const existingText = [
     home.siteTitle,
     home.description,
-    ...home.heroSlides.flatMap((slide) => [slide.title, slide.description]),
+    ...home.heroSlides.flatMap((slide, index) => [
+      index === 0 ? slide.title.replace(/\s+Trust$/i, "") : slide.title,
+      slide.description,
+    ]),
     ...home.president.kannada.map(textOf),
     ...home.president.english.map(textOf),
     ...home.greatSouls.flatMap((person) => [

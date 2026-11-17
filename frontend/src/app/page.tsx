@@ -36,7 +36,7 @@ export default async function HomePage() {
               <span aria-hidden="true">✦</span> {copy.heroEyebrow}
             </p>
             <h1 id="page-content" tabIndex={-1}>
-              {hero.title}
+              {hero.title.replace(/\s+Trust$/i, "")}
             </h1>
             <p className="home-hero-description">{hero.description}</p>
             <div className="home-actions">
