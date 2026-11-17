@@ -642,7 +642,7 @@
   margin-top: 42px;
 }
 .home-person-photo {
-  width: min(100%, calc(var(--founder-portrait) * 0.75));
+  width: min(100%, calc(var(--founder-portrait) * 0.81));
   height: auto;
   aspect-ratio: 13 / 16;
   display: flex;
