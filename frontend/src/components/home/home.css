@@ -625,6 +625,9 @@
 .home-people-section .home-section-intro {
   max-width: none;
 }
+.home-people-section {
+  --founder-portrait: 170px;
+}
 .home-founders {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -634,7 +637,7 @@
 }
 .home-founder {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: var(--founder-portrait) minmax(0, 1fr);
   gap: 25px;
 }
 .home-founder-photo {
@@ -677,7 +680,7 @@
   margin-top: 42px;
 }
 .home-person-photo {
-  width: 100%;
+  width: min(100%, calc(var(--founder-portrait) * 0.75));
   height: auto;
   aspect-ratio: 13 / 16;
   display: flex;
@@ -883,8 +886,8 @@
   .home-letters {
     gap: 25px;
   }
+  .home-people-section { --founder-portrait: 140px; }
   .home-founder {
-    grid-template-columns: 100px 1fr;
     gap: 18px;
   }
   .home-community {
@@ -1126,8 +1129,8 @@
     grid-template-columns: 1fr;
     gap: 30px;
   }
+  .home-people-section { --founder-portrait: 150px; }
   .home-founder {
-    grid-template-columns: 100px 1fr;
     gap: 19px;
   }
   .home-founder h3 {
@@ -1185,8 +1188,8 @@
   .home-community {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .home-people-section { --founder-portrait: 120px; }
   .home-founder {
-    grid-template-columns: 85px 1fr;
     gap: 17px;
   }
   .home-founder h3 {
