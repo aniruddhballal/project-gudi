@@ -1,3 +1,4 @@
+import { HomeGallery } from "@/components/home/home-gallery";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero, SectionHeading } from "@/components/public-page";
@@ -12,6 +13,16 @@ export default async function PhotosPage() {
       <SiteHeader />
 
       <PageHero eyebrow={copy.eyebrow} title={photosContent.title} description={copy.description} />
+
+      <section className="px-4 py-12 sm:px-8 lg:px-12 lg:py-16" aria-labelledby="temple-photos-title">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8">
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#965b35]">{siteSettings.copy.home.galleryEyebrow}</p>
+            <h2 id="temple-photos-title" className="display-type mt-3 text-4xl text-[#203b35] sm:text-5xl">{siteSettings.copy.home.galleryTitle}</h2>
+          </div>
+          <HomeGallery photos={homeContent.gallery} />
+        </div>
+      </section>
 
       <section className="page-grid border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
         <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.albumsEyebrow} title={copy.albumsTitle} description={copy.albumsDescription} /><div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{photosContent.albums.map((album) => <article key={album.title} className="rounded-xl bg-white p-6 shadow-[0_12px_35px_rgba(78,42,24,0.07)] ring-1 ring-[#e2ddd1]"><div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f6f0e3] text-[#a44832] ring-1 ring-[#e2ddd1]" aria-hidden="true"><Images className="h-6 w-6" /></div><h2 className="display-type mt-5 text-2xl text-[#203b35]">{album.title}</h2><p className="mt-3 text-sm font-bold text-[#965b35]">{album.photoCount} {copy.photoLabel}</p><p className="mt-3 text-sm leading-6 text-stone-500">{copy.unavailable}</p></article>)}</div></div>
