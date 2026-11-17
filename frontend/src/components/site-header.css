@@ -50,6 +50,8 @@
 .temple-quick-links a:hover { color: #a14c2c; }
 .temple-contact-link { color: #974729; }
 .temple-explore-button {
+  width: 128px;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
