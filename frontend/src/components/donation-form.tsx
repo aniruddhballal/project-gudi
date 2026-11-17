@@ -27,7 +27,7 @@ export function DonationForm({ formType, title, copy }: DonationFormProps) {
       <input type="hidden" name="type" value={formType} />
       <div className="flex items-start justify-between gap-4 border-b border-stone-200 pb-5">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.yourOffering}</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.yourOffering}</p>
           <h3 className="display-type mt-2 text-3xl text-[#244a41]">{copy.giveTitle}</h3>
         </div>
         <div className="rounded-full bg-[#f6f0e3] p-3 text-[#a44832]" aria-hidden="true">

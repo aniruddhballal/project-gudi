@@ -40,7 +40,7 @@ export default async function DonationsPage() {
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 py-16 text-white sm:px-8 lg:px-12 lg:py-20">
-        <div className="pointer-events-none absolute -right-24 -top-28 h-96 w-96 rounded-full border-[34px] border-[#e9b86d]/10" />
+        <div aria-hidden="true" className="temple-banner-ornament donations-banner-ornament" />
         <div className="mx-auto max-w-7xl">
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
@@ -95,9 +95,9 @@ export default async function DonationsPage() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {copy.steps.map((step, index) => (
-              <div key={step} className="rounded-2xl bg-white p-5 ring-1 ring-[#e2ddd1]">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#a44832] text-sm font-bold text-white">{index + 1}</span>
-                <p className="mt-4 text-base font-semibold leading-6 text-[#203b35]">{step}</p>
+              <div key={step} className="relative flex min-h-24 items-center rounded-2xl bg-white p-5 pr-16 ring-1 ring-[#e2ddd1]">
+                <span aria-hidden="true" className="pointer-events-none absolute right-4 top-3 select-none text-4xl font-normal tabular-nums leading-none text-[#b6a580]/30">{String(index + 1).padStart(2, "0")}</span>
+                <p className="text-base font-semibold leading-6 text-[#203b35]">{step}</p>
               </div>
             ))}
           </div>

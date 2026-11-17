@@ -2,7 +2,7 @@ import { getSiteContent } from "@/lib/site-content";
 
 import { SiteHeaderClient } from "./site-header-client";
 
-export async function SiteHeader() {
+export async function SiteHeader({ appearance }: { appearance?: "home" } = {}) {
   const content = await getSiteContent();
-  return <SiteHeaderClient siteTitle={content.siteSettings.siteTitle} logo={content.siteSettings.logo} copy={content.siteSettings.copy.navigation} />;
+  return <SiteHeaderClient appearance={appearance} siteTitle={content.siteSettings.siteTitle} logo={content.siteSettings.logo} copy={content.siteSettings.copy.navigation} />;
 }

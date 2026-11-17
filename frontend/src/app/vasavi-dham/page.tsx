@@ -1,9 +1,9 @@
+import { CompletedProjectsTimeline } from "@/components/completed-projects-timeline";
 import { ContentImage } from "@/components/content-image";
 import { PageHero, PrimaryLink, SectionHeading, SecondaryLink } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
-import { CheckCircle2, Landmark } from "lucide-react";
 
 export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent, siteSettings } = await getSiteContent();
@@ -12,11 +12,16 @@ export default async function VasaviDhamPage() {
     <main data-page="vasavi-dham" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
-      <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
-
-      <section className="page-grid border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.aimsEyebrow} title={copy.aimsTitle} description={copy.aimsDescription} /><div className="mt-8"><SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink></div></div>
-      </section>
+      <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description}>
+        <div className="mt-7 grid gap-5 border-t border-[#d8cfbd] pt-6 xl:grid-cols-[1fr_auto] xl:items-end">
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#965b35]">{copy.aimsEyebrow}</p>
+            <h2 className="display-type mt-2 text-2xl text-[#203b35] sm:text-3xl">{copy.aimsTitle}</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#58645c]">{copy.aimsDescription}</p>
+          </div>
+          <SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink>
+        </div>
+      </PageHero>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
@@ -24,8 +29,8 @@ export default async function VasaviDhamPage() {
           <div className="mt-9 grid gap-6 lg:grid-cols-3">
             {vasaviDhamContent.featured.map((project) => (
               <article key={project.title} className="overflow-hidden rounded-xl bg-[#f6f0e3] ring-1 ring-[#e2ddd1]">
-                <div className="flex items-center justify-center border-b border-[#e2ddd1] p-5 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-[24rem] w-auto max-w-full object-contain" /></div>
-                <div className="p-6"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#965b35]"><Landmark className="h-4 w-4" /> {copy.featuredLabel}</p><h2 className="display-type mt-3 text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
+                <div className="temple-image-frame flex h-64 items-center justify-center border-b border-[#e2ddd1] p-5 sm:h-72 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-full w-full object-contain" /></div>
+                <div className="p-6"><h2 className="display-type text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
               </article>
             ))}
           </div>
@@ -35,9 +40,7 @@ export default async function VasaviDhamPage() {
       <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.projectsEyebrow} title={copy.projectsTitle} />
-          <div className="mt-9 grid gap-5 md:grid-cols-2">
-            {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#e2ddd1] sm:grid-cols-[12rem_1fr] sm:items-center"><div className="flex items-center justify-center rounded-xl bg-[#f6f0e3] p-3"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-48 w-auto max-w-full object-contain" /></div><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#965b35]"><CheckCircle2 className="h-4 w-4" /> {project.date}</p><h3 className="display-type mt-2 text-2xl text-[#203b35]">{project.title}</h3></div></article>)}
-          </div>
+          <CompletedProjectsTimeline projects={vasaviDhamContent.projects} />
           <div className="mt-9"><PrimaryLink href="/contact">{copy.projectLabel}</PrimaryLink></div>
         </div>
       </section>

@@ -27,7 +27,7 @@ export default async function ContactPage() {
       </section>
 
       <section className="relative overflow-hidden bg-[#eee4d3] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
+        <div aria-hidden="true" className="temple-contact-ornament" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-14">
           <div>
             <SectionHeading eyebrow={copy.trust.eyebrow} title={copy.trust.title} description={copy.trust.description} />
@@ -40,7 +40,7 @@ export default async function ContactPage() {
 
           <form className="grid gap-5 rounded-2xl bg-white p-6 shadow-[0_22px_60px_rgba(71,36,22,0.12)] ring-1 ring-[#e2ddd1] sm:p-8">
             <div className="border-b border-stone-200 pb-5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.form.eyebrow}</p>
+              <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.form.eyebrow}</p>
               <h2 className="display-type mt-2 text-3xl text-[#244a41]">{copy.form.title}</h2>
               <p className="mt-2 text-sm leading-6 text-stone-500">{copy.form.description}</p>
             </div>

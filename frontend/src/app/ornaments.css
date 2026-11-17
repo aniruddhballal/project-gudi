@@ -1,0 +1,48 @@
+/* Each public route owns one distinct, locally stored SVG ornament. */
+main[data-page="home"] { --banner-art: url("/ornaments/home.svg"); }
+main[data-page="overview"] { --banner-art: url("/ornaments/overview.svg"); }
+main[data-page="about"] { --banner-art: url("/ornaments/about.svg"); }
+main[data-page="vasavi-dham"] { --banner-art: url("/ornaments/vasavi-dham.svg"); }
+main[data-page="story"] { --banner-art: url("/ornaments/story.svg"); }
+main[data-page="donations"] { --banner-art: url("/ornaments/donations.svg"); }
+main[data-page="photos"] { --banner-art: url("/ornaments/photos.svg"); }
+main[data-page="videos"] { --banner-art: url("/ornaments/videos.svg"); }
+main[data-page="news"] { --banner-art: url("/ornaments/news.svg"); }
+main[data-page="newsletter"] { --banner-art: url("/ornaments/newsletter.svg"); }
+main[data-page="trustees"] { --banner-art: url("/ornaments/trustees.svg"); }
+main[data-page="contact"] { --banner-art: url("/ornaments/contact.svg"); }
+main[data-page="privacy"] { --banner-art: url("/ornaments/privacy.svg"); }
+main[data-page="donation-detail"][data-seva="Annadanam"] { --banner-art: url("/ornaments/annadanam.svg"); }
+main[data-page="donation-detail"][data-seva="eHundi"] { --banner-art: url("/ornaments/e-hundi.svg"); }
+main[data-page="donation-detail"][data-seva="Goshala"] { --banner-art: url("/ornaments/goshala.svg"); }
+
+.home-hero .home-banner-ornament {
+  top: 8px;
+  right: 8px;
+  width: 155px;
+  height: 155px;
+  transform: none;
+  opacity: .36;
+  filter: brightness(1.5);
+}
+main[data-page="donation-detail"] .donation-detail-ornament {
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  transform: none;
+  opacity: .42;
+  filter: brightness(1.6);
+}
+main[data-page="donations"] .donations-banner-ornament {
+  top: 12px;
+  right: 22px;
+  width: 125px;
+  height: 125px;
+  transform: none;
+  filter: brightness(1.6);
+  opacity: .5;
+}
+@media (max-width: 1023px) {
+  .home-banner-ornament, .donation-detail-ornament { display: none; }
+}
