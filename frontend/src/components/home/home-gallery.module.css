@@ -1,22 +1,19 @@
-﻿/* Natural-height photos are packed into the shortest available column. */
+﻿/* Each visible column is a natural-flow stack of uncropped photographs. */
 .gallery {
-  --gallery-columns: 4;
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(var(--gallery-columns), minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: start;
   gap: 10px;
 }
 
-.gallery[data-packed] { display: block; }
-.gallery[data-packed] .photo {
-  position: absolute;
-  top: 0;
-  left: 0;
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
 }
 
 .photo {
-  display: block;
   min-width: 0;
   margin: 0;
   padding: 0;
@@ -33,9 +30,9 @@
 }
 
 @media (max-width: 1099px) {
-  .gallery { --gallery-columns: 3; }
+  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 767px) {
-  .gallery { --gallery-columns: 2; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
