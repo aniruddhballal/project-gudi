@@ -1,16 +1,24 @@
-/* Equal-width columns; each photograph determines its own height. */
+﻿/* Natural-height photos are packed into the shortest available column. */
 .gallery {
-  display: block;
-  columns: 4;
-  column-gap: 10px;
+  --gallery-columns: 4;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--gallery-columns), minmax(0, 1fr));
+  align-items: start;
+  gap: 10px;
+}
+
+.gallery[data-packed] { display: block; }
+.gallery[data-packed] .photo {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .photo {
   display: block;
-  break-inside: avoid;
-  width: 100%;
-  height: auto;
-  margin: 0 0 10px;
+  min-width: 0;
+  margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
@@ -25,9 +33,9 @@
 }
 
 @media (max-width: 1099px) {
-  .gallery { columns: 3; }
+  .gallery { --gallery-columns: 3; }
 }
 
 @media (max-width: 767px) {
-  .gallery { columns: 2; }
+  .gallery { --gallery-columns: 2; }
 }
