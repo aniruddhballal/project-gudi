@@ -12,8 +12,7 @@ type PageHeroProps = {
 export function PageHero({ eyebrow, title, description, children }: PageHeroProps) {
   return (
     <section className="page-hero relative overflow-hidden border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[8%] hidden w-px bg-[#d8cfbd] lg:block" />
-      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-[8%] hidden h-24 w-24 translate-x-1/2 translate-y-1/2 rotate-45 border border-[#d8cfbd] lg:block" />
+      <div aria-hidden="true" className="temple-banner-ornament" />
       <div className="relative mx-auto max-w-7xl lg:pr-[15%]">
         <p className="flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.24em] text-[#8c3c2e]"><span className="h-px w-8 bg-[#a86e38]" />{eyebrow}</p>
         <h1 id="page-content" className="display-type mt-5 max-w-5xl text-5xl leading-[1.02] text-[#203b35] sm:text-6xl lg:text-7xl">{title}</h1>

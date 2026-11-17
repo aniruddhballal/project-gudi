@@ -6,7 +6,7 @@ export async function SiteFooter({ siteTitle, appearance }: { siteTitle: string;
   const { siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.footer;
   return (
-    <footer className={`bg-[#142f2a] px-5 py-10 text-[#e5e2d8] sm:px-8 lg:px-12 lg:py-14 ${appearance === "home" ? "home-site-footer" : ""}`}>
+    <footer className={`site-footer bg-[#142f2a] px-5 py-10 text-[#e5e2d8] sm:px-8 lg:px-12 lg:py-14 ${appearance === "home" ? "home-site-footer" : ""}`}>
       <div className="mx-auto max-w-7xl">
         <div className="site-footer-grid grid gap-9 border-b border-white/15 pb-9 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:gap-12">
           <div>

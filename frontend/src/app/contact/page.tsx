@@ -27,7 +27,7 @@ export default async function ContactPage() {
       </section>
 
       <section className="relative overflow-hidden bg-[#eee4d3] px-4 py-12 sm:px-8 lg:px-12 lg:py-16">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border-[28px] border-[#f7e7c8]/60" />
+        <div aria-hidden="true" className="temple-contact-ornament" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-14">
           <div>
             <SectionHeading eyebrow={copy.trust.eyebrow} title={copy.trust.title} description={copy.trust.description} />

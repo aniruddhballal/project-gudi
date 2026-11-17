@@ -148,3 +148,7 @@ The earlier verification record applies to the preceding homepage iteration. No 
 ## Site-wide small-text readability
 
 Shared Tailwind small text now uses 14px for `text-xs` and 15px for `text-sm`. Previously arbitrary 10px/11px labels use 13px. Homepage and shared header/footer styles reference a common 12px caption, 13px label, 14px small-text, and 15px interface scale; small mobile overrides no longer reduce text to 8px/9px. CTA widths, brand text width, navigation breakpoints, and letter spacing were adjusted to accommodate the larger type. Existing page content, large display headings, and logo dimensions remain unchanged. No tests or builds were run for this iteration at the user's request.
+
+## Shared geometric accents
+
+Presentation-only ornaments now occupy the reserved right side of desktop page banners, the homepage purpose emblem, the outer visit/contact gutters, and a narrow top border on every footer. The forms, long-form reading areas, portraits, source content, and links are unchanged. Banner ornaments are hidden below 1024px to preserve reading space; the gutter decorations scale with available space and do not accept pointer input. No tests or builds were run for this iteration at the user's request.

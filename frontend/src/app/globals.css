@@ -104,3 +104,46 @@ main div[class*="rounded-[1.5rem]"] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Architectural accents occupy reserved space rather than reading surfaces. */
+.temple-banner-ornament {
+  position: absolute;
+  top: 50%;
+  right: 2.5%;
+  width: clamp(140px, 15vw, 215px);
+  height: 270px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: .7;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20240%20300%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23a7834c%27%20stroke-width%3D%271.2%27%3E%3Ccircle%20cx%3D%27120%27%20cy%3D%27150%27%20r%3D%2792%27%2F%3E%3Ccircle%20cx%3D%27120%27%20cy%3D%27150%27%20r%3D%27111%27%20opacity%3D%27.45%27%2F%3E%3Ccircle%20cx%3D%27120%27%20cy%3D%27150%27%20r%3D%2769%27%20opacity%3D%27.6%27%2F%3E%3Cpath%20d%3D%27M120%2029l23%2029-23%2029-23-29zM120%20213l23%2029-23%2029-23-29z%27%2F%3E%3Cpath%20d%3D%27M29%20150h182M120%2058v184%27%20opacity%3D%27.25%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23a7834c%27%3E%3Ccircle%20cx%3D%2728%27%20cy%3D%27150%27%20r%3D%273%27%2F%3E%3Ccircle%20cx%3D%27212%27%20cy%3D%27150%27%20r%3D%273%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.temple-contact-ornament {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: clamp(12px, 2vw, 28px);
+  pointer-events: none;
+  opacity: .6;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2096%20240%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23c4a66e%27%20stroke-width%3D%271.2%27%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2772%27%20r%3D%2745%27%2F%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2772%27%20r%3D%2729%27%20opacity%3D%27.5%27%2F%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%27168%27%20r%3D%2745%27%2F%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%27168%27%20r%3D%2729%27%20opacity%3D%27.5%27%2F%3E%3Cpath%20d%3D%27M48%20103l17%2017-17%2017-17-17z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 96px 240px;
+  background-position: left center;
+}
+.site-footer {
+  position: relative;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 16px;
+  pointer-events: none;
+  opacity: .65;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2096%2016%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23c4a66e%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M0%208h96%27%20opacity%3D%27.35%27%2F%3E%3Cpath%20d%3D%27M0%208Q12-5%2024%208T48%208T72%208T96%208%27%2F%3E%3Cpath%20d%3D%27M0%208Q12%2021%2024%208T48%208T72%208T96%208%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23c4a66e%27%3E%3Ccircle%20cx%3D%2724%27%20cy%3D%278%27%20r%3D%271.5%27%2F%3E%3Ccircle%20cx%3D%2772%27%20cy%3D%278%27%20r%3D%271.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 96px 16px;
+  background-repeat: repeat-x;
+}
+@media (max-width: 1023px) {
+  .temple-banner-ornament { display: none; }
+}
