@@ -145,7 +145,7 @@
   font-size: 18px;
   line-height: 1.8;
   color: #e0e3d4;
-  max-width: 340px;
+  max-width: none;
 }
 .home-hero .home-actions {
   margin-top: 34px;
@@ -917,7 +917,7 @@
   }
   .home-hero-description {
     font-size: 15px;
-    max-width: 330px;
+    max-width: none;
   }
   .home-hero .home-actions {
     margin-top: 25px;
