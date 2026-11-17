@@ -29,11 +29,11 @@ export async function DonationPage({
   const imageFrameClass = formType === "eHundi" ? "bg-[#142b27]" : "bg-[#ead8bd]";
 
   return (
-    <main data-page="donation-detail" className="min-h-screen bg-[#f8f6f1] text-stone-900">
+    <main data-page="donation-detail" data-seva={formType} className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 pb-10 pt-10 text-white sm:px-8 lg:px-12 lg:pb-14 lg:pt-14">
-        <div className="pointer-events-none absolute -right-24 -top-32 h-96 w-96 rounded-full border-[34px] border-[#e9b86d]/10" />
+        <div aria-hidden="true" className="temple-banner-ornament donation-detail-ornament" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-amber-300"><Sparkles className="h-4 w-4" /> {eyebrow}</p>

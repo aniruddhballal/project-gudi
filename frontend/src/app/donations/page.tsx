@@ -40,7 +40,7 @@ export default async function DonationsPage() {
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#183a34] px-4 py-16 text-white sm:px-8 lg:px-12 lg:py-20">
-        <div aria-hidden="true" className="donations-banner-ornament" />
+        <div aria-hidden="true" className="temple-banner-ornament donations-banner-ornament" />
         <div className="mx-auto max-w-7xl">
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>

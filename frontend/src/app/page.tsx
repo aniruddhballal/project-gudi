@@ -31,6 +31,7 @@ export default async function HomePage() {
       <SiteHeader appearance="home" />
 
       <section className="home-hero" aria-labelledby="page-content">
+        <div aria-hidden="true" className="temple-banner-ornament home-banner-ornament" />
         <div className="home-shell home-hero-layout">
           <div className="home-hero-copy">
             <p className="home-eyebrow">
