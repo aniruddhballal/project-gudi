@@ -1,4 +1,4 @@
-﻿/* Each visible column is a natural-flow stack of uncropped photographs. */
+/* Each visible column is a natural-flow stack of uncropped photographs. */
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
