@@ -147,3 +147,23 @@ main div[class*="rounded-[1.5rem]"] {
 @media (max-width: 1023px) {
   .temple-banner-ornament { display: none; }
 }
+
+.donations-banner-ornament {
+  position: absolute;
+  top: -170px;
+  right: -125px;
+  width: clamp(360px, 38vw, 580px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20600%20600%27%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%27300%27%20r%3D%27250%27%20fill%3D%27none%27%20stroke%3D%27%23e9b86d%27%20stroke-width%3D%2724%27%20stroke-opacity%3D%27.08%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23e9c98c%27%20stroke-width%3D%271.4%27%20stroke-opacity%3D%27.25%27%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%27300%27%20r%3D%27279%27%2F%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%27300%27%20r%3D%27220%27%2F%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%27300%27%20r%3D%27190%27%2F%3E%3Cg%20stroke-opacity%3D%27.5%27%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%280%20300%20300%29%27%2F%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%2860%20300%20300%29%27%2F%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%28120%20300%20300%29%27%2F%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%28180%20300%20300%29%27%2F%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%28240%20300%20300%29%27%2F%3E%3Cpath%20d%3D%27M300%20300C235%20245%20244%20145%20300%20108C356%20145%20365%20245%20300%20300Z%27%20transform%3D%27rotate%28300%20300%20300%29%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cg%20fill%3D%27%23e9c98c%27%20fill-opacity%3D%27.28%27%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%2721%27%20r%3D%273%27%2F%3E%3Ccircle%20cx%3D%27579%27%20cy%3D%27300%27%20r%3D%273%27%2F%3E%3Ccircle%20cx%3D%27300%27%20cy%3D%27579%27%20r%3D%273%27%2F%3E%3Ccircle%20cx%3D%2721%27%20cy%3D%27300%27%20r%3D%273%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (max-width: 767px) {
+  .donations-banner-ornament {
+    width: 320px;
+    top: -155px;
+    right: -145px;
+    opacity: .65;
+  }
+}
