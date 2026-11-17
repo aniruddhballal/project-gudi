@@ -31,10 +31,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
+  font-size: var(--type-label);
   font-weight: 700;
   line-height: 1.6;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--home-saffron);
 }
@@ -54,7 +54,7 @@
 .home-section-intro {
   max-width: 340px;
   color: var(--home-muted);
-  font-size: 14px;
+  font-size: var(--type-ui);
   line-height: 1.85;
 }
 .home-actions {
@@ -69,7 +69,7 @@
   justify-content: space-between;
   gap: 24px;
   padding: 17px 22px;
-  font-size: 12px;
+  font-size: var(--type-ui);
   font-weight: 700;
   line-height: 1.5;
 }
@@ -87,7 +87,7 @@
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  font-size: 12px;
+  font-size: var(--type-ui);
   font-weight: 700;
   line-height: 1.7;
   padding-block: 8px;
@@ -129,7 +129,7 @@
 }
 .home-hero .home-eyebrow {
   color: #d0b987;
-  font-size: 10px;
+  font-size: var(--type-label);
 }
 .home-hero .home-eyebrow span {
   font-size: 21px;
@@ -151,9 +151,9 @@
   margin-top: 34px;
 }
 .home-hero .home-text-link {
-  max-width: 205px;
+  max-width: 320px;
   color: #e9dfcb;
-  font-size: 11px;
+  font-size: var(--type-small);
 }
 .home-hero-signature {
   display: flex;
@@ -165,12 +165,12 @@
   max-width: 440px;
 }
 .home-hero-signature p {
-  max-width: 290px;
-  font-size: 9px;
+  max-width: 360px;
+  font-size: var(--type-caption);
   font-weight: 600;
   line-height: 1.9;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   color: #d1c4a5;
 }
 .home-ornament {
@@ -208,9 +208,9 @@
   padding: 17px 12px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 8px;
+  font-size: var(--type-caption);
   line-height: 1.7;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   color: #cfc3a8;
 }
 .home-scroll-cue {
@@ -240,11 +240,11 @@
   font-size: 27px;
   line-height: 1.2;
   margin-top: 9px;
-  max-width: 290px;
+  max-width: 360px;
 }
 .home-wayfinding-intro > p:last-child {
   color: var(--home-muted);
-  font-size: 12px;
+  font-size: var(--type-ui);
   line-height: 1.8;
   margin-top: 10px;
   max-width: 310px;
@@ -263,7 +263,7 @@
 }
 .home-path-index {
   color: #8d7043;
-  font-size: 10px;
+  font-size: var(--type-label);
 }
 .home-path-name {
   font-family: Georgia, serif;
@@ -274,7 +274,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: var(--type-label);
   color: var(--home-saffron);
   font-weight: 700;
 }
@@ -321,7 +321,7 @@
 }
 .home-feature-index {
   color: #987c4b;
-  font-size: 10px;
+  font-size: var(--type-label);
   line-height: 2.5;
 }
 .home-feature h3 {
@@ -329,7 +329,7 @@
   line-height: 1.2;
 }
 .home-feature p {
-  font-size: 13px;
+  font-size: var(--type-ui);
   line-height: 1.8;
   color: var(--home-muted);
   max-width: 410px;
@@ -540,13 +540,13 @@
 }
 .home-president-name {
   margin-top: 20px !important;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 700;
 }
 .home-president-role {
   margin-top: 8px !important;
   color: var(--home-muted);
-  font-size: 12px;
+  font-size: var(--type-ui);
   line-height: 1.8;
 }
 .home-president-mark {
@@ -581,7 +581,7 @@
 }
 .home-letter summary h3 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: var(--type-ui);
   font-weight: 700;
   letter-spacing: 0.07em;
 }
@@ -598,7 +598,7 @@
 }
 .home-letter-body p {
   color: #545c51;
-  font-size: 13px;
+  font-size: var(--type-ui);
   line-height: 1.95;
   margin-bottom: 18px;
   overflow-wrap: anywhere;
@@ -635,14 +635,14 @@
   line-height: 1.2;
 }
 .home-person-role {
-  font-size: 11px;
+  font-size: var(--type-small);
   font-weight: 600;
   line-height: 1.8;
   color: var(--home-saffron);
   margin-top: 10px !important;
 }
 .home-person-description {
-  font-size: 12px;
+  font-size: var(--type-ui);
   line-height: 1.9;
   color: var(--home-muted);
   margin-top: 13px !important;
@@ -683,7 +683,7 @@
   font-size: clamp(38px, 4.5vw, 60px);
 }
 .home-visit .home-button {
-  max-width: 290px;
+  max-width: 360px;
 }
 .home-contact-grid {
   display: grid;
@@ -698,7 +698,7 @@
 .home-contact-grid h3 {
   color: #d8bd8a;
   font-family: Arial, sans-serif;
-  font-size: 11px;
+  font-size: var(--type-small);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -706,7 +706,7 @@
 }
 .home-contact-grid p {
   color: #e0e1d5;
-  font-size: 13px;
+  font-size: var(--type-ui);
   line-height: 1.95;
 }
 .home-newsletter {
@@ -736,7 +736,7 @@
 }
 .home-newsletter-heading p:last-child {
   color: var(--home-muted);
-  font-size: 12px;
+  font-size: var(--type-ui);
   line-height: 1.8;
   max-width: 330px;
 }
@@ -750,7 +750,7 @@
   min-width: 0;
   background: transparent;
   padding: 12px 8px 12px 0;
-  font-size: 13px;
+  font-size: var(--type-ui);
   border: 0;
   border-radius: 0;
 }
@@ -762,7 +762,7 @@
   background: #a64b2a;
   padding: 13px 20px;
   color: white;
-  font-size: 12px;
+  font-size: var(--type-ui);
   font-weight: 700;
   cursor: pointer;
 }
@@ -771,7 +771,7 @@
 }
 .home-newsletter-note {
   color: #646654;
-  font-size: 10px;
+  font-size: var(--type-label);
   line-height: 1.8;
   margin-top: 13px !important;
 }
@@ -904,7 +904,7 @@
     padding: 0;
   }
   .home-hero .home-eyebrow {
-    font-size: 9px;
+    font-size: var(--type-caption);
     letter-spacing: 0.13em;
   }
   .home-hero h1 {
@@ -921,12 +921,12 @@
     gap: 14px 20px;
   }
   .home-hero .home-text-link {
-    max-width: 155px;
-    font-size: 10px;
+    max-width: none;
+    font-size: var(--type-label);
   }
   .home-hero .home-button {
     padding: 13px 16px;
-    font-size: 11px;
+    font-size: var(--type-small);
     gap: 18px;
   }
   .home-hero-signature {
@@ -934,7 +934,7 @@
     padding-top: 18px;
   }
   .home-hero-signature p {
-    font-size: 9px;
+    font-size: var(--type-caption);
   }
   .home-sacred-frame {
     width: min(100% - 14px, 450px);
@@ -945,7 +945,7 @@
     inset: -8px;
   }
   .home-sacred-frame figcaption {
-    font-size: 8px;
+    font-size: var(--type-caption);
     padding: 12px 8px;
   }
   .home-wayfinding {
@@ -1029,7 +1029,7 @@
     font-size: 25px;
   }
   .home-feature-4 p {
-    font-size: 12px;
+    font-size: var(--type-ui);
   }
   .home-feature-4 .home-feature-arrow svg {
     width: 18px;
@@ -1083,7 +1083,7 @@
   }
   .home-president-name {
     margin: 0 !important;
-    font-size: 14px;
+    font-size: var(--type-ui);
   }
   .home-president-role {
     align-self: start;
@@ -1096,7 +1096,7 @@
     gap: 28px;
   }
   .home-letter-body p {
-    font-size: 14px;
+    font-size: var(--type-ui);
     line-height: 1.95;
   }
   .home-founders {
@@ -1122,7 +1122,7 @@
     font-size: 19px;
   }
   .home-person-role {
-    font-size: 12px;
+    font-size: var(--type-ui);
   }
   .home-visit {
     padding-block: 55px;
@@ -1135,7 +1135,7 @@
     gap: 30px;
   }
   .home-contact-grid p {
-    font-size: 12px;
+    font-size: var(--type-ui);
   }
   .home-newsletter {
     padding-block: 40px;
@@ -1160,7 +1160,7 @@
   }
   .home-hero .home-text-link {
     max-width: none;
-    font-size: 11px;
+    font-size: var(--type-small);
   }
   .home-community {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1179,7 +1179,7 @@
     font-size: 21px;
   }
   .home-person-description {
-    font-size: 12px;
+    font-size: var(--type-ui);
   }
   .home-feature-copy {
     gap: 13px;
@@ -1188,7 +1188,7 @@
     font-size: 27px;
   }
   .home-newsletter-form button {
-    font-size: 11px;
+    font-size: var(--type-small);
     padding-inline: 12px;
   }
 }

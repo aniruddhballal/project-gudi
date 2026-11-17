@@ -144,3 +144,7 @@ User-requested copy exception: the homepage hero heading displays ?Vasavi Penugo
 The shared header now uses a compact brand area with the logo at its earlier scale, direct visitor links, and an Explore button. The expanded directory preserves every destination and groups links into Discover Penugonda, Seva & donations, From the Trust, and Gallery. Existing source link labels are retained; only navigation group labels change. Additional CMS links remain available under Explore further. Escape closes the directory and returns focus to its button; outside clicks and selecting a destination also close it. The mobile directory uses two columns and scrolls within the available viewport.
 
 The earlier verification record applies to the preceding homepage iteration. No tests or builds were run for this header iteration, as requested by the user.
+
+## Site-wide small-text readability
+
+Shared Tailwind small text now uses 14px for `text-xs` and 15px for `text-sm`. Previously arbitrary 10px/11px labels use 13px. Homepage and shared header/footer styles reference a common 12px caption, 13px label, 14px small-text, and 15px interface scale; small mobile overrides no longer reduce text to 8px/9px. CTA widths, brand text width, navigation breakpoints, and letter spacing were adjusted to accommodate the larger type. Existing page content, large display headings, and logo dimensions remain unchanged. No tests or builds were run for this iteration at the user's request.

@@ -29,7 +29,7 @@
 .home-site-footer .site-footer-nav-label {
   color: #e2bf85;
   letter-spacing: 0.16em;
-  font-size: 0.62rem;
+  font-size: var(--type-label);
 }
 
 .home-site-footer .site-footer-tagline {
@@ -47,7 +47,7 @@
 .home-site-footer nav a {
   color: #e2e4da;
   line-height: 1.6;
-  font-size: 0.83rem;
+  font-size: var(--type-ui);
 }
 
 .home-site-footer nav a:hover {
@@ -60,7 +60,7 @@
 
 .home-site-footer .site-footer-bottom {
   color: #bec4b9;
-  font-size: 0.65rem;
+  font-size: var(--type-label);
 }
 
 @media (max-width: 639px) {
@@ -84,11 +84,11 @@
   }
 
   .home-site-footer .site-footer-brand span {
-    font-size: 0.57rem;
+    font-size: var(--type-label);
   }
 
   .home-site-footer nav a {
-    font-size: 0.78rem;
+    font-size: var(--type-ui);
     overflow-wrap: anywhere;
   }
 }

@@ -40,7 +40,7 @@ export default async function ContactPage() {
 
           <form className="grid gap-5 rounded-2xl bg-white p-6 shadow-[0_22px_60px_rgba(71,36,22,0.12)] ring-1 ring-[#e2ddd1] sm:p-8">
             <div className="border-b border-stone-200 pb-5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.form.eyebrow}</p>
+              <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#a44832]">{copy.form.eyebrow}</p>
               <h2 className="display-type mt-2 text-3xl text-[#244a41]">{copy.form.title}</h2>
               <p className="mt-2 text-sm leading-6 text-stone-500">{copy.form.description}</p>
             </div>
