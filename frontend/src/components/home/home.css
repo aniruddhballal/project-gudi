@@ -492,24 +492,6 @@
 .home-bulletin .home-text-link {
   color: var(--home-saffron);
 }
-.home-gallery {
-  column-count: 3;
-  column-gap: 14px;
-}
-.home-gallery-image {
-  display: block;
-  width: 100%;
-  margin: 0 0 14px;
-  break-inside: avoid;
-}
-.home-gallery-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-@media (max-width: 1023px) {
-  .home-gallery { column-count: 2; }
-}
 .home-message-section {
   background: #eee8db;
   border-block: 1px solid var(--home-line);
@@ -1059,12 +1041,6 @@
   }
   .home-bulletin h2 {
     font-size: 22px;
-  }
-  .home-gallery {
-    column-gap: 10px;
-  }
-  .home-gallery-image {
-    margin-bottom: 10px;
   }
   .home-message-layout {
     grid-template-columns: 1fr;

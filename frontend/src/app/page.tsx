@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { ContentImage } from "@/components/content-image";
+import { HomeGallery } from "@/components/home/home-gallery";
 import { HomeNewsletter } from "@/components/home/home-newsletter";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -181,20 +182,7 @@ export default async function HomePage() {
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
-          <div className="home-gallery">
-            {home.gallery.map((photo, index) => (
-              <figure
-                key={`${photo.image}-${index}`}
-                className="home-gallery-image"
-              >
-                <ContentImage
-                  src={photo.image}
-                  alt={photo.alt}
-                  loading="lazy"
-                />
-              </figure>
-            ))}
-          </div>
+          <HomeGallery photos={home.gallery} />
         </div>
       </section>
 
