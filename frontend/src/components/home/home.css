@@ -162,10 +162,10 @@
   border-top: 1px solid #c4b48c38;
   margin-top: 48px;
   padding-top: 22px;
-  max-width: 440px;
+  max-width: none;
 }
 .home-hero-signature p {
-  max-width: 360px;
+  max-width: none;
   font-size: var(--type-caption);
   font-weight: 600;
   line-height: 1.9;
