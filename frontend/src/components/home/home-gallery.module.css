@@ -1,17 +1,16 @@
-﻿/* Equal-width columns; each photograph determines its own height. */
+/* Equal-width columns; each photograph determines its own height. */
 .gallery {
   display: block;
-  columns: 3;
-  column-gap: 14px;
+  columns: 4;
+  column-gap: 10px;
 }
 
 .photo {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   break-inside: avoid;
   width: 100%;
   height: auto;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -25,11 +24,10 @@
   aspect-ratio: auto;
 }
 
-@media (max-width: 1023px) {
-  .gallery { columns: 2; }
+@media (max-width: 1099px) {
+  .gallery { columns: 3; }
 }
 
 @media (max-width: 767px) {
-  .gallery { column-gap: 10px; }
-  .photo { margin-bottom: 10px; }
+  .gallery { columns: 2; }
 }
