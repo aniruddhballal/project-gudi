@@ -29,7 +29,7 @@ export default async function VasaviDhamPage() {
           <div className="mt-9 grid gap-6 lg:grid-cols-3">
             {vasaviDhamContent.featured.map((project) => (
               <article key={project.title} className="overflow-hidden rounded-xl bg-[#f6f0e3] ring-1 ring-[#e2ddd1]">
-                <div className="flex h-64 items-center justify-center border-b border-[#e2ddd1] p-5 sm:h-72 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-full w-full object-contain" /></div>
+                <div className="temple-image-frame flex h-64 items-center justify-center border-b border-[#e2ddd1] p-5 sm:h-72 sm:p-6"><ContentImage src={project.image} alt={project.title} className="h-full w-full object-contain" /></div>
                 <div className="p-6"><h2 className="display-type text-2xl text-[#203b35]">{project.title}</h2><p className="mt-3 text-sm leading-7 text-stone-600">{project.description}</p></div>
               </article>
             ))}

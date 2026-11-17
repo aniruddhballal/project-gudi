@@ -36,7 +36,7 @@ export default async function PhotosPage() {
           <div className={galleryStyles.albumGrid}>
             {albumCovers.map((photo, index) => (
               <figure key={`${photo.image}-${index}`} className={galleryStyles.album}>
-                <div className={galleryStyles.albumImage}>
+                <div className={`${galleryStyles.albumImage} temple-image-frame`}>
                   <ContentImage src={photo.image} alt={photo.alt} loading="lazy" />
                 </div>
                 {photosContent.albums[index] && (

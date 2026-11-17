@@ -178,3 +178,18 @@ main[data-page="vasavi-dham"] > .page-hero {
 main[data-page="photos"] > .page-hero {
   padding-block: clamp(2rem, 4vw, 3.5rem);
 }
+
+/* Ornament is confined to the letterboxing inside a photograph's frame. */
+.temple-image-frame {
+  background-color: #eee7d8;
+  background-image: url("/ornaments/frames/arcs-1.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+:is(article, figure):nth-of-type(3n + 2) > .temple-image-frame {
+  background-image: url("/ornaments/frames/arcs-2.svg");
+}
+:is(article, figure):nth-of-type(3n) > .temple-image-frame {
+  background-image: url("/ornaments/frames/arcs-3.svg");
+}
