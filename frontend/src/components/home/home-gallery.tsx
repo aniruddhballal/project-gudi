@@ -38,11 +38,11 @@ export function HomeGallery({ photos, captions = [] }: {
   });
 
   return (
-    <div className={styles.gallery}>
+    <div className={`${styles.gallery} ${captions.length ? styles.albums : ""}`}>
       {columns.map((column, index) => (
         <div key={index} className={styles.column}>
           {column.map(({ photo, key, caption }) => (
-            <figure key={key} className={styles.photo}>
+            <figure key={key} className={`${styles.photo} ${caption ? styles.album : ""}`}>
               <ContentImage
                 src={photo.image}
                 alt={photo.alt}
@@ -56,7 +56,7 @@ export function HomeGallery({ photos, captions = [] }: {
                     : { ...current, [key]: ratio });
                 }}
               />
-              {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+              {caption && <figcaption className={styles.caption}><h2 className={styles.albumTitle}>{caption}</h2></figcaption>}
             </figure>
           ))}
         </div>
