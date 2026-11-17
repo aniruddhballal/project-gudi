@@ -95,7 +95,7 @@ export default async function DonationsPage() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {copy.steps.map((step, index) => (
-              <div key={step} className="relative rounded-2xl bg-white p-5 pr-16 ring-1 ring-[#e2ddd1]">
+              <div key={step} className="relative flex min-h-24 items-center rounded-2xl bg-white p-5 pr-16 ring-1 ring-[#e2ddd1]">
                 <span aria-hidden="true" className="pointer-events-none absolute right-4 top-3 select-none text-4xl font-normal tabular-nums leading-none text-[#b6a580]/30">{String(index + 1).padStart(2, "0")}</span>
                 <p className="text-base font-semibold leading-6 text-[#203b35]">{step}</p>
               </div>
