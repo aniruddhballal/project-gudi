@@ -12,11 +12,16 @@ export default async function VasaviDhamPage() {
     <main data-page="vasavi-dham" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
 
-      <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description} />
-
-      <section className="page-grid border-b border-[#dfd9cd] bg-[#f0ece2] px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={copy.aimsEyebrow} title={copy.aimsTitle} description={copy.aimsDescription} /><div className="mt-8"><SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink></div></div>
-      </section>
+      <PageHero eyebrow={copy.eyebrow} title={vasaviDhamContent.title} description={vasaviDhamContent.description}>
+        <div className="mt-7 grid gap-5 border-t border-[#d8cfbd] pt-6 xl:grid-cols-[1fr_auto] xl:items-end">
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#965b35]">{copy.aimsEyebrow}</p>
+            <h2 className="display-type mt-2 text-2xl text-[#203b35] sm:text-3xl">{copy.aimsTitle}</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#58645c]">{copy.aimsDescription}</p>
+          </div>
+          <SecondaryLink href="/about">{siteSettings.copy.home.trustCta}</SecondaryLink>
+        </div>
+      </PageHero>
 
       <section className="bg-white px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
