@@ -185,7 +185,7 @@ export default async function HomePage() {
             {home.gallery.map((photo, index) => (
               <figure
                 key={`${photo.image}-${index}`}
-                className={`home-gallery-image home-gallery-image-${index + 1}`}
+                className="home-gallery-image"
               >
                 <ContentImage
                   src={photo.image}

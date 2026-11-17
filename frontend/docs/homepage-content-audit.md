@@ -114,7 +114,7 @@ These fields existed but were not rendered on the baseline homepage. Their data 
 | `#home-explore` / `.home-discovery` | Remaining four hero-slide records, exploration headings and description | Larger image features replace the compact list; every entry remains linked |
 | `.home-purpose` | Complete Trust purpose paragraph, headings, `/about` action | Dedicated purpose section |
 | `.home-bulletin` | Exact existing event name, date text, eyebrow, PDF destination and action | Distinct bulletin strip before the gallery; no event data correction |
-| `.home-gallery-section` | All eight gallery images and alt texts, headings, full-gallery action | Gallery moved before the long messages and people; one existing image receives a wider presentation |
+| `.home-gallery-section` | All eight gallery images and alt texts, headings, full-gallery action | Gallery moved before the long messages and people; responsive masonry columns display each image at its natural aspect ratio |
 | `.home-message-section` | President portrait/name/role, bilingual introduction, all five Kannada and five English paragraphs | Two native `details` reading panels, both open initially, with `lang="kn"` and `lang="en"` |
 | `.home-people-section` | All 15 people, every supplied role, both biographies, all portraits, headings/description | First two biography-bearing people receive larger articles; remaining 13 stay in the community grid |
 | `.home-visit` | Both complete address records, headings, visitor action | Dedicated contact area; the early hero/wayfinding visitor paths provide faster access |
@@ -152,3 +152,5 @@ Shared Tailwind small text now uses 14px for `text-xs` and 15px for `text-sm`. P
 ## Shared geometric accents
 
 Presentation-only ornaments now occupy the reserved right side of desktop page banners, the homepage purpose emblem, the outer visit/contact gutters, and a narrow top border on every footer. The forms, long-form reading areas, portraits, source content, and links are unchanged. Banner ornaments are hidden below 1024px to preserve reading space; the gutter decorations scale with available space and do not accept pointer input. No tests or builds were run for this iteration at the user's request.
+
+Homepage gallery presentation: three masonry-style columns on desktop and two on tablet/mobile, with consistent narrow gutters. All eight original photos and alt texts are retained; fixed aspect ratios, letterboxing backgrounds, and individual grid spans were removed. No tests or builds were run for this iteration at the user's request.
