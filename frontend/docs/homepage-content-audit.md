@@ -138,3 +138,9 @@ Source-content files, Payload schemas, seed records, data adapter contracts, and
 Final browser verification: all four homepage checks and all five existing public-site checks passed in Chromium, Firefox, and WebKit (27 cases). One WebKit route traversal was interrupted by a development reload during formatting and passed on an isolated rerun. Additional visual checks covered 320, 390, 768, 1024, 1280, and 1440px; mobile navigation and footer link targets were enlarged. This document does not assert that a backend subscription API, payment integration, or new content migration was completed.
 
 User-requested copy exception: the homepage hero heading displays ?Vasavi Penugonda? by omitting the trailing ?Trust?. The stored source title, full organisation name elsewhere, image alt text, and other slide titles remain unchanged.
+
+## Header navigation iteration
+
+The shared header now uses a compact brand area with the logo at its earlier scale, direct visitor links, and an Explore button. The expanded directory preserves every destination and groups links into Discover Penugonda, Seva & donations, From the Trust, and Gallery. Existing source link labels are retained; only navigation group labels change. Additional CMS links remain available under Explore further. Escape closes the directory and returns focus to its button; outside clicks and selecting a destination also close it. The mobile directory uses two columns and scrolls within the available viewport.
+
+The earlier verification record applies to the preceding homepage iteration. No tests or builds were run for this header iteration, as requested by the user.
