@@ -1,9 +1,9 @@
+import { CompletedProjectsTimeline } from "@/components/completed-projects-timeline";
 import { ContentImage } from "@/components/content-image";
 import { PageHero, PrimaryLink, SectionHeading, SecondaryLink } from "@/components/public-page";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/site-content";
-import { CheckCircle2 } from "lucide-react";
 
 export default async function VasaviDhamPage() {
   const { home: homeContent, vasaviDham: vasaviDhamContent, siteSettings } = await getSiteContent();
@@ -40,9 +40,7 @@ export default async function VasaviDhamPage() {
       <section className="px-4 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow={copy.projectsEyebrow} title={copy.projectsTitle} />
-          <div className="mt-9 grid gap-5 md:grid-cols-2">
-            {vasaviDhamContent.projects.map((project) => <article key={project.title} className="grid gap-5 rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(78,42,24,0.06)] ring-1 ring-[#e2ddd1] sm:grid-cols-[12rem_1fr] sm:items-center"><div className="flex items-center justify-center rounded-xl bg-[#f6f0e3] p-3"><ContentImage src={project.image} alt={project.title} className="h-auto max-h-48 w-auto max-w-full object-contain" /></div><div><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#965b35]"><CheckCircle2 className="h-4 w-4" /> {project.date}</p><h3 className="display-type mt-2 text-2xl text-[#203b35]">{project.title}</h3></div></article>)}
-          </div>
+          <CompletedProjectsTimeline projects={vasaviDhamContent.projects} />
           <div className="mt-9"><PrimaryLink href="/contact">{copy.projectLabel}</PrimaryLink></div>
         </div>
       </section>
