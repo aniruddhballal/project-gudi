@@ -606,6 +606,9 @@
 .home-letter:lang(kn) .home-letter-body p {
   line-height: 2.05;
 }
+.home-people-section .home-section-intro {
+  max-width: none;
+}
 .home-founders {
   display: grid;
   grid-template-columns: 1fr 1fr;
