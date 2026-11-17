@@ -179,3 +179,7 @@ main[data-page="vasavi-dham"] .temple-banner-ornament {
 main[data-page="vasavi-dham"] > .page-hero {
   padding-block: clamp(2rem, 4vw, 3.5rem);
 }
+
+main[data-page="photos"] > .page-hero {
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+}
