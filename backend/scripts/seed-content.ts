@@ -23,6 +23,7 @@ import { vasaviDhamContent } from '../src/content/vasavi-dham'
 import { videosContent } from '../src/content/videos'
 import { newsContent } from '../src/content/news'
 import { siteCopy } from '../src/content/site-copy'
+import { buildNavigation, upgradePhotoAlbums, upgradeProjects } from '../src/content/editorial-upgrade'
 
 const frontendPublic = path.resolve(process.cwd(), '../frontend/public')
 const legacyRoot = path.join(frontendPublic, 'legacy')
@@ -122,12 +123,15 @@ async function main() {
       logo: image('/legacy/home/logo.png'),
       siteTitle: homeContent.siteTitle,
       copy: siteCopy,
+      navigation: buildNavigation(siteCopy),
+      contentModelVersion: 2,
     } as any,
   })
 
   const pageData = {
       home: {
         siteTitle: homeContent.siteTitle,
+        heroHeading: "Vasavi Penugonda",
         description: homeContent.description,
         aims: homeContent.aims,
         heroSlides: homeContent.heroSlides.map((slide) => ({ ...slide, image: image(slide.image) })),
@@ -147,7 +151,7 @@ async function main() {
         title: aboutContent.title,
         introduction: aboutContent.introduction,
         underConstruction: aboutContent.underConstruction.map((project) => ({ ...project, image: image(project.image) })),
-        projects: aboutContent.projects.map((project) => ({ ...project, image: image(project.image) })),
+        projects: upgradeProjects(aboutContent.projects.map((project) => ({ ...project, image: image(project.image) }))),
       },
       contact: {
         ...contactContent,
@@ -181,7 +185,8 @@ async function main() {
       },
       photos: {
         title: photosContent.title,
-        albums: photosContent.albums,
+        contentModelVersion: 2,
+        albums: upgradePhotoAlbums(photosContent, homeContent.gallery.map((photo) => ({ ...photo, image: image(photo.image) }))),
       },
       privacy: {
         ...privacyContent,
@@ -203,7 +208,7 @@ async function main() {
         title: vasaviDhamContent.title,
         description: vasaviDhamContent.description,
         featured: vasaviDhamContent.featured.map((project) => ({ ...project, image: image(project.image) })),
-        projects: vasaviDhamContent.projects.map((project) => ({ ...project, image: image(project.image) })),
+        projects: upgradeProjects(vasaviDhamContent.projects.map((project) => ({ ...project, image: image(project.image) }))),
       },
   } as any
 

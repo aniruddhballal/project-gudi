@@ -1,85 +1,89 @@
-# Penu — Vasavi Penugonda Temple Trust website
+# Penu - Vasavi Penugonda Temple Trust website
 
-Penu is a rebuild of the Vasavi Penugonda Temple Trust website. It replaces the original legacy public site with a modern Next.js frontend and adds a Payload CMS backoffice so non-developers can maintain the site's content.
+Penu is a rebuild of the Vasavi Penugonda Temple Trust website, with a Next.js public frontend and a Payload CMS for maintaining the existing temple content.
 
-The project is designed around a fixed website structure: CMS users can edit content inside the existing pages, but they cannot change the site's layout, routes, or design system.
+CMS editors manage content within the available page fields and collections. Developers control the page structure, navigation, layouts, and design in code. The UI revamp preserves the source material while reorganising how visitors discover the temple, plan a visit, and explore seva.
 
-## What the website includes
+## Public website
 
-The public frontend currently contains:
+The public routes cover:
 
-- Home and overview pages
-- Trust, temple, story, and Vasavi Dham information
-- Donations, Annadanam, E-Hundi, and Go-Shala pages
+- Home and overview
+- About the Trust, Vasavi Dham, and the story of Vasavi Mata
+- Donations, Annadanam, E-Hundi, and Go Shala
 - Photo and video galleries
-- News and articles
-- Newsletters and documents
-- Trustee information
-- Contact and location information
-- Privacy page
-- Migration tracker for the original site's page inventory
+- News, newsletters, and downloadable documents
+- Trustees, contact details, locations, and privacy
 
-The original site's captured pages, assets, and content were used as the basis for the rebuild. The migration research and pricing history are kept in [`rnd/`](./rnd).
+The current interface includes a sticky header with a grouped Explore directory, a rebuilt homepage, responsive typography, and a distinct SVG ornament for each public page. The homepage photo collection uses masonry columns; the Photos page uses aligned album-cover cards. Vasavi Dham's completed projects are grouped into a year-by-year timeline, with undated projects kept separate.
 
-## CMS and content model
+The migration tracker at `/migration` records the original site's page inventory. Research captures, source assets, and planning material live in [`rnd/`](./rnd).
 
-The backend is a Payload CMS application with a local SQLite database for development.
+## Architecture and content
 
-### Fixed page content
+```text
+CMS editors
+    |
+Payload admin and API -- SQLite and local media uploads
+    |
+Next.js public frontend
+    |
+Visitors
+```
 
-Existing page content is split into page-specific globals in the CMS, such as Home, About, Contact, News, Story, Trustees, and Donations. These records always exist and can only be updated.
+The frontend reads live page content, interface copy, articles, videos, and media from Payload through [`frontend/src/lib/site-content.ts`](./frontend/src/lib/site-content.ts). It has no static content fallback: the backend must be available to render the public pages.
 
-### Repeatable content
-
-Articles, videos, and media are collections. CMS users can create, edit, and delete these records.
+Seed content and the editable copy dictionary live in [`backend/src/content/`](./backend/src/content/). The frontend contains typed API contracts and presentation logic. Local SVG ornaments are presentation assets rather than CMS content.
 
 ### CMS behaviour
 
-- All CMS users have the same access level.
-- Changes are published immediately.
-- There is no approval or rejection workflow.
-- The website structure and frontend layout cannot be changed from the CMS.
-- Page globals, articles, and videos keep up to four versions for basic recovery/history.
+- Page-specific globals hold editable content for the existing pages and site settings.
+- Articles, videos, and media are repeatable collections.
+- Authenticated CMS users share the same access level; changes publish immediately without an approval workflow.
+- Page content, articles, and videos retain up to four versions for basic recovery.
+- CMS editors cannot change routes or layouts; those changes belong in the frontend code.
 
-## Architecture
+### Current integration limits
 
-```text
-CMS users
-    ↓
-Payload admin + API  ←→  SQLite database and uploaded media
-    ↓
-Next.js frontend
-    ↓
-Public website
-```
-
-The frontend reads its live page content, copy, articles, videos, and media from the backend. It has no static content fallback, so the backend must be running during local development. Seed content and the editable copy dictionary live under [`backend/src/content/`](./backend/src/content/); the frontend contains only API response types and rendering logic.
+- Payment processing, receipts, and donor records are not connected to the donation UI.
+- Newsletter delivery and contact-form submission are not implemented.
+- The captured Photos page supplied seven album names without album image payloads. Existing temple photos are used as illustrative covers, not verified records of those specific events. The eighth photo is untitled.
+- The development backend uses SQLite and local media files. Production database/storage decisions, backups, secrets, email, monitoring, and hosting configuration remain deployment work.
 
 ## Repository structure
 
-- [`frontend/`](./frontend) — Next.js public website
-- [`backend/`](./backend) — Payload CMS, authentication, API, database, and media uploads
-- [`rnd/`](./rnd) — discovery captures, source inventory, pricing, planning notes, and utility scripts
+| Directory | Purpose |
+| --- | --- |
+| [`frontend/`](./frontend) | Next.js public website, UI components, styles, and browser checks |
+| [`backend/`](./backend) | Payload CMS, users, content API, database configuration, media, and seed scripts |
+| [`rnd/`](./rnd) | Legacy-site captures, discovery inventory, planning, and utility scripts |
+
+The frontend and backend have separate dependencies and lockfiles. Install and run each from its own directory.
 
 ## Run locally
 
-Requirements: Node.js 20+ and pnpm 9+.
+The backend declares Node.js `>=20.18.1` and supports pnpm 9, 10, or 11; see [`backend/package.json`](./backend/package.json) for its engine constraints.
 
-### Start the backend
+### Backend
+
+Copy [`backend/.env.example`](./backend/.env.example) to `backend/.env` and set `PAYLOAD_SECRET` to a long random value. The example uses a local SQLite database and the frontend URL `http://localhost:3001`.
+
+From the repository root:
 
 ```bash
 cd backend
-cp .env.example .env
 pnpm install
 pnpm seed:content
 pnpm dev
 ```
 
-Open the CMS at [http://localhost:3000/admin](http://localhost:3000/admin). On first run, create the initial CMS user.
+Seed a fresh local environment before opening the site. Running `seed:content` again updates existing seeded content; it is not a routine startup step for an edited CMS database.
 
-### Start the frontend
+Open [http://localhost:3000/admin](http://localhost:3000/admin) and create the initial CMS user. The local database and uploaded media are ignored by Git.
 
-In a second terminal:
+### Frontend
+
+In a second terminal, from the repository root:
 
 ```bash
 cd frontend
@@ -87,12 +91,31 @@ pnpm install
 pnpm exec next dev --port 3001
 ```
 
-Open the public site at [http://localhost:3001](http://localhost:3001).
+Open [http://localhost:3001](http://localhost:3001).
 
-Start the backend before the frontend. The frontend reads live content from Payload at `http://localhost:3000`, while the frontend runs on `http://localhost:3001`. If the frontend starts first and takes port 3000, the backend will move to another port and the frontend will not connect automatically.
+The frontend defaults to Payload at `http://localhost:3000`. To use another backend, set `PAYLOAD_API_URL` in `frontend/.env.local`:
 
-See [`frontend/README.md`](./frontend/README.md) and [`backend/README.md`](./backend/README.md) for detailed commands and environment configuration.
+```env
+PAYLOAD_API_URL=http://localhost:3000
+```
 
-## Current project status
+Keep the ports explicit: backend on 3000, frontend on 3001. Starting the frontend with plain `pnpm dev` can occupy port 3000 and prevent the default backend connection from working as intended.
 
-The frontend-to-CMS connection is implemented and tested locally. The current backend uses SQLite and local media storage for the proof of concept. Production deployment still requires a production database, durable media storage, backups, secrets, email, monitoring, and hosting configuration.
+## Design and implementation notes
+
+- [Homepage content-preservation checklist](./frontend/docs/homepage-content-audit.md)
+- [Unique ornament collection and visual references](./frontend/docs/ornament-collection.md) - browse the artwork locally at [the collection page](http://localhost:3001/ornaments/index.html)
+- [Completed-projects timeline: data analysis and layout](./frontend/docs/completed-projects-timeline.md)
+- [Legacy page inventory](./frontend/docs/page-inventory.md)
+- [Frontend setup and commands](./frontend/README.md)
+- [Backend setup and commands](./backend/README.md)
+
+See [`frontend/AGENTS.md`](./frontend/AGENTS.md) and [`backend/AGENTS.md`](./backend/AGENTS.md) for development instructions in each application.
+
+## Verification status
+
+Playwright coverage exists for public routes, responsive layouts, content preservation, and key interactions. Recent UI iterations have not had a fresh full verification run; an earlier successful run does not establish that the latest branch passes. Review the application READMEs for the available lint, TypeScript, test, and build commands when verification resumes.
+
+README reviewed against the repository on 17 November 2026.
+
+The CMS now includes structured navigation, homepage editing tabs, explicit photo-album covers and photographs, and project date precision. See [backend editing and upgrade instructions](backend/README.md#editing-the-redesigned-website) before updating an existing database.

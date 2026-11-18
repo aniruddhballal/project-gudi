@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { resolveNavigation } from "@/lib/navigation";
 import { cache } from "react";
 import type { SiteContent } from "@/lib/site-content-types";
 
@@ -39,7 +40,10 @@ function contentFromPayload(data: unknown, settings: unknown): SiteContent {
 
   return {
     ...normalized,
-    siteSettings: normalizedSettings,
+    siteSettings: {
+      ...normalizedSettings,
+      copy: { ...normalizedSettings.copy, navigation: resolveNavigation(normalizedSettings.copy.navigation, normalizedSettings.navigation) },
+    },
   };
 }
 
