@@ -117,3 +117,5 @@ See [`frontend/AGENTS.md`](./frontend/AGENTS.md) and [`backend/AGENTS.md`](./bac
 Playwright coverage exists for public routes, responsive layouts, content preservation, and key interactions. Recent UI iterations have not had a fresh full verification run; an earlier successful run does not establish that the latest branch passes. Review the application READMEs for the available lint, TypeScript, test, and build commands when verification resumes.
 
 README reviewed against the repository on 17 November 2026.
+
+The CMS now includes structured navigation, homepage editing tabs, explicit photo-album covers and photographs, and project date precision. See [backend editing and upgrade instructions](backend/README.md#editing-the-redesigned-website) before updating an existing database.

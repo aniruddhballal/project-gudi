@@ -466,8 +466,55 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSetting {
   id: number;
+  contentModelVersion?: number | null;
   logo?: (number | null) | Media;
   siteTitle: string;
+  navigation?: {
+    /**
+     * Existing navigation remains available until these settings are enabled.
+     */
+    enabled?: boolean | null;
+    home?: string | null;
+    contact?: string | null;
+    directoryTitle?: string | null;
+    toggleOpenLabel?: string | null;
+    toggleCloseLabel?: string | null;
+    openMenu?: string | null;
+    closeMenu?: string | null;
+    /**
+     * Drag groups and their page links to change the directory order.
+     */
+    groups?:
+      | {
+          label: string;
+          items: {
+            label: string;
+            /**
+             * Choose an existing website path. Adding a link does not create a new page.
+             */
+            href: string;
+            id?: string | null;
+          }[];
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Shortcuts beside Explore. Contact is displayed separately. Leave this list empty to remove shortcuts.
+     */
+    quickLinks?:
+      | {
+          label: string;
+          /**
+           * Choose an existing website path. Adding a link does not create a new page.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Preserves the existing copy dictionary. Navigation entries here are legacy fallbacks when the Navigation tab is disabled.
+   */
   copy?:
     | {
         [k: string]: unknown;
@@ -487,20 +534,27 @@ export interface SiteSetting {
 export interface HomePage {
   id: number;
   siteTitle: string;
-  description?: string | null;
-  aims?:
-    | {
-        text?: string | null;
-        emphasis?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  /**
+   * Public homepage heading. Does not change the full Trust name or discovery card titles.
+   */
+  heroHeading?: string | null;
+  /**
+   * The first entry supplies the homepage introduction and its image. Remaining entries appear as discovery cards; these are not rotating slides.
+   */
   heroSlides?:
     | {
         image?: (number | null) | Media;
         href: string;
         title: string;
         description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  description?: string | null;
+  aims?:
+    | {
+        text?: string | null;
+        emphasis?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -519,18 +573,6 @@ export interface HomePage {
         }[]
       | null;
   };
-  majorLinks?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
-  event?: {
-    title?: string | null;
-    name?: string | null;
-    bulletinHref?: string | null;
-  };
   greatSouls?:
     | {
         image?: (number | null) | Media;
@@ -540,10 +582,10 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
-  gallery?:
+  majorLinks?:
     | {
-        image?: (number | null) | Media;
-        alt?: string | null;
+        label: string;
+        href: string;
         id?: string | null;
       }[]
     | null;
@@ -560,6 +602,18 @@ export interface HomePage {
       }[]
     | null;
   email?: string | null;
+  gallery?:
+    | {
+        image?: (number | null) | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  event?: {
+    title?: string | null;
+    name?: string | null;
+    bulletinHref?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -583,6 +637,13 @@ export interface AboutPage {
     | {
         image?: (number | null) | Media;
         date?: string | null;
+        /**
+         * The displayed historical date is preserved separately. Never guess missing dates.
+         */
+        datePrecision?: ('year' | 'month' | 'day' | 'unknown') | null;
+        year?: number | null;
+        month?: number | null;
+        day?: number | null;
         title: string;
         description?: string | null;
         id?: string | null;
@@ -811,9 +872,30 @@ export interface OverviewPage {
 export interface PhotosPage {
   id: number;
   title: string;
+  contentModelVersion?: number | null;
   albums?:
     | {
-        title: string;
+        /**
+         * Leave empty for an untitled standalone photo.
+         */
+        title?: string | null;
+        coverImage?: (number | null) | Media;
+        coverAlt?: string | null;
+        coverStatus?: ('illustrative' | 'verified') | null;
+        /**
+         * Add only photographs belonging to this album. An illustrative cover does not populate this list.
+         */
+        photos?:
+          | {
+              image?: (number | null) | Media;
+              alt?: string | null;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Preserved historical count; the website uses the actual photograph list.
+         */
         photoCount?: number | null;
         id?: string | null;
       }[]
@@ -929,6 +1011,13 @@ export interface VasaviDhamPage {
         image?: (number | null) | Media;
         title?: string | null;
         date?: string | null;
+        /**
+         * The displayed historical date is preserved separately. Never guess missing dates.
+         */
+        datePrecision?: ('year' | 'month' | 'day' | 'unknown') | null;
+        year?: number | null;
+        month?: number | null;
+        day?: number | null;
         id?: string | null;
       }[]
     | null;
@@ -943,20 +1032,27 @@ export interface SiteContent {
   id: number;
   home: {
     siteTitle: string;
-    description?: string | null;
-    aims?:
-      | {
-          text?: string | null;
-          emphasis?: string | null;
-          id?: string | null;
-        }[]
-      | null;
+    /**
+     * Public homepage heading. Does not change the full Trust name or discovery card titles.
+     */
+    heroHeading?: string | null;
+    /**
+     * The first entry supplies the homepage introduction and its image. Remaining entries appear as discovery cards; these are not rotating slides.
+     */
     heroSlides?:
       | {
           image?: (number | null) | Media;
           href: string;
           title: string;
           description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    description?: string | null;
+    aims?:
+      | {
+          text?: string | null;
+          emphasis?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -975,18 +1071,6 @@ export interface SiteContent {
           }[]
         | null;
     };
-    majorLinks?:
-      | {
-          label: string;
-          href: string;
-          id?: string | null;
-        }[]
-      | null;
-    event?: {
-      title?: string | null;
-      name?: string | null;
-      bulletinHref?: string | null;
-    };
     greatSouls?:
       | {
           image?: (number | null) | Media;
@@ -996,10 +1080,10 @@ export interface SiteContent {
           id?: string | null;
         }[]
       | null;
-    gallery?:
+    majorLinks?:
       | {
-          image?: (number | null) | Media;
-          alt?: string | null;
+          label: string;
+          href: string;
           id?: string | null;
         }[]
       | null;
@@ -1016,6 +1100,18 @@ export interface SiteContent {
         }[]
       | null;
     email?: string | null;
+    gallery?:
+      | {
+          image?: (number | null) | Media;
+          alt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    event?: {
+      title?: string | null;
+      name?: string | null;
+      bulletinHref?: string | null;
+    };
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -1034,6 +1130,13 @@ export interface SiteContent {
       | {
           image?: (number | null) | Media;
           date?: string | null;
+          /**
+           * The displayed historical date is preserved separately. Never guess missing dates.
+           */
+          datePrecision?: ('year' | 'month' | 'day' | 'unknown') | null;
+          year?: number | null;
+          month?: number | null;
+          day?: number | null;
           title: string;
           description?: string | null;
           id?: string | null;
@@ -1219,9 +1322,30 @@ export interface SiteContent {
   };
   photos: {
     title: string;
+    contentModelVersion?: number | null;
     albums?:
       | {
-          title: string;
+          /**
+           * Leave empty for an untitled standalone photo.
+           */
+          title?: string | null;
+          coverImage?: (number | null) | Media;
+          coverAlt?: string | null;
+          coverStatus?: ('illustrative' | 'verified') | null;
+          /**
+           * Add only photographs belonging to this album. An illustrative cover does not populate this list.
+           */
+          photos?:
+            | {
+                image?: (number | null) | Media;
+                alt?: string | null;
+                caption?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          /**
+           * Preserved historical count; the website uses the actual photograph list.
+           */
           photoCount?: number | null;
           id?: string | null;
         }[]
@@ -1317,6 +1441,13 @@ export interface SiteContent {
           image?: (number | null) | Media;
           title?: string | null;
           date?: string | null;
+          /**
+           * The displayed historical date is preserved separately. Never guess missing dates.
+           */
+          datePrecision?: ('year' | 'month' | 'day' | 'unknown') | null;
+          year?: number | null;
+          month?: number | null;
+          day?: number | null;
           id?: string | null;
         }[]
       | null;
@@ -1331,8 +1462,41 @@ export interface SiteContent {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  contentModelVersion?: T;
   logo?: T;
   siteTitle?: T;
+  navigation?:
+    | T
+    | {
+        enabled?: T;
+        home?: T;
+        contact?: T;
+        directoryTitle?: T;
+        toggleOpenLabel?: T;
+        toggleCloseLabel?: T;
+        openMenu?: T;
+        closeMenu?: T;
+        groups?:
+          | T
+          | {
+              label?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        quickLinks?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
   copy?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1344,14 +1508,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
  */
 export interface HomePageSelect<T extends boolean = true> {
   siteTitle?: T;
-  description?: T;
-  aims?:
-    | T
-    | {
-        text?: T;
-        emphasis?: T;
-        id?: T;
-      };
+  heroHeading?: T;
   heroSlides?:
     | T
     | {
@@ -1359,6 +1516,14 @@ export interface HomePageSelect<T extends boolean = true> {
         href?: T;
         title?: T;
         description?: T;
+        id?: T;
+      };
+  description?: T;
+  aims?:
+    | T
+    | {
+        text?: T;
+        emphasis?: T;
         id?: T;
       };
   president?:
@@ -1378,20 +1543,6 @@ export interface HomePageSelect<T extends boolean = true> {
               id?: T;
             };
       };
-  majorLinks?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
-  event?:
-    | T
-    | {
-        title?: T;
-        name?: T;
-        bulletinHref?: T;
-      };
   greatSouls?:
     | T
     | {
@@ -1401,11 +1552,11 @@ export interface HomePageSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  gallery?:
+  majorLinks?:
     | T
     | {
-        image?: T;
-        alt?: T;
+        label?: T;
+        href?: T;
         id?: T;
       };
   contact?:
@@ -1421,6 +1572,20 @@ export interface HomePageSelect<T extends boolean = true> {
         id?: T;
       };
   email?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  event?:
+    | T
+    | {
+        title?: T;
+        name?: T;
+        bulletinHref?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1445,6 +1610,10 @@ export interface AboutPageSelect<T extends boolean = true> {
     | {
         image?: T;
         date?: T;
+        datePrecision?: T;
+        year?: T;
+        month?: T;
+        day?: T;
         title?: T;
         description?: T;
         id?: T;
@@ -1684,10 +1853,22 @@ export interface OverviewPageSelect<T extends boolean = true> {
  */
 export interface PhotosPageSelect<T extends boolean = true> {
   title?: T;
+  contentModelVersion?: T;
   albums?:
     | T
     | {
         title?: T;
+        coverImage?: T;
+        coverAlt?: T;
+        coverStatus?: T;
+        photos?:
+          | T
+          | {
+              image?: T;
+              alt?: T;
+              caption?: T;
+              id?: T;
+            };
         photoCount?: T;
         id?: T;
       };
@@ -1805,6 +1986,10 @@ export interface VasaviDhamPageSelect<T extends boolean = true> {
         image?: T;
         title?: T;
         date?: T;
+        datePrecision?: T;
+        year?: T;
+        month?: T;
+        day?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -1820,14 +2005,7 @@ export interface SiteContentSelect<T extends boolean = true> {
     | T
     | {
         siteTitle?: T;
-        description?: T;
-        aims?:
-          | T
-          | {
-              text?: T;
-              emphasis?: T;
-              id?: T;
-            };
+        heroHeading?: T;
         heroSlides?:
           | T
           | {
@@ -1835,6 +2013,14 @@ export interface SiteContentSelect<T extends boolean = true> {
               href?: T;
               title?: T;
               description?: T;
+              id?: T;
+            };
+        description?: T;
+        aims?:
+          | T
+          | {
+              text?: T;
+              emphasis?: T;
               id?: T;
             };
         president?:
@@ -1854,20 +2040,6 @@ export interface SiteContentSelect<T extends boolean = true> {
                     id?: T;
                   };
             };
-        majorLinks?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-              id?: T;
-            };
-        event?:
-          | T
-          | {
-              title?: T;
-              name?: T;
-              bulletinHref?: T;
-            };
         greatSouls?:
           | T
           | {
@@ -1877,11 +2049,11 @@ export interface SiteContentSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
-        gallery?:
+        majorLinks?:
           | T
           | {
-              image?: T;
-              alt?: T;
+              label?: T;
+              href?: T;
               id?: T;
             };
         contact?:
@@ -1897,6 +2069,20 @@ export interface SiteContentSelect<T extends boolean = true> {
               id?: T;
             };
         email?: T;
+        gallery?:
+          | T
+          | {
+              image?: T;
+              alt?: T;
+              id?: T;
+            };
+        event?:
+          | T
+          | {
+              title?: T;
+              name?: T;
+              bulletinHref?: T;
+            };
         updatedAt?: T;
         createdAt?: T;
       };
@@ -1918,6 +2104,10 @@ export interface SiteContentSelect<T extends boolean = true> {
           | {
               image?: T;
               date?: T;
+              datePrecision?: T;
+              year?: T;
+              month?: T;
+              day?: T;
               title?: T;
               description?: T;
               id?: T;
@@ -2134,10 +2324,22 @@ export interface SiteContentSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        contentModelVersion?: T;
         albums?:
           | T
           | {
               title?: T;
+              coverImage?: T;
+              coverAlt?: T;
+              coverStatus?: T;
+              photos?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    caption?: T;
+                    id?: T;
+                  };
               photoCount?: T;
               id?: T;
             };
@@ -2243,6 +2445,10 @@ export interface SiteContentSelect<T extends boolean = true> {
               image?: T;
               title?: T;
               date?: T;
+              datePrecision?: T;
+              year?: T;
+              month?: T;
+              day?: T;
               id?: T;
             };
         updatedAt?: T;

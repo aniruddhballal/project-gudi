@@ -2,9 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { projectYear, projectDateLabel } from "@/lib/project-dates";
+import type { ProjectDate } from "@/lib/site-content-types";
 import { ContentImage } from "@/components/content-image";
 
-type JourneyProject = {
+type JourneyProject = ProjectDate & {
   image: string | null;
   date: string;
   title: string;
@@ -15,14 +17,14 @@ type ProjectJourneyProps = {
   projects: readonly JourneyProject[];
 };
 
-function getYear(date: string) {
-  return date.match(/\b20\d{2}\b/)?.[0] ?? "Ongoing";
+function getYear(project: ProjectDate) {
+  return projectYear(project) ?? "Date not listed";
 }
 
 export function ProjectJourney({ projects }: ProjectJourneyProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef<Array<HTMLElement | null>>([]);
-  const eras = useMemo(() => Array.from(new Set(projects.map((project) => getYear(project.date)))), [projects]);
+  const eras = useMemo(() => Array.from(new Set(projects.map((project) => getYear(project)))), [projects]);
   const activeProject = projects[activeIndex] ?? projects[0];
   const progress = projects.length > 1 ? (activeIndex / (projects.length - 1)) * 100 : 100;
 
@@ -59,7 +61,7 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
   }, [projects.length]);
 
   function jumpToEra(era: string) {
-    const index = projects.findIndex((project) => getYear(project.date) === era);
+    const index = projects.findIndex((project) => getYear(project) === era);
     const target = itemRefs.current[index];
     if (!target) return;
 
@@ -78,8 +80,8 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
           <p className="mt-2 text-sm leading-6 text-[#f5e5d5]">Scroll through the moments that shaped Vasavi Dham.</p>
           <nav aria-label="Project timeline" className="mt-5 space-y-1.5">
             {eras.map((era) => {
-              const firstIndex = projects.findIndex((project) => getYear(project.date) === era);
-              const isActive = getYear(activeProject?.date ?? "") === era;
+              const firstIndex = projects.findIndex((project) => getYear(project) === era);
+              const isActive = getYear(activeProject ?? { date: "" }) === era;
 
               return (
                 <button
@@ -115,7 +117,7 @@ export function ProjectJourney({ projects }: ProjectJourneyProps) {
           return (
             <article key={`${project.date}-${project.title}`} ref={(element) => { itemRefs.current[index] = element; }} data-index={index} className="relative grid scroll-mt-32 gap-5 border-b border-[#e2ddd1] py-8 pl-10 sm:gap-7 sm:pl-14 md:grid-cols-[7rem_minmax(0,1fr)_minmax(12rem,0.75fr)] md:gap-7 md:pl-0 md:py-10">
               <div className="relative md:col-start-1 md:pr-6 md:text-right">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#965b35]">{project.date}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#965b35]">{projectDateLabel(project)}</p>
                 <p className="mt-1 text-xs font-semibold text-stone-400">Milestone {String(index + 1).padStart(2, "0")}</p>
               </div>
 

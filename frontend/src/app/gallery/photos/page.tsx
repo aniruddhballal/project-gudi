@@ -1,3 +1,4 @@
+import { resolvePhotoAlbums } from "@/lib/photo-albums";
 import { ContentImage } from "@/components/content-image";
 import galleryStyles from "@/components/home/home-gallery.module.css";
 import { SiteHeader } from "@/components/site-header";
@@ -9,12 +10,7 @@ import { Upload } from "lucide-react";
 export default async function PhotosPage() {
   const { home: homeContent, photos: photosContent, siteSettings } = await getSiteContent();
   const copy = siteSettings.copy.pages.photos;
-  // Illustrative covers from existing photos, not verified event-album contents.
-  const coverOrder = [3, 4, 2, 6, 7, 1, 5, 0];
-  const albumCovers = [
-    ...coverOrder.flatMap((index) => homeContent.gallery[index] ? [homeContent.gallery[index]] : []),
-    ...homeContent.gallery.slice(8),
-  ];
+  const albums = resolvePhotoAlbums(photosContent, homeContent.gallery);
   return (
     <main data-page="photos" className="min-h-screen bg-[#f8f6f1] text-stone-900">
       <SiteHeader />
@@ -34,18 +30,33 @@ export default async function PhotosPage() {
             <h2 id="temple-photos-title" className="display-type mt-3 text-4xl text-[#203b35] sm:text-5xl">{siteSettings.copy.home.galleryTitle}</h2>
           </div>
           <div className={galleryStyles.albumGrid}>
-            {albumCovers.map((photo, index) => (
-              <figure key={`${photo.image}-${index}`} className={galleryStyles.album}>
-                <div className={`${galleryStyles.albumImage} temple-image-frame`}>
-                  <ContentImage src={photo.image} alt={photo.alt} loading="lazy" />
-                </div>
-                {photosContent.albums[index] && (
-                  <figcaption className={galleryStyles.caption}>
-                    <h2 className={galleryStyles.albumTitle}>{photosContent.albums[index].title}</h2>
-                  </figcaption>
-                )}
-              </figure>
-            ))}
+            {albums.map((album, index) => {
+              const photographs = (album.photos ?? []).filter((photo) => photo.image);
+              const cover = album.coverImage ?? photographs[0]?.image;
+              return (
+                <figure key={`${album.title ?? "untitled"}-${index}`} className={galleryStyles.album}>
+                  <div className={`${galleryStyles.albumImage} temple-image-frame`}>
+                    {cover && <ContentImage src={cover} alt={album.coverAlt || photographs[0]?.alt || album.title || "Temple photograph"} loading="lazy" />}
+                  </div>
+                  {(album.title || photographs.length > 0) && (
+                    <figcaption className={galleryStyles.caption}>
+                      {album.title && <h2 className={galleryStyles.albumTitle}>{album.title}</h2>}
+                      {photographs.length > 0 && <details className={galleryStyles.albumDetails}>
+                        <summary>{photographs.length} {copy.photoLabel}</summary>
+                        <div className={galleryStyles.albumPhotos}>
+                          {photographs.map((photo, photoIndex) => <div key={`${photo.image}-${photoIndex}`}>
+                            <a href={photo.image!} target="_blank" rel="noreferrer">
+                              <ContentImage src={photo.image} alt={photo.alt || photo.caption || album.title || "Temple photograph"} loading="lazy" />
+                            </a>
+                            {photo.caption && <p>{photo.caption}</p>}
+                          </div>)}
+                        </div>
+                      </details>}
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            })}
           </div>
         </div>
       </section>

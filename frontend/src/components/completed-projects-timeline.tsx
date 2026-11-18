@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { ContentImage } from "@/components/content-image";
 import type { VasaviDhamContent } from "@/lib/site-content-types";
+import { projectYear, projectDateLabel } from "@/lib/project-dates";
 import styles from "./completed-projects-timeline.module.css";
 
 type Project = VasaviDhamContent["projects"][number];
@@ -12,7 +13,7 @@ type ProjectGroup = { key: string; year: string | null; projects: Project[] };
 function groupProjects(projects: readonly Project[]): ProjectGroup[] {
   const groups = new Map<string, ProjectGroup>();
   for (const project of projects) {
-    const year = project.date.match(/\b(?:19|20)\d{2}\b/)?.[0] ?? null;
+    const year = projectYear(project);
     const key = year ?? "undated";
     const group = groups.get(key) ?? { key, year, projects: [] };
     group.projects.push(project);
@@ -116,7 +117,7 @@ export function CompletedProjectsTimeline({ projects }: { projects: VasaviDhamCo
                 <span className={styles.imageAction} aria-hidden="true"><ArrowUpRight size={15} /></span>
               </a>}
               <div className={styles.projectCopy}>
-                <p className={styles.date}>{project.date}</p>
+                <p className={styles.date}>{projectDateLabel(project)}</p>
                 <h4>{project.title}</h4>
               </div>
             </article>)}

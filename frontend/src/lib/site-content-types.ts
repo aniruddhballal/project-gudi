@@ -10,10 +10,42 @@ export type Person = {
   description?: string;
 };
 
+export type ProjectDate = {
+  date: string;
+  datePrecision?: "year" | "month" | "day" | "unknown" | null;
+  year?: number | null;
+  month?: number | null;
+  day?: number | null;
+};
+export type NavigationLink = { label: string; href: string };
+export type NavigationGroup = { label: string; items: readonly NavigationLink[] };
+export type NavigationSettings = {
+  enabled?: boolean | null;
+  home?: string | null;
+  contact?: string | null;
+  openMenu?: string | null;
+  closeMenu?: string | null;
+  directoryTitle?: string | null;
+  toggleOpenLabel?: string | null;
+  toggleCloseLabel?: string | null;
+  groups?: readonly { label: string; items?: readonly NavigationLink[] | null }[] | null;
+  quickLinks?: readonly NavigationLink[] | null;
+};
+export type AlbumPhoto = { image: string | null; alt?: string | null; caption?: string | null };
+export type PhotoAlbum = {
+  title?: string | null;
+  photoCount?: number | null;
+  coverImage?: string | null;
+  coverAlt?: string | null;
+  coverStatus?: "illustrative" | "verified" | null;
+  photos?: readonly AlbumPhoto[] | null;
+};
+
 export type HomeContent = {
   siteTitle: string;
   description: string;
   aims: readonly Aim[];
+  heroHeading?: string | null;
   heroSlides: readonly { image: string; href: string; title: string; description: string }[];
   president: { image: string | null; title?: string; kannada: readonly string[]; english: readonly string[] };
   majorLinks: readonly { label: string; href: string }[];
@@ -28,7 +60,7 @@ export type AboutContent = {
   title: string;
   introduction: string;
   underConstruction: readonly { image: string | null; title: string; description: string }[];
-  projects: readonly { image: string | null; date: string; title: string; description: string }[];
+  projects: readonly (ProjectDate & { image: string | null; title: string; description: string })[];
 };
 
 export type ContactContent = {
@@ -57,17 +89,17 @@ export type OverviewContent = {
   news: readonly { title: string; description: string; href: string; image: string | null }[];
   about: { title: string; image: string | null; text: string };
 };
-export type PhotosContent = { title: string; albums: readonly { title: string; photoCount: number }[] };
+export type PhotosContent = { title: string; contentModelVersion?: number | null; albums: readonly PhotoAlbum[] };
 export type PrivacyContent = { title: string; intro: string; sections: readonly { title: string; paragraphs: readonly string[] }[] };
 export type StoryContent = { title: string; coverImage: string | null; publication: { title: string; note: string; href: string }; introduction: readonly string[]; historicEvents: readonly string[]; narrative: readonly { image: string | null; text: string }[]; closing: string };
 export type TrusteesContent = { title: string; patrons: readonly Person[]; executive: readonly Person[] };
-export type VasaviDhamContent = { title: string; description: string; featured: readonly { title: string; image: string | null; description: string }[]; projects: readonly { title: string; date: string; image: string | null }[] };
+export type VasaviDhamContent = { title: string; description: string; featured: readonly { title: string; image: string | null; description: string }[]; projects: readonly (ProjectDate & { title: string; image: string | null })[] };
 
 export type SiteCopy = {
   home: {
     heroEyebrow: string; heroCta: string; exploreEyebrow: string; exploreTitle: string; exploreDescription: string; trustEyebrow: string; trustTitle: string; trustCta: string; presidentEyebrow: string; presidentTitle: string; presidentName: string; presidentRole: string; eventEyebrow: string; eventCta: string; furtherEyebrow: string; furtherTitle: string; furtherCta: string; soulsEyebrow: string; soulsTitle: string; soulsDescription: string; galleryEyebrow: string; galleryTitle: string; galleryCta: string; visitEyebrow: string; visitTitle: string; visitCta: string; newsletterEyebrow: string; newsletterTitle: string; newsletterDescription: string; newsletterPlaceholder: string; newsletterCta: string; newsletterNote: string;
   };
-  navigation: { groups: readonly { label: string; items: readonly { label: string; href: string }[] }[]; home: string; story: string; trustees: string; contact: string; topbarLabel: string; visitCta: string; openMenu: string; closeMenu: string };
+  navigation: { directoryTitle?: string; toggleOpenLabel?: string; toggleCloseLabel?: string; quickLinks?: readonly NavigationLink[]; groups: readonly { label: string; items: readonly { label: string; href: string }[] }[]; home: string; story: string; trustees: string; contact: string; topbarLabel: string; visitCta: string; openMenu: string; closeMenu: string };
   footer: { eyebrow: string; tagline: string; exploreLabel: string; connectLabel: string; exploreLinks: readonly { label: string; href: string }[]; connectLinks: readonly { label: string; href: string }[]; copyright: string; note: string };
   pages: {
     about: { eyebrow: string; aims: SectionCopy; construction: SectionCopy; completed: SectionCopy; progressLabel: string; unavailableImage: string };
@@ -102,5 +134,5 @@ export type SiteContent = {
   story: StoryContent;
   trustees: TrusteesContent;
   vasaviDham: VasaviDhamContent;
-  siteSettings: { siteTitle: string; logo: string; copy: SiteCopy };
+  siteSettings: { siteTitle: string; logo: string; copy: SiteCopy; navigation?: NavigationSettings | null };
 };
